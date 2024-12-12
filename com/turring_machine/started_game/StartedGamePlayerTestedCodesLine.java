@@ -1,15 +1,16 @@
 package com.turring_machine.started_game;
 
 import com.turring_machine.base_objects.Code;
+import java.util.ArrayList;
 import com.turring_machine.listeners.ObjectsListChangeListener;
 
 public class StartedGamePlayerTestedCodesLine {
 
 	private Code code;
 
-	private ArrayList<ObjectsListChangeListener<StartedGamePlayerTestedCodeValidationResult>> validation_listeners;
-
 	private StartedGamePlayerTestedCodeValidationResult[] validation_results;
+
+	private ArrayList<ObjectsListChangeListener<StartedGamePlayerTestedCodeValidationResult>> validation_listeners;
 
 	public StartedGamePlayerTestedCodesLine() {
 

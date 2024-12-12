@@ -1,8 +1,8 @@
 package com.turring_machine.views;
 
+import java.util.ArrayList;
 import com.turring_machine.listeners.CodeConfigurationChangeListener;
 import com.turring_machine.configuration.MachineConfiguration;
-import com.turring_machine.configuration.CodeConfiguration;
 
 public class CodeConfigurationPanel implements Displayable {
 

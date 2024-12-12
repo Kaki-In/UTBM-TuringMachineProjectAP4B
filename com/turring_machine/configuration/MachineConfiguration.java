@@ -2,6 +2,7 @@ package com.turring_machine.configuration;
 
 import com.turring_machine.base_objects.GameDifficulty;
 import com.turring_machine.base_objects.GameCriteriaCount;
+import java.util.ArrayList;
 import com.turring_machine.listeners.ObjectChangeListener;
 
 public class MachineConfiguration implements Configurable {

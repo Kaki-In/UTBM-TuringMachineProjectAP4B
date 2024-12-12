@@ -1,5 +1,6 @@
 package com.turring_machine.database;
 
+import java.util.ArrayList;
 import com.turring_machine.base_objects.Code;
 
 public class Criterion {

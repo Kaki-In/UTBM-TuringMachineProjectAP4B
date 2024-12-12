@@ -2,6 +2,7 @@ package com.turring_machine.views;
 
 import com.turring_machine.listeners.ObjectsListModificationLaunchedListener;
 import com.turring_machine.configuration.PlayersConfiguration;
+import java.util.ArrayList;
 
 public class PlayersConfigurationPanel implements Displayable {
 

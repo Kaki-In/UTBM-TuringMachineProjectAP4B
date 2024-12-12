@@ -1,5 +1,7 @@
 package com.turring_machine.views;
 
+import java.util.ArrayList;
+
 public class StartedGameEnterPlayerPanel implements Displayable {
 
 	private ArrayList<Runnable> listeners;

@@ -3,6 +3,7 @@ package com.turring_machine.api;
 import com.turring_machine.base_objects.Code;
 import com.turring_machine.base_objects.GameDifficulty;
 import com.turring_machine.base_objects.GameCriteriaCount;
+import java.util.ArrayList;
 import com.turring_machine.base_objects.CriterionLetter;
 
 public class TurringMachineGeneratedConfiguration {

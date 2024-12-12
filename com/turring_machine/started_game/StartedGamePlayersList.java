@@ -1,5 +1,7 @@
 package com.turring_machine.started_game;
 
+import java.util.ArrayList;
+
 public class StartedGamePlayersList {
 
 	private ArrayList<StartedGamePlayer> players;

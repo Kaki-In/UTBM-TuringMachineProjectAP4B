@@ -1,6 +1,7 @@
 package com.turring_machine.database;
 
 import com.turring_machine.images.Image;
+import java.util.ArrayList;
 
 public class CriterionThumbnail {
 

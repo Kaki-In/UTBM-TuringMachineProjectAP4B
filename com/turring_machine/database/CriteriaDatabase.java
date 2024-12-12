@@ -1,5 +1,7 @@
 package com.turring_machine.database;
 
+import java.util.ArrayList;
+
 public class CriteriaDatabase {
 
 	private ArrayList<DatabaseCriterion> criteria;

@@ -1,5 +1,6 @@
 package com.turring_machine.started_game;
 
+import java.util.ArrayList;
 import com.turring_machine.base_objects.CriterionLetter;
 
 public class StartedGameCriteriaList {

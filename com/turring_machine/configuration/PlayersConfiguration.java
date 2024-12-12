@@ -1,5 +1,6 @@
 package com.turring_machine.configuration;
 
+import java.util.ArrayList;
 import com.turring_machine.listeners.ObjectsListChangeListener;
 
 public class PlayersConfiguration implements Configurable {

@@ -4,7 +4,7 @@ import com.turing_machine.api.TuringMachineAPI;
 import com.turing_machine.configuration.MachineConfiguration;
 import com.turing_machine.started_game.StartedGameMachine;
 
-public class GameMachineBuild {
+public class GameMachineBuilder {
 
 	private TuringMachineAPI api;
 

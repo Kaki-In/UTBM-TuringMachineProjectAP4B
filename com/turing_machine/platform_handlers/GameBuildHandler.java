@@ -9,7 +9,7 @@ public class GameBuildHandler {
 
 	private GamePlayersBuilder players_starter;
 
-	private GameMachineBuild machine_starter;
+	private GameMachineBuilder machine_starter;
 
 	private ArrayList<GameBuildProgressionListener> listeners;
 

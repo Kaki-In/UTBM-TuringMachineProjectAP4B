@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class PlayersConfigurationPanel implements Displayable {
 
-	private ObjectsListModificationLaunchedListener<int> panel_listeners;
+	private ObjectsListModificationLaunchedListener<String> panel_listeners;
 
 	private PlayersConfiguration configuration;
 
@@ -16,7 +16,7 @@ public class PlayersConfigurationPanel implements Displayable {
 
 	}
 
-	public void whenPanelModified(ObjectsListModificationLaunchedListener<int> listener) {
+	public void whenPanelModified(ObjectsListModificationLaunchedListener<String> listener) {
 
 	}
 

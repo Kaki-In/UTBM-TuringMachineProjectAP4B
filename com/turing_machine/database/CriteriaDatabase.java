@@ -4,17 +4,21 @@ import java.util.ArrayList;
 
 public class CriteriaDatabase {
 
-	private ArrayList<DatabaseCriterion> criteria;
+	private ArrayList<Criterion> criteria;
 
-	public CriteriaDatabase() {
+	private CriteriaCasesDatabase cases;
+
+	private CriteriaDatabase only_instance;
+
+	protected CriteriaDatabase() {
 
 	}
 
-	public DatabaseCriterion getCriterion(int id) {
+	public Criterion getCriterion(int id) {
 		return null;
 	}
 
-	public CriterionThumbnail getCriterionThumbnail(int id) {
+	public CriteriaCasesDatabase getCriteriaCases() {
 		return null;
 	}
 

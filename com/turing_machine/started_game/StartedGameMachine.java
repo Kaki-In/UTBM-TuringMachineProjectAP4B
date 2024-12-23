@@ -8,12 +8,12 @@ public class StartedGameMachine {
 
 	private StartedGameCriteriaList criteria;
 
-	public StartedGameCriteriaList getCriteria() {
-		return null;
-	}
-
 	public StartedGameMachine(Code code, StartedGameCriteriaList criteria) {
 
+	}
+
+	public StartedGameCriteriaList getCriteria() {
+		return null;
 	}
 
 }

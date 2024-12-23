@@ -1,6 +1,6 @@
 package com.turing_machine.database;
 
-import com.turing_machine.images.Image;
+import com.turing_machine.database.com.turing_machine.images.Image;
 
 public class CriterionCaseThumbnail {
 
@@ -8,11 +8,9 @@ public class CriterionCaseThumbnail {
 
 	private Image image;
 
-	public CriterionCaseThumbnail(int id) {
+	private String description;
 
-	}
-
-	public CriterionCaseThumbnail(int id, Image image) {
+	protected CriterionCaseThumbnail(int id, String description, Image image) {
 
 	}
 
@@ -24,8 +22,8 @@ public class CriterionCaseThumbnail {
 		return 0;
 	}
 
-	public void setImage(Image image) {
-
+	public String getDescription() {
+		return null;
 	}
 
 }

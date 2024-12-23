@@ -14,7 +14,7 @@ public class MainPlatformState {
 		return null;
 	}
 
-	public setActualStep(PlatformStep step) {
+	public void setActualStep(PlatformStep step) {
 
 	}
 

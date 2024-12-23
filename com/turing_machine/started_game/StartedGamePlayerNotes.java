@@ -16,11 +16,11 @@ public class StartedGamePlayerNotes {
 		return null;
 	}
 
-	public StartedGamePlayerTestedCodesGrid getPlayerTestedCodesGrid() {
+	public StartedGamePlayerTestedCodesGrid getTestedCodesGrid() {
 		return null;
 	}
 
-	public StartedGamePlayerCriteria getPlayerCriteria() {
+	public StartedGamePlayerCriteria getCriteria() {
 		return null;
 	}
 

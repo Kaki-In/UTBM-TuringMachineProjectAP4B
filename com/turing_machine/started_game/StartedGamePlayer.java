@@ -2,6 +2,7 @@ package com.turing_machine.started_game;
 
 import java.util.ArrayList;
 import com.turing_machine.listeners.StartedGamePlayerEventsListener;
+import com.turing_machine.base_objects.Code;
 
 public class StartedGamePlayer {
 
@@ -13,18 +14,10 @@ public class StartedGamePlayer {
 
 	private ArrayList<StartedGamePlayerEventsListener> listeners;
 
-	private StartedGamePlayerCodeHypothesis actual_hypothesis;
+	private Code actual_hypothesis;
 
-	public startedGamePlayer(String name) {
+	public StartedGamePlayer(String name) {
 
-	}
-
-	public boolean isHypothesing() {
-		return false;
-	}
-
-	public StartedGamePlayerCodeHypothesis getHypothesis() {
-		return null;
 	}
 
 	public void whenEventEmitted(StartedGamePlayerEventsListener listener) {
@@ -43,7 +36,7 @@ public class StartedGamePlayer {
 		return false;
 	}
 
-	public StartedGamePlayerCodeHypothesis getGuessingCode() {
+	public Code getGuessingCode() {
 		return null;
 	}
 

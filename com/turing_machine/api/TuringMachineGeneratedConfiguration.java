@@ -20,6 +20,14 @@ public class TuringMachineGeneratedConfiguration {
 
 	}
 
+	public GameDifficulty getDifficulty() {
+		return null;
+	}
+
+	public GameCriteriaCount getCriteriaCount() {
+		return null;
+	}
+
 	public ArrayList<TuringMachineGeneratedCriterion> getCriteria() {
 		return null;
 	}

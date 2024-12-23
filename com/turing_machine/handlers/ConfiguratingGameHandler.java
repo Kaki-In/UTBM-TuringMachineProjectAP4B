@@ -1,4 +1,4 @@
-package com.turing_machine.platform_handlers;
+package com.turing_machine.handlers;
 
 public class ConfiguratingGameHandler {
 

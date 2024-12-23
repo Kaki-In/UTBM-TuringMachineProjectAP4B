@@ -21,7 +21,11 @@ public class StartedGamePlayerTestedCodesGrid {
 		return 0;
 	}
 
-	public void addNewLine() {
+	protected void addNewLine() {
+
+	}
+
+	public void whenCodeLinesChanged(ObjectsListChangeListener_StartedGamePlayerTestedCodesLine_ listener) {
 
 	}
 

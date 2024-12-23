@@ -1,4 +1,4 @@
-package com.turing_machine.platform_handlers;
+package com.turing_machine.handlers;
 
 import com.turing_machine.api.TuringMachineAPI;
 import com.turing_machine.configuration.MachineConfiguration;

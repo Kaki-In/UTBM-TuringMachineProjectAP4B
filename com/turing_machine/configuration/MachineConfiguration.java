@@ -11,9 +11,9 @@ public class MachineConfiguration implements Configurable {
 
 	private GameCriteriaCount criteria_count;
 
-	private ArrayList<ObjectChangeListener<GameDifficulty>> difficulty_listener;
+	private ArrayList<ObjectChangeListener<GameDifficulty>> difficulty_listeners;
 
-	private ArrayList<ObjectChangeListener<GameCriteriaCount>> criteria_count_listener;
+	private ArrayList<ObjectChangeListener<GameCriteriaCount>> criteria_count_listeners;
 
 	public MachineConfiguration() {
 

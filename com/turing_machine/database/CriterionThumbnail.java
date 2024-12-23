@@ -1,7 +1,6 @@
 package com.turing_machine.database;
 
-import com.turing_machine.images.Image;
-import java.util.ArrayList;
+import com.turing_machine.database.com.turing_machine.images.Image;
 
 public class CriterionThumbnail {
 
@@ -9,13 +8,9 @@ public class CriterionThumbnail {
 
 	private Image image;
 
-	private ArrayList<CriterionCaseThumbnail> cases;
+	private String description;
 
-	public CriterionThumbnail(int id) {
-
-	}
-
-	public CriterionThumbnail(int id, Image image, ArrayList<CriterionCaseThumbnail> cases) {
+	protected CriterionThumbnail(int id, String description, Image image) {
 
 	}
 
@@ -27,16 +22,8 @@ public class CriterionThumbnail {
 		return null;
 	}
 
-	public ArrayList<CriterionCaseThumbnail> getDistinctCases() {
+	public String getDescription() {
 		return null;
-	}
-
-	public void setMainThumbnail(Image image) {
-
-	}
-
-	public void addCaseThumbnail(CriterionCaseThumbnail case) {
-
 	}
 
 }

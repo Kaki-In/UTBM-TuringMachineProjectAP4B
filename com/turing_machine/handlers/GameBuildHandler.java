@@ -1,4 +1,4 @@
-package com.turing_machine.platform_handlers;
+package com.turing_machine.handlers;
 
 import java.util.ArrayList;
 import com.turing_machine.listeners.GameBuildProgressionListener;

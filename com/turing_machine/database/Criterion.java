@@ -9,11 +9,7 @@ public class Criterion {
 
 	private ArrayList<CriterionCase> cases;
 
-	public Criterion(int id) {
-
-	}
-
-	public Criterion(int id, ArrayList<CriterionCase> cases) {
+	protected Criterion(int id, ArrayList<CriterionCase> cases) {
 
 	}
 
@@ -21,15 +17,11 @@ public class Criterion {
 		return 0;
 	}
 
-	public CriterionCase getCase(Code code) {
-		return null;
-	}
-
 	public ArrayList<CriterionCase> getDistinctCases() {
 		return null;
 	}
 
-	public addCase(CriterionCase case) {
+	public void getMatchingCase(Code code) {
 
 	}
 

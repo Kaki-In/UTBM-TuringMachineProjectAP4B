@@ -10,7 +10,7 @@ public class StartedGamePlayersList {
 
 	}
 
-	public ArrayList<String> getPlayerNames() {
+	public ArrayList<String> getPlayersNames() {
 		return null;
 	}
 

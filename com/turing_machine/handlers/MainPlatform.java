@@ -1,4 +1,4 @@
-package com.turing_machine.platform_handlers;
+package com.turing_machine.handlers;
 
 import com.turing_machine.platform_state.MainPlatformState;
 
@@ -16,8 +16,8 @@ public class MainPlatform {
 
 	}
 
-	public main() {
-
+	public MainPlatformState getState() {
+		return null;
 	}
 
 }

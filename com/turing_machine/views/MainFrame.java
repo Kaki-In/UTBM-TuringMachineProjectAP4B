@@ -1,6 +1,7 @@
 package com.turing_machine.views;
 
 import com.turing_machine.platform_state.MainPlatformState;
+import java.awt.Component;
 
 public class MainFrame implements Displayable {
 
@@ -10,6 +11,17 @@ public class MainFrame implements Displayable {
 
 	public MainFrame(MainPlatformState platform_state) {
 
+	}
+
+	@Override
+	public Component getWidget()
+	{
+		return null;
+	}
+
+	@Override
+	public void refresh()
+	{
 	}
 
 }

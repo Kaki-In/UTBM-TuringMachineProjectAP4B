@@ -8,7 +8,7 @@ public class StartedGamePlayerCriterion {
 
 	private ArrayList<StartedGamePlayerCriterionCase> cases;
 
-	public StartedGamePlayerCrition(int criterion_id, ArrayList<StartedGamePlayerCriterionCase> cases) {
+	public StartedGamePlayerCriterion(int criterion_id, ArrayList<StartedGamePlayerCriterionCase> cases) {
 
 	}
 

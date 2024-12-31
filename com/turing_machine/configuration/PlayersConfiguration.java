@@ -1,7 +1,7 @@
 package com.turing_machine.configuration;
 
-import java.util.ArrayList;
 import com.turing_machine.listeners.ObjectsListChangeListener;
+import java.util.ArrayList;
 
 public class PlayersConfiguration implements Configurable {
 
@@ -11,6 +11,12 @@ public class PlayersConfiguration implements Configurable {
 
 	public PlayersConfiguration() {
 
+	}
+
+	@Override
+	public boolean isReady()
+	{
+		return false;
 	}
 
 	public void addPlayer() {

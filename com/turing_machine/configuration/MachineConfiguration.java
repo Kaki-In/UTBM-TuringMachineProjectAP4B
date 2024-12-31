@@ -1,9 +1,9 @@
 package com.turing_machine.configuration;
 
-import com.turing_machine.base_objects.GameDifficulty;
 import com.turing_machine.base_objects.GameCriteriaCount;
-import java.util.ArrayList;
+import com.turing_machine.base_objects.GameDifficulty;
 import com.turing_machine.listeners.ObjectChangeListener;
+import java.util.ArrayList;
 
 public class MachineConfiguration implements Configurable {
 
@@ -17,6 +17,12 @@ public class MachineConfiguration implements Configurable {
 
 	public MachineConfiguration() {
 
+	}
+
+	@Override
+	public boolean isReady()
+	{
+		return false;
 	}
 
 	public MachineConfiguration(GameDifficulty difficulty) {

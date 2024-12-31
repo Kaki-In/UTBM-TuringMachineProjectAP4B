@@ -1,8 +1,9 @@
 package com.turing_machine.views;
 
-import java.util.ArrayList;
-import com.turing_machine.started_game.StartedGame;
 import com.turing_machine.platform_state.StartedGameStep;
+import com.turing_machine.started_game.StartedGame;
+import java.awt.Component;
+import java.util.ArrayList;
 
 public class StartedGamePanel extends GameDisplayedPanel implements Displayable {
 
@@ -15,11 +16,22 @@ public class StartedGamePanel extends GameDisplayedPanel implements Displayable 
 	private StartedGamePlayersPanel players;
 
 	public StartedGamePanel(StartedGameStep game) {
-
+		super(game);
 	}
 
 	public void whenRoundEndLaunched(Runnable listener) {
 
+	}
+
+	@Override
+	public Component getWidget()
+	{
+		return null;
+	}
+
+	@Override
+	public void refresh()
+	{
 	}
 
 }

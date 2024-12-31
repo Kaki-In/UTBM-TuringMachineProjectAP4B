@@ -1,8 +1,9 @@
 package com.turing_machine.views;
 
-import java.util.ArrayList;
-import com.turing_machine.listeners.ObjectSelectionListener;
 import com.turing_machine.base_objects.GameCriteriaCount;
+import com.turing_machine.listeners.ObjectSelectionListener;
+import java.awt.Component;
+import java.util.ArrayList;
 
 public class CriteriaCountSelectionPanel implements Displayable {
 
@@ -12,6 +13,17 @@ public class CriteriaCountSelectionPanel implements Displayable {
 
 	public CriteriaCountSelectionPanel() {
 
+	}
+
+	@Override
+	public Component getWidget()
+	{
+		return null;
+	}
+
+	@Override
+	public void refresh()
+	{
 	}
 
 	public GameCriteriaCount getCriteriaCount() {

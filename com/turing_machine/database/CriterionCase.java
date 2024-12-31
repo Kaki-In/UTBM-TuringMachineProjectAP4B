@@ -22,6 +22,7 @@ public class CriterionCase implements MatchCheckable {
 	/**
 	 * @see com.turing_machine.database.MatchCheckable#doesMatch(com.turing_machine.base_objects.Code)
 	 */
+	@Override
 	public boolean doesMatch(Code code) {
 		return false;
 	}

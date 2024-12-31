@@ -1,8 +1,9 @@
 package com.turing_machine.views;
 
-import java.util.ArrayList;
 import com.turing_machine.listeners.PlayerTestedCodesActionListener;
 import com.turing_machine.started_game.StartedGamePlayerTestedCodesGrid;
+import java.awt.Component;
+import java.util.ArrayList;
 
 public class StartedGamePlayerTestedCodesPanel implements Displayable {
 
@@ -10,10 +11,21 @@ public class StartedGamePlayerTestedCodesPanel implements Displayable {
 
 	private StartedGamePlayerTestedCodesGrid codes_grid;
 
-	private ArrayList<StartedGamePlayerTestedCodesLinePanel> lines;
+	private ArrayList<StartedGamePlayerTestedCodeLinePanel> lines;
 
 	public StartedGamePlayerTestedCodesPanel(StartedGamePlayerTestedCodesGrid codes_grid) {
 
+	}
+
+	@Override
+	public Component getWidget()
+	{
+		return null;
+	}
+
+	@Override
+	public void refresh()
+	{
 	}
 
 	public void whenActionLaunched(PlayerTestedCodesActionListener listener) {

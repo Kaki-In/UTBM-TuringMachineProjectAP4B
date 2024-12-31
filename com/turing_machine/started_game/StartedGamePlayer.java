@@ -1,14 +1,12 @@
 package com.turing_machine.started_game;
 
-import java.util.ArrayList;
-import com.turing_machine.listeners.StartedGamePlayerEventsListener;
 import com.turing_machine.base_objects.Code;
+import com.turing_machine.listeners.StartedGamePlayerEventsListener;
+import java.util.ArrayList;
 
 public class StartedGamePlayer {
 
 	private String name;
-
-	private boolean /disabled;
 
 	private boolean eliminated;
 

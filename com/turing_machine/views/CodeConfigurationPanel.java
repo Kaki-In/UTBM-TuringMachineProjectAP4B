@@ -1,8 +1,9 @@
 package com.turing_machine.views;
 
-import java.util.ArrayList;
-import com.turing_machine.listeners.CodeConfigurationChangeListener;
 import com.turing_machine.configuration.MachineConfiguration;
+import com.turing_machine.listeners.CodeConfigurationChangeListener;
+import java.awt.Component;
+import java.util.ArrayList;
 
 public class CodeConfigurationPanel implements Displayable {
 
@@ -16,6 +17,17 @@ public class CodeConfigurationPanel implements Displayable {
 
 	public CodeConfigurationPanel(MachineConfiguration configuration) {
 
+	}
+
+	@Override
+	public Component getWidget()
+	{
+		return null;
+	}
+
+	@Override
+	public void refresh()
+	{
 	}
 
 	public void whenCodeConfigurationChanged(CodeConfigurationChangeListener listener) {

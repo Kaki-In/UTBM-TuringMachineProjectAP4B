@@ -1,7 +1,7 @@
 package com.turing_machine.started_game;
 
+import com.turing_machine.listeners.ObjectsListChangeListener;
 import java.util.ArrayList;
-import com.turing_machine.listeners.ObjectsListChangeListener_StartedGamePlayerTestedCodesLine_;
 
 public class StartedGamePlayerTestedCodesGrid {
 
@@ -25,7 +25,7 @@ public class StartedGamePlayerTestedCodesGrid {
 
 	}
 
-	public void whenCodeLinesChanged(ObjectsListChangeListener_StartedGamePlayerTestedCodesLine_ listener) {
+	public void whenCodeLinesChanged(StartedGamePlayerTestedCodesLine listener) {
 
 	}
 

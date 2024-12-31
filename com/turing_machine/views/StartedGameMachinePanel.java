@@ -1,6 +1,7 @@
 package com.turing_machine.views;
 
 import com.turing_machine.started_game.StartedGameMachine;
+import java.awt.Component;
 import java.util.ArrayList;
 
 public class StartedGameMachinePanel implements Displayable {
@@ -11,6 +12,17 @@ public class StartedGameMachinePanel implements Displayable {
 
 	public StartedGameMachinePanel(StartedGameMachine machine) {
 
+	}
+
+	@Override
+	public Component getWidget()
+	{
+		return null;
+	}
+
+	@Override
+	public void refresh()
+	{
 	}
 
 }

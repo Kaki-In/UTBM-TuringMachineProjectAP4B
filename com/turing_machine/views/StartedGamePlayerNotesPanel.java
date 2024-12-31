@@ -1,7 +1,8 @@
 package com.turing_machine.views;
 
-import java.util.ArrayList;
 import com.turing_machine.started_game.StartedGamePlayer;
+import java.awt.Component;
+import java.util.ArrayList;
 
 public class StartedGamePlayerNotesPanel implements Displayable {
 
@@ -19,7 +20,18 @@ public class StartedGamePlayerNotesPanel implements Displayable {
 
 	}
 
-	public onCloseAction(Runnable listener) {
+	@Override
+	public Component getWidget()
+	{
+		return null;
+	}
+
+	@Override
+	public void refresh()
+	{
+	}
+
+	public void whenCloseAction(Runnable listener) {
 
 	}
 

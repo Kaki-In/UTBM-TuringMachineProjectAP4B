@@ -1,6 +1,6 @@
 package com.turing_machine.database;
 
-import com.turing_machine.database.com.turing_machine.images.Image;
+import com.turing_machine.images.Image;
 
 public class CriterionCaseThumbnail {
 

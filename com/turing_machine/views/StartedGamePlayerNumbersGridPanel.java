@@ -1,8 +1,9 @@
 package com.turing_machine.views;
 
-import java.util.ArrayList;
 import com.turing_machine.listeners.PlayerNumbersGridActionListener;
 import com.turing_machine.started_game.StartedGamePlayerNumbersGrid;
+import java.awt.Component;
+import java.util.ArrayList;
 
 public class StartedGamePlayerNumbersGridPanel implements Displayable {
 
@@ -14,6 +15,17 @@ public class StartedGamePlayerNumbersGridPanel implements Displayable {
 
 	public StartedGamePlayerNumbersGridPanel(StartedGamePlayerNumbersGrid grid) {
 
+	}
+
+	@Override
+	public Component getWidget()
+	{
+		return null;
+	}
+
+	@Override
+	public void refresh()
+	{
 	}
 
 	public void whenActionLaunched(PlayerNumbersGridActionListener listener) {

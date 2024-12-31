@@ -1,8 +1,9 @@
 package com.turing_machine.views;
 
-import java.util.ArrayList;
 import com.turing_machine.listeners.ObjectSelectionListener;
 import com.turing_machine.started_game.StartedGamePlayersList;
+import java.awt.Component;
+import java.util.ArrayList;
 
 public class StartedGamePlayersListPanel implements Displayable {
 
@@ -16,7 +17,18 @@ public class StartedGamePlayersListPanel implements Displayable {
 
 	}
 
-	public whenPlayerAskedToEnter(ObjectSelectionListener<String> listener) {
+	@Override
+	public Component getWidget()
+	{
+		return null;
+	}
+
+	@Override
+	public void refresh()
+	{
+	}
+
+	public void whenPlayerAskedToEnter(ObjectSelectionListener<String> listener) {
 
 	}
 

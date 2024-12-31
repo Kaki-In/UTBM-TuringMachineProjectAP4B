@@ -1,9 +1,10 @@
 package com.turing_machine.views;
 
 import com.turing_machine.started_game.StartedGamePlayerCriteria;
+import java.awt.Component;
 import java.util.ArrayList;
 
-public class StartedGamePlayerCriteriaPanel {
+public class StartedGamePlayerCriteriaPanel implements Displayable {
 
 	private StartedGamePlayerCriteria criteria;
 
@@ -11,6 +12,17 @@ public class StartedGamePlayerCriteriaPanel {
 
 	public StartedGamePlayerCriteriaPanel(StartedGamePlayerCriteria criteria) {
 
+	}
+
+	@Override
+	public Component getWidget()
+	{
+		return null;
+	}
+
+	@Override
+	public void refresh()
+	{
 	}
 
 }

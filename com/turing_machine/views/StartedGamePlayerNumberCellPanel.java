@@ -1,9 +1,10 @@
 package com.turing_machine.views;
 
-import java.util.ArrayList;
-import com.turing_machine.listeners.PlayerNumberCellActionListener;
 import com.turing_machine.base_objects.CodeComponent;
+import com.turing_machine.listeners.PlayerNumberCellActionListener;
 import com.turing_machine.started_game.StartedGamePlayerNumbersGrid;
+import java.awt.Component;
+import java.util.ArrayList;
 
 public class StartedGamePlayerNumberCellPanel implements Displayable {
 
@@ -15,6 +16,17 @@ public class StartedGamePlayerNumberCellPanel implements Displayable {
 
 	public StartedGamePlayerNumberCellPanel(CodeComponent position, StartedGamePlayerNumbersGrid grid) {
 
+	}
+
+	@Override
+	public Component getWidget()
+	{
+		return null;
+	}
+
+	@Override
+	public void refresh()
+	{
 	}
 
 	public void whenActionLaunched(PlayerNumberCellActionListener listener) {

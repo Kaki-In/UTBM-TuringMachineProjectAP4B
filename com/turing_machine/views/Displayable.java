@@ -1,6 +1,6 @@
 package com.turing_machine.views;
 
-import javax.swing.Component;
+import java.awt.Component;
 
 public interface Displayable {
 

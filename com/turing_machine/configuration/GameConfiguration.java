@@ -10,6 +10,12 @@ public class GameConfiguration implements Configurable {
 
 	}
 
+	@Override
+	public boolean isReady()
+	{
+		return false;
+	}
+
 	public PlayersConfiguration getPlayersConfiguration() {
 		return null;
 	}

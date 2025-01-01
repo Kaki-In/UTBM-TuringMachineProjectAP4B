@@ -8,7 +8,7 @@ public enum GameCriteriaCount {
 	FIVE_CRITERIA,
 	SIX_CRITERIA;
 	
-	public int getValue()
+	public int toInteger()
 	{
 		switch (this) {
 			case GameCriteriaCount.FOUR_CRITERIA: return 4;
@@ -19,7 +19,7 @@ public enum GameCriteriaCount {
 		return -1; // this line can't be attained
 	}
 
-	public static GameCriteriaCount fromValue(int value) throws InputMismatchException
+	public static GameCriteriaCount fromInteger(int value) throws InputMismatchException
 	{
 		switch (value) {
 			case 4:

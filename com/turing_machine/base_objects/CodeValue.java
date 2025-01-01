@@ -23,7 +23,7 @@ public enum CodeValue {
 		return -1; // this line can't be attained
 	}
 
-	public static CodeValue fromValue(int value) throws InputMismatchException
+	public static CodeValue fromInteger(int value) throws InputMismatchException
 	{
 		switch (value) {
 			case 1:

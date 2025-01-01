@@ -10,20 +10,22 @@ public class TuringMachineGeneratedCriterion {
 
 	private int good_case;
 
-	public TuringMachineGeneratedCriterion(int id, CriterionLetter letter) {
-
+	public TuringMachineGeneratedCriterion(int id, CriterionLetter letter, int good_case) {
+		this.id = id;
+		this.letter = letter;
+		this.good_case = good_case;
 	}
 
 	public int getId() {
-		return 0;
+		return this.id;
 	}
 
 	public CriterionLetter getLetter() {
-		return null;
+		return this.letter;
 	}
 
 	public int getGoodCase() {
-		return 0;
+		return this.good_case;
 	}
 
 }

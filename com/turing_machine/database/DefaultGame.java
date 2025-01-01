@@ -29,7 +29,7 @@ public class DefaultGame {
 	}
 
 	public GameCriteriaCount getCriteriaCount() {
-		return GameCriteriaCount.fromValue(this.criteria.size());
+		return GameCriteriaCount.fromInteger(this.criteria.size());
 	}
 
 	public DefaultGameCriterion getCriterion(CriterionLetter letter) {

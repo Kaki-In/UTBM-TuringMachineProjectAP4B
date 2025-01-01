@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class CriteriaThumbnailsDatabase {
 
-	private ArrayList<CriterionThumbnail> criteria;
+	private final ArrayList<CriterionThumbnail> criteria;
 
 	protected CriteriaThumbnailsDatabase() {
 		this.criteria = new ArrayList<>();
@@ -124,14 +124,14 @@ public class CriteriaThumbnailsDatabase {
 		);
 
 		this.criteria.add(
-			new CriterionThumbnail(17, "le nombre de nombre pairs dans le code", 
+			new CriterionThumbnail(17, "le nombre de nombres pairs dans le code", 
 				(Graphics2D g2D) -> {
 				}
 			)
 		);
 
 		this.criteria.add(
-			new CriterionThumbnail(18, "si la somme des 3 nombres est paire ou impaire", 
+			new CriterionThumbnail(18, "si la somme des nombres est paire ou impaire", 
 				(Graphics2D g2D) -> {
 				}
 			)
@@ -236,7 +236,7 @@ public class CriteriaThumbnailsDatabase {
 		);
 
 		this.criteria.add(
-			new CriterionThumbnail(33, "qu'une couleur spécifique est paire ou impaire", 
+			new CriterionThumbnail(33, "si une couleur spécifique est paire ou impaire", 
 				(Graphics2D g2D) -> {
 				}
 			)

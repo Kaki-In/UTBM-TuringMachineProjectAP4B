@@ -1,28 +1,24 @@
 package com.turing_machine.database;
 
 import java.util.ArrayList;
-import com.turing_machine.base_objects.Code;
 
 public class Criterion {
 
-	private int id;
+	private final int id;
 
-	private ArrayList<CriterionCase> cases;
+	private final ArrayList<CriterionCase> cases;
 
 	protected Criterion(int id, ArrayList<CriterionCase> cases) {
-
+		this.id = id;
+		this.cases = cases;
 	}
 
 	public int getId() {
-		return 0;
+		return this.id;
 	}
 
 	public ArrayList<CriterionCase> getDistinctCases() {
-		return null;
-	}
-
-	public void getMatchingCase(Code code) {
-
+		return this.cases;
 	}
 
 }

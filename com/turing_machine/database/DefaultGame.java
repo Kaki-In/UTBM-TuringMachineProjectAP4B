@@ -1,41 +1,43 @@
 package com.turing_machine.database;
 
 import com.turing_machine.base_objects.Code;
-import java.util.ArrayList;
-import com.turing_machine.base_objects.GameDifficulty;
-import com.turing_machine.base_objects.GameCriteriaCount;
 import com.turing_machine.base_objects.CriterionLetter;
+import com.turing_machine.base_objects.GameCriteriaCount;
+import com.turing_machine.base_objects.GameDifficulty;
+import java.util.ArrayList;
 
 public class DefaultGame {
 
-	private Code code;
+	private final Code code;
 
-	private ArrayList<DefaultGameCriterion> criteria;
+	private final ArrayList<DefaultGameCriterion> criteria;
 
-	private GameDifficulty difficulty;
+	private final GameDifficulty difficulty;
 
-	protected DefaultGame(Code code, ArrayList<DefaultGameCriterion> criteria) {
-
+	protected DefaultGame(Code code, ArrayList<DefaultGameCriterion> criteria, GameDifficulty difficulty) {
+		this.code = code;
+		this.criteria = criteria;
+		this.difficulty = difficulty;
 	}
 
 	public Code getCode() {
-		return null;
+		return this.code;
 	}
 
 	public ArrayList<DefaultGameCriterion> getCriteria() {
-		return null;
+		return this.criteria;
 	}
 
 	public GameCriteriaCount getCriteriaCount() {
-		return null;
+		return GameCriteriaCount.fromValue(this.criteria.size());
 	}
 
 	public DefaultGameCriterion getCriterion(CriterionLetter letter) {
-		return null;
+		return this.criteria.get(letter.toInteger() - 1);
 	}
 
 	public GameDifficulty getDifficulty() {
-		return null;
+		return this.difficulty;
 	}
 
 }

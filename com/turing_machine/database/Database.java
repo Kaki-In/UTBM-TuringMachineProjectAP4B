@@ -1,23 +1,22 @@
 package com.turing_machine.database;
 
-public class Database {
+public final class Database {
+	private final static ThumbnailsDatabase thumbnails = new ThumbnailsDatabase();
+	private final static CriteriaDatabase criteria = new CriteriaDatabase();
+	private final static DefaultGamesDatabase games = new DefaultGamesDatabase();
 
-	private static ThumbnailsDatabase thumbnails;
+	private Database() {} // force la classe à rester statique
 
-	private static CriteriaDatabase criteria;
-
-	private static DefaultGamesDatabase games;
-
-	public static ThumbnailsDatabase getThumbnails() {
-		return null;
+	public final static ThumbnailsDatabase getThumbnails() {
+		return thumbnails;
 	}
 
 	public static CriteriaDatabase getCriteria() {
-		return null;
+		return criteria;
 	}
 
 	public static DefaultGamesDatabase getDefaultGames() {
-		return null;
+		return games;
 	}
 
 }

@@ -3,9 +3,10 @@ package com.turing_machine.database;
 import com.turing_machine.base_objects.Code;
 import com.turing_machine.base_objects.CodeIndex;
 import com.turing_machine.base_objects.CodeValue;
+import com.turing_machine.exceptions.NoSuchCaseException;
 import java.util.ArrayList;
 
-class CriteriaCasesDatabase {
+public class CriteriaCasesDatabase {
 
 	private ArrayList<CriterionCase> cases;
 
@@ -626,10 +627,16 @@ class CriteriaCasesDatabase {
 
 		this.cases.add(
 			new CriterionCase(135, (Code code) -> {
-				CriterionCase case133 = this.getCriterionCase(133);
-				CriterionCase case134 = this.getCriterionCase(134);
+				try {
+					CriterionCase case133 = this.getCriterionCase(133);
+					CriterionCase case134 = this.getCriterionCase(134);
 
-				return !(case133.doesMatch(code) || case134.doesMatch(code));
+					return !(case133.doesMatch(code) || case134.doesMatch(code));
+				} catch (NoSuchCaseException e)
+				{
+					System.err.println("Warning: criterion cases 133 and/or 134 not recognized");
+					return false;
+				}
 			})
 		);
 
@@ -719,8 +726,15 @@ class CriteriaCasesDatabase {
 		);
 	}
 
-	public CriterionCase getCriterionCase(int id) {
-		return null;
+	public CriterionCase getCriterionCase(int id) throws NoSuchCaseException
+	{
+
+		for (CriterionCase criterion_case: this.cases)
+		{
+			if (criterion_case.getId() == id) return criterion_case;
+		}
+
+		throw new NoSuchCaseException(id);
 	}
 
 }

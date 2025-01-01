@@ -11,7 +11,7 @@ public enum CriterionLetter {
 	E,
 	F;
 
-	public int getValue()
+	public int toInteger()
 	{
 		switch (this) {
 			case CriterionLetter.A : return 1;
@@ -25,7 +25,7 @@ public enum CriterionLetter {
 		return -1; // this line can't be attained
 	}
 
-	public static CriterionLetter fromValue(int value) throws InputMismatchException
+	public static CriterionLetter fromInteger(int value) throws InputMismatchException
 	{
 		switch (value) {
 			case 1:

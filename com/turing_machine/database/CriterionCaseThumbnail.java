@@ -12,13 +12,11 @@ public class CriterionCaseThumbnail {
 	private final String description;
 
 	protected CriterionCaseThumbnail(int id, String description, ImageDescriptable imageDescriptor) {
-		BufferedImage image = new BufferedImage(300, 125, BufferedImage.TYPE_INT_RGB);
-		imageDescriptor.createImage(image.createGraphics());
-
-		this.image = image;
+		this.image = new BufferedImage(300, 125, BufferedImage.TYPE_INT_RGB);
 		this.case_id = id;
 		this.description = description;
 
+		imageDescriptor.createImage(this.image.createGraphics());
 	}
 
 	public BufferedImage getImage() {

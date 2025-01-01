@@ -2,20 +2,21 @@ package com.turing_machine.database;
 
 public class DefaultGameCriterion {
 
-	private int id;
+	private final int id;
 
-	private int good_case;
+	private final int good_case;
 
 	protected DefaultGameCriterion(int id, int good_case) {
-
+		this.id = id;
+		this.good_case = good_case;
 	}
 
 	public int getId() {
-		return 0;
+		return this.id;
 	}
 
 	public int getGoodCase() {
-		return 0;
+		return this.good_case;
 	}
 
 }

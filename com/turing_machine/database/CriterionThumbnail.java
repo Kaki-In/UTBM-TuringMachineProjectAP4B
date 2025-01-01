@@ -12,12 +12,11 @@ public class CriterionThumbnail {
 	private final String description;
 
 	protected CriterionThumbnail(int id, String description, ImageDescriptable imageDescriptor) {
-		BufferedImage image = new BufferedImage(300, 250, BufferedImage.TYPE_INT_RGB);
-		imageDescriptor.createImage(image.createGraphics());
-
-		this.image = image;
+		this.image = new BufferedImage(300, 250, BufferedImage.TYPE_INT_RGB);
 		this.criterion_id = id;
 		this.description = description;
+
+		imageDescriptor.createImage(image.createGraphics());
 	}
 
 	public int getId() {

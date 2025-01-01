@@ -11,11 +11,11 @@ public class ThumbnailsDatabase {
 	}
 
 	public CriteriaThumbnailsDatabase getCriteriaThumbnails() {
-		return null;
+		return this.criteria;
 	}
 
 	public CasesThumbnailsDatabase getCasesThumbnails() {
-		return null;
+		return this.cases;
 	}
 
 }

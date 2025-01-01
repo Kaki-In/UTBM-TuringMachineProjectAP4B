@@ -1,17 +1,41 @@
 package com.turing_machine.database;
 
+import com.turing_machine.exceptions.NoSuchCaseException;
 import com.turing_machine.exceptions.NoSuchCriterionException;
 import java.util.ArrayList;
 
-class CriteriaDatabase {
+public class CriteriaDatabase {
 
-	private ArrayList<Criterion> criteria;
+	private final ArrayList<Criterion> criteria;
 
-	private CriteriaCasesDatabase cases;
+	private final CriteriaCasesDatabase cases;
 
 	protected CriteriaDatabase() {
 		this.cases = new CriteriaCasesDatabase();
 		this.criteria = new ArrayList<>();
+
+		for (int i=1; i <= 48; ++i)
+		{
+			int[] cases_ids;
+			try {
+				cases_ids = getCasesIds(i);
+			} catch (NoSuchCriterionException e) {
+				System.err.println("Warning : CriteriaDatabase::getCasesIds(" + i + ") throwed a NoSuchCriterionException\n");
+				continue;
+			}
+
+			ArrayList<CriterionCase> critera_cases = new ArrayList<>();
+			for (int index = 0; index < cases_ids.length; ++index)
+			{
+				try {
+					critera_cases.add(this.cases.getCriterionCase(cases_ids[index]));
+				} catch (NoSuchCaseException a) {
+					System.err.println("Warning : case " + cases_ids[index] + " has not been recognized");
+				}
+			}
+
+			this.criteria.add(new Criterion(i, critera_cases));
+		}
 	}
 
 	private static int[] getCasesIds(int criterion_id) throws NoSuchCriterionException
@@ -263,11 +287,11 @@ class CriteriaDatabase {
 	}
 
 	public Criterion getCriterion(int id) {
-		return null;
+		return this.criteria.get(id);
 	}
 
 	public CriteriaCasesDatabase getCriteriaCases() {
-		return null;
+		return this.cases;
 	}
 
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class CasesThumbnailsDatabase {
 
-	private ArrayList<CriterionCaseThumbnail> cases;
+	private final ArrayList<CriterionCaseThumbnail> cases;
 
 	protected CasesThumbnailsDatabase() {
 		this.cases = new ArrayList<>();

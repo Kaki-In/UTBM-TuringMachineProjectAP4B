@@ -10,7 +10,7 @@ public enum CodeValue {
 	FOUR,
 	FIVE;
 
-	public int getValue()
+	public int toInteger()
 	{
 		switch (this) {
 			case CodeValue.ONE   : return 1;

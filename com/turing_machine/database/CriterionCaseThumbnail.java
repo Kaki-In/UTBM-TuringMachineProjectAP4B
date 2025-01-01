@@ -1,29 +1,36 @@
 package com.turing_machine.database;
 
-import com.turing_machine.images.Image;
+import com.turing_machine.images.ImageDescriptable;
+import java.awt.image.BufferedImage;
 
 public class CriterionCaseThumbnail {
 
-	private int case_id;
+	private final int case_id;
 
-	private Image image;
+	private final BufferedImage image;
 
-	private String description;
+	private final String description;
 
-	protected CriterionCaseThumbnail(int id, String description, Image image) {
+	protected CriterionCaseThumbnail(int id, String description, ImageDescriptable imageDescriptor) {
+		BufferedImage image = new BufferedImage(300, 125, BufferedImage.TYPE_INT_RGB);
+		imageDescriptor.createImage(image.createGraphics());
+
+		this.image = image;
+		this.case_id = id;
+		this.description = description;
 
 	}
 
-	public Image getImage() {
-		return null;
+	public BufferedImage getImage() {
+		return this.image;
 	}
 
 	public int getId() {
-		return 0;
+		return this.case_id;
 	}
 
 	public String getDescription() {
-		return null;
+		return this.description;
 	}
 
 }

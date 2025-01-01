@@ -11,7 +11,7 @@ public class CriteriaDatabase {
 	private CriteriaDatabase only_instance;
 
 	protected CriteriaDatabase() {
-
+		criteria = new ArrayList<>();
 	}
 
 	public Criterion getCriterion(int id) {

@@ -2,29 +2,27 @@ package com.turing_machine.database;
 
 import com.turing_machine.base_objects.Code;
 
-public class CriterionCase implements MatchCheckable {
+public class CriterionCase {
 
-	private int case_id;
+	private final int case_id;
+	private final MatchCheckable checker;
 
-	protected CriterionCase(int id) {
-
+	protected CriterionCase(int id, MatchCheckable checker) {
+		this.case_id = id;
+		this.checker = checker;
 	}
 
 	public int getId() {
-		return 0;
+		return this.case_id;
 	}
 
 	public boolean equals(CriterionCase case2) {
-		return false;
+		return this.case_id == case2.case_id;
 	}
 
 
-	/**
-	 * @see com.turing_machine.database.MatchCheckable#doesMatch(com.turing_machine.base_objects.Code)
-	 */
-	@Override
 	public boolean doesMatch(Code code) {
-		return false;
+		return this.checker.doesMatch(code);
 	}
 
 }

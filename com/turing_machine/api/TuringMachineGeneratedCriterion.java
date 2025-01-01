@@ -4,11 +4,11 @@ import com.turing_machine.base_objects.CriterionLetter;
 
 public class TuringMachineGeneratedCriterion {
 
-	private int id;
+	private final int id;
 
-	private CriterionLetter letter;
+	private final CriterionLetter letter;
 
-	private int good_case;
+	private final int good_case;
 
 	public TuringMachineGeneratedCriterion(int id, CriterionLetter letter, int good_case) {
 		this.id = id;

@@ -5,8 +5,7 @@ import com.turing_machine.base_objects.CodeValue;
 import com.turing_machine.base_objects.CriterionLetter;
 import com.turing_machine.base_objects.GameCriteriaCount;
 import com.turing_machine.base_objects.GameDifficulty;
-import com.turing_machine.base_objects.TuringMachineAPIException;	
-
+import com.turing_machine.exceptions.TuringMachineAPIException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,7 +19,7 @@ import org.json.JSONObject;
 
 public class TuringMachineAPI {
 
-	private String endpoint_url;
+	private final String endpoint_url;
 
 	public TuringMachineAPI(String endpoint_url) {
 		this.endpoint_url = endpoint_url;
@@ -76,7 +75,7 @@ public class TuringMachineAPI {
 		URL url;
 
 		try {
-			url = new URL("https://turing_machine.info/api.php?uuid=&m=0&d"+difficultyToInteger(difficulty)+"&n="+criteria_count.toInteger());
+			url = new URL("https://" + endpoint_url + "/api.php?uuid=&m=0&d"+difficultyToInteger(difficulty)+"&n="+criteria_count.toInteger());
 		} catch (MalformedURLException e) {
 			System.err.println("Warning : URL not recognized");
 			throw new TuringMachineAPIException("bad URL");
@@ -86,8 +85,8 @@ public class TuringMachineAPI {
 		try {
 			con = (HttpURLConnection) url.openConnection();
 			con.setRequestMethod("GET");
-			con.setRequestProperty("Referer", "https://turing_machine.info/");
-			con.setRequestProperty("Host", "turing_machine.info");
+			con.setRequestProperty("Referer", "https://" + endpoint_url + "/");
+			con.setRequestProperty("Host", endpoint_url);
 
 			int status = con.getResponseCode();
 			if (status != 200)

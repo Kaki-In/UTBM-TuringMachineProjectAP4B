@@ -152,7 +152,7 @@ public class CriteriaThumbnailsDatabase {
 		);
 
 		this.criteria.add(
-			new CriterionThumbnail(21, "s'il y a un nombre présent 2 seules fois", 
+			new CriterionThumbnail(21, "s'il y a des jumeaux (non triplés)", 
 				(Graphics2D g2D) -> {
 				}
 			)
@@ -187,56 +187,56 @@ public class CriteriaThumbnailsDatabase {
 		);
 
 		this.criteria.add(
-			new CriterionThumbnail(26, "si une couleur spécifique est plus petite que 3", 
+			new CriterionThumbnail(26, "qu'une couleur spécifique est plus petite que 3", 
 				(Graphics2D g2D) -> {
 				}
 			)
 		);
 
 		this.criteria.add(
-			new CriterionThumbnail(27, "si une couleur spécifique est plus petite que 4", 
+			new CriterionThumbnail(27, "qu'une couleur spécifique est plus petite que 4", 
 				(Graphics2D g2D) -> {
 				}
 			)
 		);
 
 		this.criteria.add(
-			new CriterionThumbnail(28, "si une couleur spécifique est égale à 1", 
+			new CriterionThumbnail(28, "qu'une couleur spécifique est égale à 1", 
 				(Graphics2D g2D) -> {
 				}
 			)
 		);
 
 		this.criteria.add(
-			new CriterionThumbnail(29, "si une couleur spécifique est égale à 3", 
+			new CriterionThumbnail(29, "qu'une couleur spécifique est égale à 3", 
 				(Graphics2D g2D) -> {
 				}
 			)
 		);
 
 		this.criteria.add(
-			new CriterionThumbnail(30, "si une couleur spécifique est égale à 4", 
+			new CriterionThumbnail(30, "qu'une couleur spécifique est égale à 4", 
 				(Graphics2D g2D) -> {
 				}
 			)
 		);
 
 		this.criteria.add(
-			new CriterionThumbnail(31, "si une couleur spécifique est supérieure à 1", 
+			new CriterionThumbnail(31, "qu'une couleur spécifique est supérieure à 1", 
 				(Graphics2D g2D) -> {
 				}
 			)
 		);
 
 		this.criteria.add(
-			new CriterionThumbnail(32, "si une couleur spécifique est supérieure à 3", 
+			new CriterionThumbnail(32, "qu'une couleur spécifique est supérieure à 3", 
 				(Graphics2D g2D) -> {
 				}
 			)
 		);
 
 		this.criteria.add(
-			new CriterionThumbnail(33, "si une couleur spécifique est paire ou impaire", 
+			new CriterionThumbnail(33, "qu'une couleur spécifique est paire ou impaire", 
 				(Graphics2D g2D) -> {
 				}
 			)
@@ -257,21 +257,21 @@ public class CriteriaThumbnailsDatabase {
 		);
 
 		this.criteria.add(
-			new CriterionThumbnail(36, "si la somme des nombres est un multiple de 3, 4 ou 5", 
+			new CriterionThumbnail(36, "que la somme des nombres est un multiple de 3, 4 ou 5", 
 				(Graphics2D g2D) -> {
 				}
 			)
 		);
 
 		this.criteria.add(
-			new CriterionThumbnail(37, "si la somme de deux couleurs spécifiques est égale à 4", 
+			new CriterionThumbnail(37, "que la somme de deux couleurs spécifiques est égale à 4", 
 				(Graphics2D g2D) -> {
 				}
 			)
 		);
 
 		this.criteria.add(
-			new CriterionThumbnail(38, "si la somme de deux couleurs spécifiques est égale à 6", 
+			new CriterionThumbnail(38, "que la somme de deux couleurs spécifiques est égale à 6", 
 				(Graphics2D g2D) -> {
 				}
 			)

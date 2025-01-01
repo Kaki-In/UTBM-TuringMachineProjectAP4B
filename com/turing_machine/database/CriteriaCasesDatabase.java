@@ -5,7 +5,7 @@ import com.turing_machine.base_objects.CodeIndex;
 import com.turing_machine.base_objects.CodeValue;
 import java.util.ArrayList;
 
-public class CriteriaCasesDatabase {
+class CriteriaCasesDatabase {
 
 	private ArrayList<CriterionCase> cases;
 

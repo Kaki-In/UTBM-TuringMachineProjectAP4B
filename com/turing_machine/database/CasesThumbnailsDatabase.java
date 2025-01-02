@@ -327,7 +327,7 @@ public class CasesThumbnailsDatabase {
 		);
 
 		this.cases.add(
-			new CriterionCaseThumbnail(67, "la somme des trois chiffres est supérieur à 6",
+			new CriterionCaseThumbnail(67, "la somme des trois chiffres est supérieure à 6",
 				(Graphics2D g2D) -> {
 				}
 			)
@@ -509,7 +509,7 @@ public class CasesThumbnailsDatabase {
 		);
 
 		this.cases.add(
-			new CriterionCaseThumbnail(114, "jaune est plus le grand",
+			new CriterionCaseThumbnail(114, "jaune est le plus grand",
 				(Graphics2D g2D) -> {
 				}
 			)

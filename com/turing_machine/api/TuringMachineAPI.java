@@ -8,9 +8,12 @@ import com.turing_machine.base_objects.GameDifficulty;
 import com.turing_machine.exceptions.TuringMachineAPIException;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
@@ -38,7 +41,7 @@ public class TuringMachineAPI {
 			}
 
 			String given_code = "" + object.getInt("code");
-			GameDifficulty given_difficulty = integerToDifficulty(object.getInt("difficulty"));
+			GameDifficulty given_difficulty = integerToDifficulty(object.getInt("d"));
 			GameCriteriaCount given_criteria_count = GameCriteriaCount.fromInteger(Integer.parseInt(object.getString("n")));
 
 			JSONArray given_criteria = object.getJSONArray("ind");
@@ -48,7 +51,7 @@ public class TuringMachineAPI {
 			for (int i=0; i < given_criteria_count.toInteger(); ++i)
 			{
 				criteria.add(
-					new TuringMachineGeneratedCriterion(given_criteria.getInt(i), CriterionLetter.fromInteger(i), given_cases.getInt(i))
+					new TuringMachineGeneratedCriterion(given_criteria.getInt(i), CriterionLetter.fromInteger(i+1), given_cases.getInt(i))
 				);
 			}
 			
@@ -75,8 +78,10 @@ public class TuringMachineAPI {
 		URL url;
 
 		try {
-			url = new URL("https://" + endpoint_url + "/api.php?uuid=&m=0&d"+difficultyToInteger(difficulty)+"&n="+criteria_count.toInteger());
-		} catch (MalformedURLException e) {
+			String name = "https://" + endpoint_url + "/api/api.php?uuid=a7576650-cf20-478f-9375-f87dc8c9aeed&m=0&d="+difficultyToInteger(difficulty)+"&n="+criteria_count.toInteger();
+			System.out.println(name);
+			url = new URI(name).toURL();
+		} catch (MalformedURLException | URISyntaxException e) {
 			System.err.println("Warning : URL not recognized");
 			throw new TuringMachineAPIException("bad URL");
 		}
@@ -85,13 +90,31 @@ public class TuringMachineAPI {
 		try {
 			con = (HttpURLConnection) url.openConnection();
 			con.setRequestMethod("GET");
-			con.setRequestProperty("Referer", "https://" + endpoint_url + "/");
-			con.setRequestProperty("Host", endpoint_url);
+			con.setRequestProperty("Host", this.endpoint_url);
+			con.setRequestProperty("Referer", "https://" + this.endpoint_url + "/");
 
 			int status = con.getResponseCode();
 			if (status != 200)
 			{
-				throw new TuringMachineAPIException("generation refused with code " + status);
+				InputStream s = con.getErrorStream();
+
+				if (s != null)
+				{
+					BufferedReader err;
+					err = new BufferedReader(new InputStreamReader(s));
+
+					String inputLine;
+					StringBuffer content = new StringBuffer();
+
+					while ((inputLine = err.readLine()) != null) {
+						content.append(inputLine);
+					}
+					err.close();
+
+					System.out.println(content);
+				}
+
+				throw new TuringMachineAPIException("generation refused with code " + status + " and message " + con.getResponseMessage());
 			}
 
 			BufferedReader in;
@@ -108,7 +131,7 @@ public class TuringMachineAPI {
 			return content.toString();
 		} catch (IOException ex) {
 			if (con != null) con.disconnect();
-			throw new TuringMachineAPIException("an error occured while reading the answer");
+			throw new TuringMachineAPIException("an error occured while reading the answer : " + ex.getMessage());
 		}
 	}
 

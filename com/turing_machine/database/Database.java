@@ -5,6 +5,8 @@ public final class Database {
 	private final static CriteriaDatabase criteria = new CriteriaDatabase();
 	private final static DefaultGamesDatabase games = new DefaultGamesDatabase();
 
+	private final static Database uniqueDatabaseInstance = new Database();
+
 	private Database() {} // force la classe à rester statique
 
 	public final static ThumbnailsDatabase getThumbnails() {

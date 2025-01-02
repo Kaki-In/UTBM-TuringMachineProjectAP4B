@@ -2,6 +2,8 @@ package com.turing_machine.database;
 
 import com.turing_machine.base_objects.Code;
 import com.turing_machine.base_objects.CodeValue;
+import com.turing_machine.base_objects.CriterionLetter;
+import com.turing_machine.base_objects.GameCriteriaCount;
 import com.turing_machine.base_objects.GameDifficulty;
 import com.turing_machine.exceptions.NoSuchGameException;
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public class DefaultGamesDatabase {
 
 			} catch (NoSuchGameException e)
 			{
-				System.err.println("Warning: DefaultGamesDatabase couldn't create the game numbered" + game_id);
+				System.err.println("Warning: DefaultGamesDatabase couldn't create the game numbered " + game_id + " (" + e.getMessage() + ")");
 			}
 		}
 	}
@@ -40,7 +42,7 @@ public class DefaultGamesDatabase {
 		
 		switch (game_id) {
 			case 12, 13, 17 -> first_component = CodeValue.ONE;
-			case 1, 7, 10, 15, 16, 19 -> first_component = CodeValue.TWO;
+			case 1, 7, 10, 14, 15, 16, 19 -> first_component = CodeValue.TWO;
 			case 3, 4, 5, 9, 11, 18 -> first_component = CodeValue.THREE;
 			case 2, 8, 20 -> first_component = CodeValue.FOUR;
 			case 6 -> first_component = CodeValue.FIVE;
@@ -77,153 +79,153 @@ public class DefaultGamesDatabase {
 
 		switch (game_id) {
 			case 1:
-				criteria.add(new DefaultGameCriterion(4, 9));
-				criteria.add(new DefaultGameCriterion(9, 46));
-				criteria.add(new DefaultGameCriterion(11, 139));
-				criteria.add(new DefaultGameCriterion(14, 118));
+				criteria.add(new DefaultGameCriterion(4, CriterionLetter.A, 9));
+				criteria.add(new DefaultGameCriterion(9, CriterionLetter.B, 46));
+				criteria.add(new DefaultGameCriterion(11, CriterionLetter.C, 139));
+				criteria.add(new DefaultGameCriterion(14, CriterionLetter.D, 118));
 				break;
 
 			case 2:
-				criteria.add(new DefaultGameCriterion(3, 8));
-				criteria.add(new DefaultGameCriterion(7, 39));
-				criteria.add(new DefaultGameCriterion(10, 50));
-				criteria.add(new DefaultGameCriterion(14, 117));
+				criteria.add(new DefaultGameCriterion(3, CriterionLetter.A, 8));
+				criteria.add(new DefaultGameCriterion(7, CriterionLetter.B, 39));
+				criteria.add(new DefaultGameCriterion(10, CriterionLetter.C, 50));
+				criteria.add(new DefaultGameCriterion(14, CriterionLetter.D, 117));
 				break;
 				
 			case 3:
-				criteria.add(new DefaultGameCriterion(4, 29));
-				criteria.add(new DefaultGameCriterion(9, 48));
-				criteria.add(new DefaultGameCriterion(13, 95));
-				criteria.add(new DefaultGameCriterion(17, 85));
+				criteria.add(new DefaultGameCriterion(4, CriterionLetter.A, 29));
+				criteria.add(new DefaultGameCriterion(9, CriterionLetter.B, 48));
+				criteria.add(new DefaultGameCriterion(13, CriterionLetter.C, 95));
+				criteria.add(new DefaultGameCriterion(17, CriterionLetter.D, 85));
 				break;
 			
 			case 4:
-				criteria.add(new DefaultGameCriterion(3, 21));
-				criteria.add(new DefaultGameCriterion(8, 40));
-				criteria.add(new DefaultGameCriterion(15, 115));
-				criteria.add(new DefaultGameCriterion(16, 132));
+				criteria.add(new DefaultGameCriterion(3, CriterionLetter.A, 21));
+				criteria.add(new DefaultGameCriterion(8, CriterionLetter.B, 40));
+				criteria.add(new DefaultGameCriterion(15, CriterionLetter.C, 115));
+				criteria.add(new DefaultGameCriterion(16, CriterionLetter.D, 132));
 				break;
 				
 			case 5:
-				criteria.add(new DefaultGameCriterion(2, 3));
-				criteria.add(new DefaultGameCriterion(6, 35));
-				criteria.add(new DefaultGameCriterion(14, 117));
-				criteria.add(new DefaultGameCriterion(17, 86));
+				criteria.add(new DefaultGameCriterion(2, CriterionLetter.A, 3));
+				criteria.add(new DefaultGameCriterion(6, CriterionLetter.B, 35));
+				criteria.add(new DefaultGameCriterion(14, CriterionLetter.C, 117));
+				criteria.add(new DefaultGameCriterion(17, CriterionLetter.D, 86));
 				break;
 				
 			case 6:
-				criteria.add(new DefaultGameCriterion(2, 18));
-				criteria.add(new DefaultGameCriterion(7, 36));
-				criteria.add(new DefaultGameCriterion(10, 49));
-				criteria.add(new DefaultGameCriterion(13, 141));
+				criteria.add(new DefaultGameCriterion(2, CriterionLetter.A, 18));
+				criteria.add(new DefaultGameCriterion(7, CriterionLetter.B, 36));
+				criteria.add(new DefaultGameCriterion(10, CriterionLetter.C, 49));
+				criteria.add(new DefaultGameCriterion(13, CriterionLetter.D, 141));
 				break;
 				
 			case 7:
-				criteria.add(new DefaultGameCriterion(8, 41));
-				criteria.add(new DefaultGameCriterion(12, 93));
-				criteria.add(new DefaultGameCriterion(15, 114));
-				criteria.add(new DefaultGameCriterion(17, 86));
+				criteria.add(new DefaultGameCriterion(8, CriterionLetter.A, 41));
+				criteria.add(new DefaultGameCriterion(12, CriterionLetter.B, 93));
+				criteria.add(new DefaultGameCriterion(15, CriterionLetter.C, 114));
+				criteria.add(new DefaultGameCriterion(17, CriterionLetter.D, 86));
 				break;
 				
 			case 8:
-				criteria.add(new DefaultGameCriterion(3, 28));
-				criteria.add(new DefaultGameCriterion(5, 34));
-				criteria.add(new DefaultGameCriterion(9, 47));
-				criteria.add(new DefaultGameCriterion(15, 113));
-				criteria.add(new DefaultGameCriterion(16, 131));
+				criteria.add(new DefaultGameCriterion(3, CriterionLetter.A, 28));
+				criteria.add(new DefaultGameCriterion(5, CriterionLetter.B, 34));
+				criteria.add(new DefaultGameCriterion(9, CriterionLetter.C, 47));
+				criteria.add(new DefaultGameCriterion(15, CriterionLetter.D, 113));
+				criteria.add(new DefaultGameCriterion(16, CriterionLetter.E, 131));
 				break;
 				
 			case 9:
-				criteria.add(new DefaultGameCriterion(1, 16));
-				criteria.add(new DefaultGameCriterion(7, 36));
-				criteria.add(new DefaultGameCriterion(10, 51));
-				criteria.add(new DefaultGameCriterion(12, 139));
-				criteria.add(new DefaultGameCriterion(17, 87));
+				criteria.add(new DefaultGameCriterion(1, CriterionLetter.A, 16));
+				criteria.add(new DefaultGameCriterion(7, CriterionLetter.B, 36));
+				criteria.add(new DefaultGameCriterion(10, CriterionLetter.C, 51));
+				criteria.add(new DefaultGameCriterion(12, CriterionLetter.D, 139));
+				criteria.add(new DefaultGameCriterion(17, CriterionLetter.E, 87));
 				break;
 				
 			case 10:
-				criteria.add(new DefaultGameCriterion(2, 25));
-				criteria.add(new DefaultGameCriterion(6, 35));
-				criteria.add(new DefaultGameCriterion(8, 40));
-				criteria.add(new DefaultGameCriterion(12, 90));
-				criteria.add(new DefaultGameCriterion(15, 114));
+				criteria.add(new DefaultGameCriterion(2, CriterionLetter.A, 25));
+				criteria.add(new DefaultGameCriterion(6, CriterionLetter.B, 35));
+				criteria.add(new DefaultGameCriterion(8, CriterionLetter.C, 40));
+				criteria.add(new DefaultGameCriterion(12, CriterionLetter.D, 90));
+				criteria.add(new DefaultGameCriterion(15, CriterionLetter.E, 114));
 				break;
 				
 			case 11:
-				criteria.add(new DefaultGameCriterion(5, 37));
-				criteria.add(new DefaultGameCriterion(10, 49));
-				criteria.add(new DefaultGameCriterion(11, 92));
-				criteria.add(new DefaultGameCriterion(15, 115));
-				criteria.add(new DefaultGameCriterion(17, 86));
+				criteria.add(new DefaultGameCriterion(5, CriterionLetter.A, 37));
+				criteria.add(new DefaultGameCriterion(10, CriterionLetter.B, 49));
+				criteria.add(new DefaultGameCriterion(11, CriterionLetter.C, 92));
+				criteria.add(new DefaultGameCriterion(15, CriterionLetter.D, 115));
+				criteria.add(new DefaultGameCriterion(17, CriterionLetter.E, 86));
 				break;
 				
 			case 12:
-				criteria.add(new DefaultGameCriterion(4, 29));
-				criteria.add(new DefaultGameCriterion(9, 46));
-				criteria.add(new DefaultGameCriterion(18, 56));
-				criteria.add(new DefaultGameCriterion(20, 119));
+				criteria.add(new DefaultGameCriterion(4, CriterionLetter.A, 29));
+				criteria.add(new DefaultGameCriterion(9, CriterionLetter.B, 46));
+				criteria.add(new DefaultGameCriterion(18, CriterionLetter.C, 56));
+				criteria.add(new DefaultGameCriterion(20, CriterionLetter.D, 119));
 				break;
 				
 			case 13:
-				criteria.add(new DefaultGameCriterion(11, 89));
-				criteria.add(new DefaultGameCriterion(16, 132));
-				criteria.add(new DefaultGameCriterion(19, 137));
-				criteria.add(new DefaultGameCriterion(21, 81));
+				criteria.add(new DefaultGameCriterion(11, CriterionLetter.A, 89));
+				criteria.add(new DefaultGameCriterion(16, CriterionLetter.B, 132));
+				criteria.add(new DefaultGameCriterion(19, CriterionLetter.C, 137));
+				criteria.add(new DefaultGameCriterion(21, CriterionLetter.D, 81));
 				break;
 				
 			case 14:
-				criteria.add(new DefaultGameCriterion(2, 18));
-				criteria.add(new DefaultGameCriterion(3, 28));
-				criteria.add(new DefaultGameCriterion(17, 88));
-				criteria.add(new DefaultGameCriterion(20, 120));
+				criteria.add(new DefaultGameCriterion(2, CriterionLetter.A, 18));
+				criteria.add(new DefaultGameCriterion(3, CriterionLetter.B, 28));
+				criteria.add(new DefaultGameCriterion(17, CriterionLetter.C, 88));
+				criteria.add(new DefaultGameCriterion(20, CriterionLetter.D, 120));
 				break;
 				
 			case 15:
-				criteria.add(new DefaultGameCriterion(5, 34));
-				criteria.add(new DefaultGameCriterion(14, 114));
-				criteria.add(new DefaultGameCriterion(18, 555));
-				criteria.add(new DefaultGameCriterion(19, 136));
-				criteria.add(new DefaultGameCriterion(20, 121));
+				criteria.add(new DefaultGameCriterion(5, CriterionLetter.A, 34));
+				criteria.add(new DefaultGameCriterion(14, CriterionLetter.B, 114));
+				criteria.add(new DefaultGameCriterion(18, CriterionLetter.C, 555));
+				criteria.add(new DefaultGameCriterion(19, CriterionLetter.D, 136));
+				criteria.add(new DefaultGameCriterion(20, CriterionLetter.E, 121));
 				break;
 				
 			case 16:
-				criteria.add(new DefaultGameCriterion(2, 25));
-				criteria.add(new DefaultGameCriterion(7, 39));
-				criteria.add(new DefaultGameCriterion(12, 140));
-				criteria.add(new DefaultGameCriterion(16, 131));
-				criteria.add(new DefaultGameCriterion(19, 100));
-				criteria.add(new DefaultGameCriterion(22, 135));
+				criteria.add(new DefaultGameCriterion(2, CriterionLetter.A, 25));
+				criteria.add(new DefaultGameCriterion(7, CriterionLetter.B, 39));
+				criteria.add(new DefaultGameCriterion(12, CriterionLetter.C, 140));
+				criteria.add(new DefaultGameCriterion(16, CriterionLetter.D, 131));
+				criteria.add(new DefaultGameCriterion(19, CriterionLetter.E, 100));
+				criteria.add(new DefaultGameCriterion(22, CriterionLetter.F, 135));
 				break;
 				
 			case 17:
-				criteria.add(new DefaultGameCriterion(21, 82));
-				criteria.add(new DefaultGameCriterion(31, 22));
-				criteria.add(new DefaultGameCriterion(37, 103));
-				criteria.add(new DefaultGameCriterion(39, 1));
+				criteria.add(new DefaultGameCriterion(21, CriterionLetter.A, 82));
+				criteria.add(new DefaultGameCriterion(31, CriterionLetter.B, 22));
+				criteria.add(new DefaultGameCriterion(37, CriterionLetter.C, 103));
+				criteria.add(new DefaultGameCriterion(39, CriterionLetter.D, 1));
 				break;
 				
 			case 18:
-				criteria.add(new DefaultGameCriterion(23, 67));
-				criteria.add(new DefaultGameCriterion(28, 11));
-				criteria.add(new DefaultGameCriterion(41, 29));
-				criteria.add(new DefaultGameCriterion(48, 91));
+				criteria.add(new DefaultGameCriterion(23, CriterionLetter.A, 67));
+				criteria.add(new DefaultGameCriterion(28, CriterionLetter.B, 11));
+				criteria.add(new DefaultGameCriterion(41, CriterionLetter.C, 29));
+				criteria.add(new DefaultGameCriterion(48, CriterionLetter.D, 91));
 				break;
 				
 			case 19:
-				criteria.add(new DefaultGameCriterion(19, 136));
-				criteria.add(new DefaultGameCriterion(24, 84));
-				criteria.add(new DefaultGameCriterion(30, 14));
-				criteria.add(new DefaultGameCriterion(31, 19));
-				criteria.add(new DefaultGameCriterion(38, 105));
+				criteria.add(new DefaultGameCriterion(19, CriterionLetter.A, 136));
+				criteria.add(new DefaultGameCriterion(24, CriterionLetter.B, 84));
+				criteria.add(new DefaultGameCriterion(30, CriterionLetter.C, 14));
+				criteria.add(new DefaultGameCriterion(31, CriterionLetter.D, 19));
+				criteria.add(new DefaultGameCriterion(38, CriterionLetter.E, 105));
 				break;
 				
 			case 20:
-				criteria.add(new DefaultGameCriterion(11, 92));
-				criteria.add(new DefaultGameCriterion(22, 135));
-				criteria.add(new DefaultGameCriterion(30, 4));
-				criteria.add(new DefaultGameCriterion(33, 39));
-				criteria.add(new DefaultGameCriterion(34, 129));
-				criteria.add(new DefaultGameCriterion(40, 31));
+				criteria.add(new DefaultGameCriterion(11, CriterionLetter.A, 92));
+				criteria.add(new DefaultGameCriterion(22, CriterionLetter.B, 135));
+				criteria.add(new DefaultGameCriterion(30, CriterionLetter.C, 4));
+				criteria.add(new DefaultGameCriterion(33, CriterionLetter.D, 39));
+				criteria.add(new DefaultGameCriterion(34, CriterionLetter.E, 129));
+				criteria.add(new DefaultGameCriterion(40, CriterionLetter.F, 31));
 				break;
 				
 			default:
@@ -262,9 +264,9 @@ public class DefaultGamesDatabase {
 		return this.games.get(index);
 	}
 
-	public DefaultGame getRandomGame(GameDifficulty difficulty) {
+	public DefaultGame getRandomGame(GameDifficulty difficulty, GameCriteriaCount criteriaCount) {
 		ArrayList<DefaultGame> corresponds_games = this.games.stream()
-															 .filter(game -> game.getDifficulty() == difficulty)
+															 .filter(game -> game.getDifficulty() == difficulty && game.getCriteriaCount() == criteriaCount)
 															 .collect(Collectors.toCollection(ArrayList::new));
 
 		return corresponds_games.get(Math.round((float) (Math.random() * corresponds_games.size())));

@@ -8,6 +8,16 @@ public class Code {
 
 	}
 
+	@Override
+	public String toString()
+	{
+		try {
+			return ""+this.values[0].toInteger()+this.values[1].toInteger()+this.values[2].toInteger();
+		} catch (Exception e) {
+			return "???";
+		}
+	}
+
 	public CodeValue getValue(CodeIndex index) {
 		return null;
 	}

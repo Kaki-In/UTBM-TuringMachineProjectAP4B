@@ -2,12 +2,12 @@ package com.turing_machine.database;
 
 public class ThumbnailsDatabase {
 
-	private CriteriaThumbnailsDatabase criteria;
-
-	private CasesThumbnailsDatabase cases;
+	private final CriteriaThumbnailsDatabase criteria;
+	private final CasesThumbnailsDatabase cases;
 
 	protected ThumbnailsDatabase() {
-
+		this.criteria = new CriteriaThumbnailsDatabase();
+		this.cases = new CasesThumbnailsDatabase();
 	}
 
 	public CriteriaThumbnailsDatabase getCriteriaThumbnails() {

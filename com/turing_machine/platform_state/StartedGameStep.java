@@ -4,14 +4,14 @@ import com.turing_machine.started_game.StartedGame;
 
 public class StartedGameStep extends PlatformStep {
 
-	private StartedGame game;
+	private final StartedGame game;
 
 	public StartedGameStep(StartedGame game) {
-
+		this.game = game;
 	}
 
 	public StartedGame getStartedGame() {
-		return null;
+		return this.game;
 	}
 
 }

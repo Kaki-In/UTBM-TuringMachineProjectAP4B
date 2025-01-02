@@ -4,20 +4,39 @@ import com.turing_machine.platform_state.MainPlatformState;
 
 public class MainPlatform {
 
-	private ConfiguratingGameHandler configurator;
+	private final ConfiguratingGameHandler configurator;
 
-	private GameBuildHandler builder;
+	private final GameBuildHandler builder;
 
-	private StartedGameHandler game_handler;
+	private final StartedGameHandler game_handler;
 
-	private MainPlatformState state;
+	private final MainPlatformState state;
 
 	public MainPlatform() {
+		this.state = new MainPlatformState();
 
+		this.configurator = new ConfiguratingGameHandler(this.state);
+		this.builder = new GameBuildHandler(this.state);
+		this.game_handler = new StartedGameHandler(this.state);
 	}
 
 	public MainPlatformState getState() {
-		return null;
+		return this.state;
+	}
+
+	public ConfiguratingGameHandler getConfiguratingGameHandler()
+	{
+		return this.configurator;
+	}
+
+	public GameBuildHandler getGameBuildHandler()
+	{
+		return this.builder;
+	}
+
+	public StartedGameHandler getStartedGameHandler()
+	{
+		return this.game_handler;
 	}
 
 }

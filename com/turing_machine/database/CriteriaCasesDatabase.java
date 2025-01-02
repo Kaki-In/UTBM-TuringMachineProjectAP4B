@@ -14,6 +14,12 @@ public class CriteriaCasesDatabase {
 		this.cases = new ArrayList<>();
 
 		this.cases.add(
+			new CriterionCase(1, (Code code) -> {
+				return code.getValue(CodeIndex.FIRST_BLUE_TRIANGLE) == CodeValue.ONE;
+			})
+		);
+
+		this.cases.add(
 			new CriterionCase(3, (Code code) -> {
 				return code.getValue(CodeIndex.FIRST_BLUE_TRIANGLE) == CodeValue.THREE;
 			})

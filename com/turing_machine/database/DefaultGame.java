@@ -9,9 +9,7 @@ import java.util.ArrayList;
 public class DefaultGame {
 
 	private final Code code;
-
 	private final ArrayList<DefaultGameCriterion> criteria;
-
 	private final GameDifficulty difficulty;
 
 	protected DefaultGame(Code code, ArrayList<DefaultGameCriterion> criteria, GameDifficulty difficulty) {

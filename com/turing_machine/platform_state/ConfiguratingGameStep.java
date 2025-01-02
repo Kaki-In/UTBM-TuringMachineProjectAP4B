@@ -4,14 +4,14 @@ import com.turing_machine.configuration.GameConfiguration;
 
 public class ConfiguratingGameStep extends PlatformStep {
 
-	private GameConfiguration configuration;
+	private final GameConfiguration configuration;
 
 	public ConfiguratingGameStep(GameConfiguration configuration) {
-
+		this.configuration = configuration;
 	}
 
 	public GameConfiguration getGameConfiguration() {
-		return null;
+		return this.configuration;
 	}
 
 }

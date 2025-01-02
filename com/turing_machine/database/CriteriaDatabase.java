@@ -113,7 +113,7 @@ public class CriteriaDatabase {
 
 			case 15:
 				return new int[]{
-					92, 93, 94
+					113, 114, 115
 				};
 
 			case 16:
@@ -188,7 +188,7 @@ public class CriteriaDatabase {
 
 			case 30:
 				return new int[]{
-					4, 7,  14
+					4, 9,  14
 				};
 
 			case 31:
@@ -243,7 +243,7 @@ public class CriteriaDatabase {
 
 			case 41:
 				return new int[]{
-					26, 29, 32, 4, 9, 14, 5, 10, 15
+					26, 29, 32, 4, 9, 14, 142, 138, 143
 				};
 
 			case 42:
@@ -286,8 +286,12 @@ public class CriteriaDatabase {
 		}
 	}
 
-	public Criterion getCriterion(int id) {
-		return this.criteria.get(id);
+	public Criterion getCriterion(int id) throws NoSuchCriterionException {
+		if (id > 48 || id <= 0)
+		{
+			throw new NoSuchCriterionException(id);
+		}
+		return this.criteria.get(id - 1);
 	}
 
 	public CriteriaCasesDatabase getCriteriaCases() {

@@ -1,9 +1,11 @@
 package com.turing_machine.handlers;
 
-public class StartedGameHandler {
+import com.turing_machine.platform_state.MainPlatformState;
 
-	public StartedGameHandler() {
+public class StartedGameHandler extends PlatformHandler {
 
+	public StartedGameHandler(MainPlatformState state ) {
+		super(state);
 	}
 
 	public void endGame() {

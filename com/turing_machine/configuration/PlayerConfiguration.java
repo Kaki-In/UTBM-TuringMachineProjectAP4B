@@ -23,4 +23,9 @@ public class PlayerConfiguration implements Configurable {
 
 	}
 
+	public String getName()
+	{
+		return null;
+	}
+
 }

@@ -17,7 +17,9 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class TuringMachineAPI {
@@ -68,7 +70,7 @@ public class TuringMachineAPI {
 				criteria
 			);
 
-		} catch (Exception e) {
+		} catch (NumberFormatException | NoSuchObjectException | InputMismatchException | JSONException e) {
 			throw new TuringMachineAPIException("bad answer format from API (" + e.getMessage() + ")");
 		}
 	}
@@ -79,8 +81,7 @@ public class TuringMachineAPI {
 
 		try {
 			String name = "https://" + endpoint_url + "/api/api.php?uuid=a7576650-cf20-478f-9375-f87dc8c9aeed&m=0&d="+difficultyToInteger(difficulty)+"&n="+criteria_count.toInteger();
-			System.out.println(name);
-			url = new URI(name).toURL();
+			url = new URI(name).toURL(); // using new URL(...) is deprecated
 		} catch (MalformedURLException | URISyntaxException e) {
 			System.err.println("Warning : URL not recognized");
 			throw new TuringMachineAPIException("bad URL");

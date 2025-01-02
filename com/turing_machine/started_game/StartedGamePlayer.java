@@ -14,12 +14,12 @@ public class StartedGamePlayer {
 
 	private Code actual_hypothesis;
 
-	public StartedGamePlayer(String name) {
+	public StartedGamePlayer(String name, StartedGamePlayerNotes notes) {
 
 	}
 
-	public void whenEventEmitted(StartedGamePlayerEventsListener listener) {
-
+	public String getName() {
+		return null;
 	}
 
 	public boolean isDisabled() {
@@ -38,4 +38,11 @@ public class StartedGamePlayer {
 		return null;
 	}
 
+	public StartedGamePlayerNotes getNotes(){
+		return null;
+	}
+
+	public void whenEventEmitted(StartedGamePlayerEventsListener listener, StartedGamePlayerNotes notes) {
+
+	}
 }

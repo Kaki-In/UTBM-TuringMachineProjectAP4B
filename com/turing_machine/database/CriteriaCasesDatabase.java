@@ -547,19 +547,19 @@ public class CriteriaCasesDatabase {
 
 		this.cases.add(
 			new CriterionCase(122, (Code code) -> {
-				return false; // uses specific implementation
+				return false; // uses specific implementation (see the criterion number 25 in CriteriaDatabase.java to know more)
 			})
 		);
 
 		this.cases.add(
 			new CriterionCase(123, (Code code) -> {
-				return false; // uses specific implementations
+				return false; // uses specific implementations (see the criterion number 25 in CriteriaDatabase.java to know more)
 			})
 		);
 
 		this.cases.add(
 			new CriterionCase(124, (Code code) -> {
-				return false; // uses specific implementations
+				return false; // uses specific implementations (see the criterion number 25 in CriteriaDatabase.java to know more)
 			})
 		);
 
@@ -705,6 +705,8 @@ public class CriteriaCasesDatabase {
 				return code.getValue(CodeIndex.SECOND_YELLOW_SQUARE) == code.getValue(CodeIndex.FIRST_BLUE_TRIANGLE);
 			})
 		);
+
+		// The following cases were not found among the api used cases
 		
 		this.cases.add(
 			new CriterionCase(400, (Code code) -> {

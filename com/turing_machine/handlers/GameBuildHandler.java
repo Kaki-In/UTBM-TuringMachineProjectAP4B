@@ -4,6 +4,7 @@ import com.turing_machine.configuration.GameConfiguration;
 import com.turing_machine.exceptions.TuringMachineAPIException;
 import com.turing_machine.listeners.GameBuildProgressionListener;
 import com.turing_machine.platform_state.BuildGameStep;
+import com.turing_machine.platform_state.ConfiguratingGameStep;
 import com.turing_machine.platform_state.MainPlatformState;
 import com.turing_machine.platform_state.StartedGameStep;
 import com.turing_machine.started_game.StartedGame;
@@ -30,6 +31,7 @@ public class GameBuildHandler extends PlatformHandler {
 			if (new_step instanceof BuildGameStep buildGameStep)
 			{
 				GameConfiguration configuration = buildGameStep.getGameConfiguration();
+				
 				try {
 					StartedGame game = this.startGameFromConfiguration(configuration);
 					state.setActualStep(new StartedGameStep(game));
@@ -38,6 +40,8 @@ public class GameBuildHandler extends PlatformHandler {
 					{
 						listener.onGameBuildError(configuration, e.getMessage());
 					}
+
+					state.setActualStep(new ConfiguratingGameStep(configuration));
 				}
 			}
 		});
@@ -51,17 +55,17 @@ public class GameBuildHandler extends PlatformHandler {
 
 		for (GameBuildProgressionListener listener: this.listeners)
 		{
-			listener.onGameBuildProgress(configuration, 0/3, "Création des joueurs...");
-		}
-
-		StartedGamePlayersList players = this.players_starter.exportPlayers(configuration.getPlayersConfiguration());
-
-		for (GameBuildProgressionListener listener: this.listeners)
-		{
-			listener.onGameBuildProgress(configuration, 1/3, "Création de la machine...");
+			listener.onGameBuildProgress(configuration, 0/3, "Création de la machine...");
 		}
 
 		StartedGameMachine machine = this.machine_starter.exportMachine(configuration.getCodeConfiguration());
+
+		for (GameBuildProgressionListener listener: this.listeners)
+		{
+			listener.onGameBuildProgress(configuration, 1/3, "Création des joueurs...");
+		}
+
+		StartedGamePlayersList players = this.players_starter.exportPlayers(configuration.getPlayersConfiguration(), machine);
 
 		for (GameBuildProgressionListener listener: this.listeners)
 		{

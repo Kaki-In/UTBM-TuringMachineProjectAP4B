@@ -252,7 +252,7 @@ public interface ImageDescriptable
 
     public static void drawText(Graphics2D g2D, String text, int x, int y, int size)
     {
-        g2D.setFont(new Font(getFont(), Font.LAYOUT_LEFT_TO_RIGHT, size));
+        g2D.setFont(new Font(getFontName(), Font.LAYOUT_LEFT_TO_RIGHT, size));
 
         g2D.drawString(text, x, y);
     }
@@ -287,7 +287,7 @@ public interface ImageDescriptable
         g2D.drawLine(x+size/4, y, x+size/2, y);
     }
 
-    public static String getFont()
+    public static String getFontName()
     {
         return "";
     }

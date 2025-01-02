@@ -14,7 +14,7 @@ public class Code {
 		try {
 			return ""+this.values[0].toInteger()+this.values[1].toInteger()+this.values[2].toInteger();
 		} catch (Exception e) {
-			return "???";
+			return "???"; // this case should not be attained
 		}
 	}
 

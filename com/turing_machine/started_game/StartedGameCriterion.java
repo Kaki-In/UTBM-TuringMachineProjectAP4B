@@ -6,6 +6,7 @@ import com.turing_machine.database.CriteriaCasesDatabase;
 import com.turing_machine.database.CriteriaDatabase;
 import com.turing_machine.database.CriterionCase;
 import com.turing_machine.database.Database;
+import com.turing_machine.exceptions.NoSuchCaseException;
 
 public class StartedGameCriterion {
 
@@ -30,7 +31,12 @@ public class StartedGameCriterion {
 	}
 
 	public CriterionCase getGoodCase() {
-		return Database.getCriteria().getCriteriaCases().getCriterionCase(this.good_case);
+		try {
+			return Database.getCriteria().getCriteriaCases().getCriterionCase(this.good_case);
+		} catch (NoSuchCaseException exc) {
+			System.err.println("Warning : the good case has not been found");
+			return null;
+		}
 	}
 
 	public boolean doesMatch(Code code, Code good_code)
@@ -52,24 +58,29 @@ public class StartedGameCriterion {
 		deux ne donne d'information supplémentaire. 
 		*/
 		{
-			CriterionCase ascending_case 	= cases_database.getCriterionCase(133); // critère qui vérifie la croissance d'un code
-			CriterionCase descending_case 	= cases_database.getCriterionCase(134); // critère qui vérifie la décroissance d'un code
-			CriterionCase nothing_case 		= cases_database.getCriterionCase(135); // critère qui vérifie que le code ne suit aucune ordre
+			try {
+				CriterionCase ascending_case 	= cases_database.getCriterionCase(133); // cas de critère qui vérifie la croissance d'un code
+				CriterionCase descending_case 	= cases_database.getCriterionCase(134); // cas de critère qui vérifie la décroissance d'un code
+				CriterionCase nothing_case 		= cases_database.getCriterionCase(135); // cas de critère qui vérifie que le code ne suit aucune ordre
 
-			boolean is_ascending = ascending_case.doesMatch(code);
-			boolean is_descending = descending_case.doesMatch(code);
+				boolean is_ascending = ascending_case.doesMatch(code);
+				boolean is_descending = descending_case.doesMatch(code);
 
-			boolean verifies_ascending = (good_case == 122 && is_descending || good_case == 124 && is_ascending);
-			boolean verifies_descending = (good_case == 122 && is_ascending || good_case == 124 && is_descending);
+				boolean verifies_ascending = (good_case == 122 && is_descending || good_case == 124 && is_ascending);
+				boolean verifies_descending = (good_case == 122 && is_ascending || good_case == 124 && is_descending);
 
-			if (verifies_ascending)
-			{
-				return ascending_case.doesMatch(code);
-			} else if (verifies_descending)
-			{
-				return descending_case.doesMatch(code);
-			} else { // dans ce cas, le vrai code n'est ni croissant, ni décroissant, donc le code donné doit aussi ne suivre aucun ordre précis
-				return nothing_case.doesMatch(code);
+				if (verifies_ascending)
+				{
+					return ascending_case.doesMatch(code);
+				} else if (verifies_descending)
+				{
+					return descending_case.doesMatch(code);
+				} else { // dans ce cas, le vrai code n'est ni croissant, ni décroissant, donc le code donné doit aussi ne suivre aucun ordre précis
+					return nothing_case.doesMatch(code);
+				}
+			} catch (NoSuchCaseException e) {
+				System.err.println("Warning : criteria cases 133, 134 and 135 could not be found");
+				return false;
 			}
 		} else { // sinon, on se contente de vérifier si le critère s'applique bien au bon cas. Tous les autres critères sont normaux. 
 			return this.getGoodCase().doesMatch(code);

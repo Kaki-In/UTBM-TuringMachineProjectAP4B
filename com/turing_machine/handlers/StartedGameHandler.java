@@ -9,7 +9,7 @@ public class StartedGameHandler extends PlatformHandler {
 	}
 
 	public void endGame() {
-
+		
 	}
 
 }

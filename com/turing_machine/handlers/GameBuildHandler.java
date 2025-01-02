@@ -1,6 +1,7 @@
 package com.turing_machine.handlers;
 
 import com.turing_machine.configuration.GameConfiguration;
+import com.turing_machine.exceptions.NotReadyConfigurationException;
 import com.turing_machine.exceptions.TuringMachineAPIException;
 import com.turing_machine.listeners.GameBuildProgressionListener;
 import com.turing_machine.platform_state.BuildGameStep;
@@ -31,11 +32,11 @@ public class GameBuildHandler extends PlatformHandler {
 			if (new_step instanceof BuildGameStep buildGameStep)
 			{
 				GameConfiguration configuration = buildGameStep.getGameConfiguration();
-				
+
 				try {
 					StartedGame game = this.startGameFromConfiguration(configuration);
 					state.setActualStep(new StartedGameStep(game));
-				} catch (TuringMachineAPIException e) {
+				} catch (TuringMachineAPIException | NotReadyConfigurationException e) {
 					for (GameBuildProgressionListener listener: this.listeners)
 					{
 						listener.onGameBuildError(configuration, e.getMessage());
@@ -47,7 +48,12 @@ public class GameBuildHandler extends PlatformHandler {
 		});
 	}
 
-	public StartedGame startGameFromConfiguration(GameConfiguration configuration) throws TuringMachineAPIException {
+	public StartedGame startGameFromConfiguration(GameConfiguration configuration) throws TuringMachineAPIException, NotReadyConfigurationException {
+		if (!configuration.isReady())
+		{
+			throw new NotReadyConfigurationException();
+		}
+
 		for (GameBuildProgressionListener listener: this.listeners)
 		{
 			listener.onGameBuildStart(configuration);

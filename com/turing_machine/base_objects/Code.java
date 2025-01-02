@@ -6,6 +6,7 @@ public class Code {
 
 	public Code(CodeValue first_value, CodeValue second_value, CodeValue third_value) {
 
+		this.values = new CodeValue[3]{first_value, second_value, third_value};
 	}
 
 	@Override

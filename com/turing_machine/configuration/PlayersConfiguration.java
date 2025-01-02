@@ -23,7 +23,7 @@ public class PlayersConfiguration implements Configurable {
 
 	}
 
-	public void removePlayer(String player_name) {
+	public void removePlayer(int player_id) {
 
 	}
 
@@ -31,8 +31,12 @@ public class PlayersConfiguration implements Configurable {
 		return null;
 	}
 
-	public PlayerConfiguration getPlayer(String player_name) {
+	public PlayerConfiguration getPlayer(int player_id) {
 		return null;
+	}
+
+	public int size() {
+		return 0;
 	}
 
 	public void whenPlayersListModified(ObjectsListChangeListener<PlayerConfiguration> listener) {

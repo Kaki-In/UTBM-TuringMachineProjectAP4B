@@ -7,10 +7,11 @@ public class PlayerConfiguration implements Configurable {
 
 	private String name;
 
-	private ArrayList<ObjectChangeListener<String>> name_listeners;
+	private final ArrayList<ObjectChangeListener<String>> name_listeners;
 
 	public PlayerConfiguration(String name) {
-
+		this.name_listeners = new ArrayList<>();
+		this.name = name;
 	}
 
 	@Override
@@ -20,12 +21,17 @@ public class PlayerConfiguration implements Configurable {
 	}
 
 	public void whenNameChanged(ObjectChangeListener<String> listener) {
-
+		this.name_listeners.add(listener);
 	}
 
 	public String getName()
 	{
 		return null;
+	}
+
+	public void setName(String name)
+	{
+
 	}
 
 }

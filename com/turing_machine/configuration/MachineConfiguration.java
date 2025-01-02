@@ -15,6 +15,8 @@ public class MachineConfiguration implements Configurable {
 
 	private ArrayList<ObjectChangeListener<GameCriteriaCount>> criteria_count_listeners;
 
+	private ArrayList<ObjectChangeListener<Boolean>> api_listeners;
+
 	private boolean uses_api;
 
 	public MachineConfiguration() {
@@ -70,6 +72,10 @@ public class MachineConfiguration implements Configurable {
 	}
 
 	public void whenCriteriaCountChanged(ObjectChangeListener<GameCriteriaCount> listener) {
+
+	}
+
+	public void whenUsesApiChanged(ObjectChangeListener<Boolean> listener) {
 
 	}
 

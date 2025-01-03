@@ -9,7 +9,7 @@ public class CodeComponent {
 	public CodeComponent(CodeIndex index, CodeValue value) {
 
 		this.index=index;
-		this;value=value;
+		this.value=value;
 	}
 
 	public CodeIndex getIndex() {

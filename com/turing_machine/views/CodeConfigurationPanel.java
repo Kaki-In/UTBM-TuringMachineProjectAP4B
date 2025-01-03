@@ -1,18 +1,14 @@
 package com.turing_machine.views;
 
 import com.turing_machine.configuration.MachineConfiguration;
-import com.turing_machine.listeners.CodeConfigurationChangeListener;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class CodeConfigurationPanel implements Displayable {
-
-	private final ArrayList<CodeConfigurationChangeListener> listeners;
 
 	private final MachineConfiguration configuration;
 
@@ -27,7 +23,6 @@ public class CodeConfigurationPanel implements Displayable {
 	private boolean uses_api;
 
 	public CodeConfigurationPanel(MachineConfiguration configuration) {
-		this.listeners = new ArrayList<>();
 		this.configuration = configuration;
 
 		this.panel = new JPanel();
@@ -110,17 +105,11 @@ public class CodeConfigurationPanel implements Displayable {
 		});
 
 		this.difficulty.whenGameDifficultySelected(difficulty -> {
-			for (CodeConfigurationChangeListener listener: this.listeners)
-			{
-				listener.onGameDifficultyChanged(difficulty);
-			}
+			configuration.setGameDifficulty(difficulty);
 		});
 
 		this.count.whenCriteriaCountSelected(count -> {
-			for (CodeConfigurationChangeListener listener: this.listeners)
-			{
-				listener.onGameCriteriaCountChanged(count);
-			}
+			configuration.setCriteriaCount(count);
 		});
 	}
 
@@ -153,14 +142,7 @@ public class CodeConfigurationPanel implements Displayable {
 
 		this.uses_api = enabled;
 
-		for (CodeConfigurationChangeListener listener: this.listeners)
-		{
-			listener.onUseApiChanged(enabled);
-		}
-	}
-
-	public void whenCodeConfigurationChanged(CodeConfigurationChangeListener listener) {
-		this.listeners.add(listener);
+		configuration.setUsesApi(enabled);
 	}
 
 }

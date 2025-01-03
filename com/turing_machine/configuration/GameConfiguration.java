@@ -2,9 +2,9 @@ package com.turing_machine.configuration;
 
 public class GameConfiguration implements Configurable {
 
-	private MachineConfiguration code;
+	private final MachineConfiguration code;
 
-	private PlayersConfiguration players;
+	private final PlayersConfiguration players;
 
 	public GameConfiguration() {
 

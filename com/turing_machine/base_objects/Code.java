@@ -20,11 +20,22 @@ public class Code {
 	}
 
 	public CodeValue getValue(CodeIndex index) {
-		return null;
+		
+		int indexValue = index.getValue();
+
+		return CodeValue.fromInteger(indexValue);
 	}
 
 	public boolean equals(Code other_code) {
-		return false;
+	
+		for (int i = 0; i < this.values.length; i++) {
+			if (this.values[i] != other_code.values[i]) {
+				return false; 
+			}
+		}
+	
+		return true; 
+	}
 	}
 
 	public int count(CodeValue value)

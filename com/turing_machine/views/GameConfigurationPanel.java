@@ -7,14 +7,11 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class GameConfigurationPanel extends GameDisplayedPanel {
-
-	private final ArrayList<Runnable> listeners;
 
 	private final GameConfiguration configuration;
 
@@ -29,7 +26,6 @@ public class GameConfigurationPanel extends GameDisplayedPanel {
 	public GameConfigurationPanel(ConfiguratingGameStep configuration) {
 		super(configuration);
 
-		this.listeners = new ArrayList<>();
 		this.configuration = configuration.getGameConfiguration();
 
 		this.panel = new JPanel();
@@ -86,10 +82,7 @@ public class GameConfigurationPanel extends GameDisplayedPanel {
 		this.startButton.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
-				for (Runnable listener: listeners)
-				{
-					listener.run();
-				}
+				configuration.startGame();
 			}
 
 			@Override
@@ -119,10 +112,6 @@ public class GameConfigurationPanel extends GameDisplayedPanel {
 		this.startButton.setEnabled(this.configuration.isReady());
 		this.code.refresh();
 		this.players.refresh();
-	}
-
-	public void whenGameStartLaunched(Runnable listener) {
-		this.listeners.add(listener);
 	}
 
 }

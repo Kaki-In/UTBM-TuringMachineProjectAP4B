@@ -1,16 +1,12 @@
 package com.turing_machine.views;
 
 import com.turing_machine.configuration.PlayerConfiguration;
-import com.turing_machine.listeners.ObjectChangeListener;
 import java.awt.Component;
-import java.util.ArrayList;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 public class ConfiguratingPlayerPanel implements Displayable {
-
-	private final ArrayList<ObjectChangeListener<String>> name_listeners;
 
 	private final PlayerConfiguration configuration;
 
@@ -19,7 +15,6 @@ public class ConfiguratingPlayerPanel implements Displayable {
 	private final JTextField field;
 
 	public ConfiguratingPlayerPanel(PlayerConfiguration configuration) {
-		this.name_listeners = new ArrayList<>();
 		this.configuration = configuration;
 		this.name = configuration.getName();
 
@@ -76,14 +71,7 @@ public class ConfiguratingPlayerPanel implements Displayable {
 		String last_name = this.name;
 		this.name = name;
 
-		for (ObjectChangeListener<String> listener: this.name_listeners)
-		{
-			listener.onObjectChanged(last_name, name);
-		}
-	}
-
-	public void whenPlayerNameModified(ObjectChangeListener<String> listener) {
-		this.name_listeners.add(listener);
+		this.configuration.setName(name);
 	}
 
 }

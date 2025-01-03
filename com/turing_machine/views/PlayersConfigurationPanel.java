@@ -34,12 +34,12 @@ public class PlayersConfigurationPanel implements Displayable {
 
 		configuration.whenPlayersListModified(new ObjectsListChangeListener<PlayerConfiguration>() {
 			@Override
-			public void onObjectAdded(PlayerConfiguration object, ArrayList<PlayerConfiguration> last_list, ArrayList<PlayerConfiguration> new_list) {
+			public void onObjectAdded(PlayerConfiguration object, ArrayList<PlayerConfiguration> new_list) {
 				players.add(new ConfiguratingPlayerPanel(object));
 			}
 
 			@Override
-			public void onObjectDeleted(PlayerConfiguration object, ArrayList<PlayerConfiguration> last_list, ArrayList<PlayerConfiguration> new_list) {
+			public void onObjectDeleted(PlayerConfiguration object, ArrayList<PlayerConfiguration> new_list) {
 				players.removeIf(player_panel -> player_panel.getConfiguration() == object);
 			}
 		});

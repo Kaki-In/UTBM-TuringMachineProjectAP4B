@@ -31,15 +31,17 @@ public class PlayersConfiguration implements Configurable {
 
 	public void removePlayer(int player_id) {
 
-		If(player -> player.getId() == playerId){
-			players.remove(player_id);
-		}
-    
+		for (int i = 0; i < players.size(); i++) {
+            if (players.get(i).contains(player_id)) {
+                players.remove(i);
+                break;  
+            }
+        }
 
 	}
 
 	public ArrayList<PlayerConfiguration> getPlayers() {
-		return new ArrayList<>(players);
+		return players ;
 	}
 
 	public PlayerConfiguration getPlayer(int player_id) {
@@ -52,7 +54,7 @@ public class PlayersConfiguration implements Configurable {
 	}
 
 	public int size() {
-		return 0;
+		return players.size;
 	}
 
 	public void whenPlayersListModified(ObjectsListChangeListener<PlayerConfiguration> listener) {

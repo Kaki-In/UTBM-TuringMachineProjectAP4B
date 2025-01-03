@@ -8,6 +8,9 @@ public class GameConfiguration implements Configurable {
 
 	public GameConfiguration() {
 
+		this.code = new MachineConfiguration();
+		this.players = new PlayersConfiguration();
+
 	}
 
 	@Override
@@ -17,11 +20,11 @@ public class GameConfiguration implements Configurable {
 	}
 
 	public PlayersConfiguration getPlayersConfiguration() {
-		return null;
+		return players;
 	}
 
 	public MachineConfiguration getCodeConfiguration() {
-		return null;
+		return code;
 	}
 
 }

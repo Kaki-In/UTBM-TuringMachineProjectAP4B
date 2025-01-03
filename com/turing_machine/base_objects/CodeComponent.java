@@ -8,8 +8,13 @@ public class CodeComponent {
 
 	public CodeComponent(CodeIndex index, CodeValue value) {
 
+<<<<<<< HEAD
+		this.index=index;
+		this.value=value;
+=======
 		this.index = index;
 		this.value = value;
+>>>>>>> ac6a08433594ed0b227252c93a48e03ff0c8956f
 	}
 
 	public CodeIndex getIndex() {

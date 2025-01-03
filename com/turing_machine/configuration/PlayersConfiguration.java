@@ -11,6 +11,8 @@ public class PlayersConfiguration implements Configurable {
 
 	public PlayersConfiguration() {
 
+		this.playersListener = new ArrayList<>();
+        this.players = new ArrayList<>();
 	}
 
 	@Override
@@ -21,18 +23,32 @@ public class PlayersConfiguration implements Configurable {
 
 	public void addPlayer() {
 
+		PlayerConfiguration newPlayer = new PlayerConfiguration();
+        players.add(newPlayer);
+        
+
 	}
 
 	public void removePlayer(int player_id) {
 
+		If(player -> player.getId() == playerId){
+			players.remove(player_id);
+		}
+    
+
 	}
 
 	public ArrayList<PlayerConfiguration> getPlayers() {
-		return null;
+		return new ArrayList<>(players);
 	}
 
 	public PlayerConfiguration getPlayer(int player_id) {
-		return null;
+		for (PlayerConfiguration player : players) {
+            if (player.getId() == playerId) {
+                return player;
+            }
+        }
+        return null; // if the player isn't find
 	}
 
 	public int size() {
@@ -40,7 +56,7 @@ public class PlayersConfiguration implements Configurable {
 	}
 
 	public void whenPlayersListModified(ObjectsListChangeListener<PlayerConfiguration> listener) {
-
+		playersListener.add(listener);
 	}
 
 }

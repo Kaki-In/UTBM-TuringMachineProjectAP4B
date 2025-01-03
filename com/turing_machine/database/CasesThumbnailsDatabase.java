@@ -11,6 +11,30 @@ public class CasesThumbnailsDatabase {
 	protected CasesThumbnailsDatabase() {
 		this.cases = new ArrayList<>();
 
+		/*
+
+			Description des différents cas possibles
+
+			La numérotation est effectuée dans un souci de compatibilité avec l'API distante de Turing Machine. 
+
+			Pour avoir une liste complète et visuelle des cas, il est possible d'effectuer le script python suivant : 
+
+				import requests
+
+				for i in range(1, 150):
+					try:
+						image = requests.get(f"https://turingmachine.info/images/laws/FR/{i}_Mini_FR.jpg")
+						image.raise_for_status()
+					except Exception:
+						continue
+					else:
+						a = open(f"./image{i}.jpg", "wb")
+						written_length = a.write(image.content)
+						a.close()
+				
+
+		*/
+
 		this.cases.add(
 			new CriterionCaseThumbnail(1, "bleu est égal à 1",
 				(Graphics2D g2D) -> {

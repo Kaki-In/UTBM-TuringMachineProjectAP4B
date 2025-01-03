@@ -38,6 +38,9 @@ public class CriteriaDatabase {
 		}
 	}
 
+	/*
+		Cette méthode associe les critères aux différents cas qui les constituent.
+	*/
 	private static int[] getCasesIds(int criterion_id) throws NoSuchCriterionException
 	{
 		switch (criterion_id) {

@@ -2,7 +2,7 @@ package com.turing_machine.base_objects;
 
 public class Code {
 
-	private CodeValue[] values;
+	private final CodeValue[] values;
 
 	public Code(CodeValue first_value, CodeValue second_value, CodeValue third_value) {
 

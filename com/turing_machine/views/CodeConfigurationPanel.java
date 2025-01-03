@@ -3,7 +3,6 @@ package com.turing_machine.views;
 import com.turing_machine.configuration.MachineConfiguration;
 import com.turing_machine.listeners.CodeConfigurationChangeListener;
 import java.awt.Component;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
@@ -46,7 +45,7 @@ public class CodeConfigurationPanel implements Displayable {
 		titleLabelConstraint.weighty = 1;
 
 		JLabel title_label = new JLabel("Génération du code");
-		title_label.setFont(new Font("", Font.BOLD, 30));
+		title_label.setFont(Displayable.getFont(20));
 		this.panel.add(title_label, titleLabelConstraint);
 		
 		GridBagConstraints difficultyLabelConstraint = new GridBagConstraints();

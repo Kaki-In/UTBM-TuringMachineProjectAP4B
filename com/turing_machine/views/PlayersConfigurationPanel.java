@@ -93,7 +93,7 @@ public class PlayersConfigurationPanel implements Displayable {
 		titleLabelConstraint.weighty = 1;
 
 		JLabel title_label = new JLabel("Joueurs");
-		title_label.setFont(new Font("", Font.BOLD, 30));
+		title_label.setFont(Displayable.getFont(20));
 		this.panel.add(title_label, titleLabelConstraint);
 
 		for (int player_id = 0; player_id < this.players.size(); ++player_id) {

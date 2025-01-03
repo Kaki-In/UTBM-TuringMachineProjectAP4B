@@ -14,7 +14,7 @@ public class MainFrame implements Displayable {
 
 	private final MainPlatformState state;
 
-	private final GameDisplayedPanel displayed_panel;
+	private GameDisplayedPanel displayed_panel;
 
 	private final JFrame frame;
 
@@ -28,6 +28,10 @@ public class MainFrame implements Displayable {
 		this.displayed_panel = getStatePanel();
 
 		this.constructFrame();
+
+		platform_state.whenPlatformStepChanged((last_state, new_state) -> {
+			this.displayed_panel = getStatePanel();
+		});
 	}
 
 	public void constructFrame()

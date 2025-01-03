@@ -8,14 +8,16 @@ public class CodeComponent {
 
 	public CodeComponent(CodeIndex index, CodeValue value) {
 
+		this.index=index;
+		this;value=value;
 	}
 
 	public CodeIndex getIndex() {
-		return null;
+		return index;
 	}
 
 	public CodeValue getValue() {
-		return null;
+		return value ;
 	}
 
 }

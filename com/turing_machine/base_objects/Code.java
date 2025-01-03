@@ -50,7 +50,13 @@ public class Code {
 
 	public int sum()
 	{
-		return 0;
+		int total = 0;
+
+		for (CodeValue value : values) {
+			total += value.toInteger();
+		}
+	
+		return total;
 	}
 
 }

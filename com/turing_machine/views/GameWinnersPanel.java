@@ -9,7 +9,8 @@ public class GameWinnersPanel implements Displayable {
 	private ArrayList<StartedGamePlayer> winners;
 
 	public GameWinnersPanel(ArrayList<StartedGamePlayer> winners) {
-
+        StartedGamePlayer player = winners.get(0);
+        player.getNotes();
 	}
 
     @Override

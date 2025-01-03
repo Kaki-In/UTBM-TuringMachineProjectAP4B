@@ -34,7 +34,7 @@ public class GameLoadingPanel extends GameDisplayedPanel implements Displayable 
 		this.panel.setLayout(new BoxLayout(this.panel, BoxLayout.Y_AXIS));
 
 		this.infoLabel = new JLabel(this.message);
-		this.panel.add(infoLabel);
+		this.panel.add(this.infoLabel);
 
 		this.progressBar = new JProgressBar();
 		this.progressBar.setMinimum(0);

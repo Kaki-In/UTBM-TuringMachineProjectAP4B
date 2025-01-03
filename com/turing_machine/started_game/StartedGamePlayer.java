@@ -45,4 +45,14 @@ public class StartedGamePlayer {
 	public void whenEventEmitted(StartedGamePlayerEventsListener listener, StartedGamePlayerNotes notes) {
 
 	}
+
+	public void guessCode(Code code)
+	{
+
+	}
+
+	public void eliminate()
+	{
+		
+	}
 }

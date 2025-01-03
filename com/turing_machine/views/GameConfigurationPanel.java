@@ -44,7 +44,7 @@ public class GameConfigurationPanel extends GameDisplayedPanel {
 		titleConstraints.anchor = GridBagConstraints.CENTER;
 		titleConstraints.weighty = 1;
 
-		JLabel title_label = new JLabel("Turing Machine");
+		JLabel title_label = new JLabel("Configuration de la partie");
 		title_label.setFont(Displayable.getFont(30));
 		this.panel.add(title_label, titleConstraints);
 

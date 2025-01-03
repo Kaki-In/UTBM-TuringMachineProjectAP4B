@@ -526,7 +526,7 @@ public class CasesThumbnailsDatabase {
 		);
 
 		this.cases.add(
-			new CriterionCaseThumbnail(113, "bleu est plus le grand",
+			new CriterionCaseThumbnail(113, "bleu est le plus grand",
 				(Graphics2D g2D) -> {
 				}
 			)

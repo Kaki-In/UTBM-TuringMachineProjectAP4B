@@ -7,7 +7,7 @@ public interface GameBuildProgressionListener {
 
 	public abstract void onGameBuildStart(GameConfiguration configuration);
 
-	public abstract void onGameBuildProgress(GameConfiguration configuration, double progress, String message);
+	public abstract void onGameBuildProgress(GameConfiguration configuration, float progress, String message);
 
 	public abstract void onGameBuildEnd(GameConfiguration configuration, StartedGame game);
 

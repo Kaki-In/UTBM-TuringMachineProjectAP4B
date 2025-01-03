@@ -3,9 +3,7 @@ package com.turing_machine.views;
 import com.turing_machine.configuration.PlayerConfiguration;
 import com.turing_machine.configuration.PlayersConfiguration;
 import com.turing_machine.listeners.ObjectsListChangeListener;
-import com.turing_machine.listeners.ObjectsListModificationLaunchedListener;
 import java.awt.Component;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
@@ -17,8 +15,6 @@ import javax.swing.JPanel;
 
 public class PlayersConfigurationPanel implements Displayable {
 
-	private final ArrayList<ObjectsListModificationLaunchedListener<Integer>> panel_listeners;
-
 	private final PlayersConfiguration configuration;
 
 	private final ArrayList<ConfiguratingPlayerPanel> players;
@@ -27,8 +23,6 @@ public class PlayersConfigurationPanel implements Displayable {
 	private final JButton add_button;
 
 	public PlayersConfigurationPanel(PlayersConfiguration configuration) {
-		this.panel_listeners = new ArrayList<>();
-
 		this.configuration = configuration;
 
 		this.players = new ArrayList<>();
@@ -57,10 +51,7 @@ public class PlayersConfigurationPanel implements Displayable {
 		this.add_button.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
-				for (ObjectsListModificationLaunchedListener listener: panel_listeners)
-				{
-					listener.onObjectCreationLaunched();
-				}
+				configuration.addPlayer();
 			}
 
 			@Override
@@ -93,7 +84,7 @@ public class PlayersConfigurationPanel implements Displayable {
 		titleLabelConstraint.weighty = 1;
 
 		JLabel title_label = new JLabel("Joueurs");
-		title_label.setFont(new Font("", Font.BOLD, 30));
+		title_label.setFont(Displayable.getFont(20));
 		this.panel.add(title_label, titleLabelConstraint);
 
 		for (int player_id = 0; player_id < this.players.size(); ++player_id) {
@@ -118,10 +109,7 @@ public class PlayersConfigurationPanel implements Displayable {
 			button.addMouseListener(new MouseListener() {
 				@Override
 				public void mouseClicked(MouseEvent me) {
-					for (ObjectsListModificationLaunchedListener listener: panel_listeners)
-					{
-						listener.onObjectDeletionLaunched(this_player_id);
-					}
+					configuration.removePlayer(this_player_id);
 				}
 
 				@Override
@@ -138,10 +126,6 @@ public class PlayersConfigurationPanel implements Displayable {
 
 			});
 		}
-	}
-
-	public void whenPanelModified(ObjectsListModificationLaunchedListener<Integer> listener) {
-		this.panel_listeners.add(listener);
 	}
 
 	@Override

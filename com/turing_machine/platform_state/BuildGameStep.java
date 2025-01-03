@@ -30,7 +30,7 @@ public class BuildGameStep extends PlatformStep {
         }
     }
 
-    public void emitConfigurationProgress(double progress, String message)
+    public void emitConfigurationProgress(float progress, String message)
     {
         for (GameBuildProgressionListener listener : this.listeners)
         {
@@ -52,5 +52,10 @@ public class BuildGameStep extends PlatformStep {
         {
             listener.onGameBuildError(this.configuration, reason);
         }
+    }
+
+    public void whenConfigurationProgress(GameBuildProgressionListener listener)
+    {
+        this.listeners.add(listener);
     }
 }

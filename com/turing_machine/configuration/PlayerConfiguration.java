@@ -26,11 +26,12 @@ public class PlayerConfiguration implements Configurable {
 
 	public String getName()
 	{
-		return null;
+		return this.name;
 	}
 
 	public void setName(String name)
 	{
+		this.name = name;
 
 	}
 

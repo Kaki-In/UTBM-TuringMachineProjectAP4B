@@ -1,13 +1,11 @@
 package com.turing_machine.views;
 
-import com.turing_machine.listeners.GameDebriefListener;
 import com.turing_machine.platform_state.GameDebriefingStep;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,8 +13,6 @@ import javax.swing.JPanel;
 public class GameDebriefPanel extends GameDisplayedPanel {
 
 	private final GameDebriefingStep debrief;
-
-	private final ArrayList<GameDebriefListener> listeners;
 
 	private final GameWinnersPanel winners;
 
@@ -29,8 +25,6 @@ public class GameDebriefPanel extends GameDisplayedPanel {
 	public GameDebriefPanel(GameDebriefingStep step) {
 		super(step);
         this.debrief = step;
-
-        this.listeners = new ArrayList<>();
 
 		this.panel = new JPanel();
 		this.panel.setLayout(new GridBagLayout());
@@ -86,10 +80,7 @@ public class GameDebriefPanel extends GameDisplayedPanel {
 		this.restartButton.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
-				for (GameDebriefListener listener: listeners)
-				{
-					listener.onNewGameLaunched();
-				}
+                step.playAgain();
 			}
 
 			@Override
@@ -105,10 +96,6 @@ public class GameDebriefPanel extends GameDisplayedPanel {
 			public void mouseExited(MouseEvent me) {}
 
 		});
-	}
-
-	public void whenNewGameLaunched(GameDebriefListener listener) {
-        this.listeners.add(listener);
 	}
 
     @Override

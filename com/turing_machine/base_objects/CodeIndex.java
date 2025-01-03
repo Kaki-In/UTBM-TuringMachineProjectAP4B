@@ -8,7 +8,7 @@ public enum CodeIndex {
 	SECOND_YELLOW_SQUARE,
 	THIRD_PURPLE_CIRCLE,;
 
-	public int getValue()
+	public int toInteger()
 	{
 		switch (this) {
 			case CodeIndex.FIRST_BLUE_TRIANGLE  : return 1;
@@ -19,7 +19,7 @@ public enum CodeIndex {
 		return -1; // this line can't be attained
 	}
 
-	public static CodeIndex fromValue(int value) throws InputMismatchException
+	public static CodeIndex fromInteger(int value) throws InputMismatchException
 	{
 		switch (value) {
 			case 1:

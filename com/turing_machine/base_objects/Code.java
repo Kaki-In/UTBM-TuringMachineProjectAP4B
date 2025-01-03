@@ -20,10 +20,7 @@ public class Code {
 	}
 
 	public CodeValue getValue(CodeIndex index) {
-		
-		int indexValue = index.getValue();
-
-		return CodeValue.fromInteger(indexValue);
+		return this.values[index.toInteger() - 1];
 	}
 
 	public boolean equals(Code other_code) {
@@ -36,7 +33,6 @@ public class Code {
 	
 		return true; 
 	}
-	}
 
 	public int count(CodeValue value)
 	{
@@ -44,7 +40,7 @@ public class Code {
 
 		for (int i=1; i <= 3; ++i)
 		{
-			CodeValue value_at_index = getValue(CodeIndex.fromValue(i));
+			CodeValue value_at_index = getValue(CodeIndex.fromInteger(i));
 
 			if (value_at_index == value) ++count;
 		}

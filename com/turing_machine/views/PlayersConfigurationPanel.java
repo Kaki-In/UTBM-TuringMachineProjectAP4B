@@ -5,7 +5,6 @@ import com.turing_machine.configuration.PlayersConfiguration;
 import com.turing_machine.listeners.ObjectsListChangeListener;
 import com.turing_machine.listeners.ObjectsListModificationLaunchedListener;
 import java.awt.Component;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
@@ -57,7 +56,7 @@ public class PlayersConfigurationPanel implements Displayable {
 		this.add_button.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
-				for (ObjectsListModificationLaunchedListener listener: panel_listeners)
+				for (ObjectsListModificationLaunchedListener<Integer> listener: panel_listeners)
 				{
 					listener.onObjectCreationLaunched();
 				}
@@ -118,7 +117,7 @@ public class PlayersConfigurationPanel implements Displayable {
 			button.addMouseListener(new MouseListener() {
 				@Override
 				public void mouseClicked(MouseEvent me) {
-					for (ObjectsListModificationLaunchedListener listener: panel_listeners)
+					for (ObjectsListModificationLaunchedListener<Integer> listener: panel_listeners)
 					{
 						listener.onObjectDeletionLaunched(this_player_id);
 					}

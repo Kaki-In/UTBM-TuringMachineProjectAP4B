@@ -11,7 +11,7 @@ public class PlayersConfiguration implements Configurable {
 
 	public PlayersConfiguration() {
 
-		this.playersListener = new ArrayList<>();
+		this.players_listeners = new ArrayList<>();
         this.players = new ArrayList<>();
 	}
 
@@ -22,43 +22,54 @@ public class PlayersConfiguration implements Configurable {
 	}
 
 	public void addPlayer() {
+		int name_int = 0;
+		boolean can_use_name;
 
-		PlayerConfiguration newPlayer = new PlayerConfiguration();
+		do
+		{
+			++name_int;
+			can_use_name = true;
+
+			for (int i=0; i < this.players.size(); ++i)
+			{
+				PlayerConfiguration player = this.players.get(i);
+
+				if (player.getName().equals("Joueur " + name_int))
+				{
+					can_use_name = false;
+					break;
+				}
+			}
+		} while (!can_use_name);
+
+		PlayerConfiguration newPlayer = new PlayerConfiguration("Joueur " + name_int);
+
         players.add(newPlayer);
-        
 
+		for (ObjectsListChangeListener<PlayerConfiguration> listener : this.players_listeners)
+		{
+			listener.onObjectAdded(newPlayer, this.players);
+		}
 	}
 
 	public void removePlayer(int player_id) {
-
-		for (int i = 0; i < players.size(); i++) {
-            if (players.get(i).contains(player_id)) {
-                players.remove(i);
-                break;  
-            }
-        }
-
+		this.players.remove(player_id);
 	}
 
 	public ArrayList<PlayerConfiguration> getPlayers() {
-		return players ;
+		return players;
 	}
 
 	public PlayerConfiguration getPlayer(int player_id) {
-		for (PlayerConfiguration player : players) {
-            if (player.getId() == playerId) {
-                return player;
-            }
-        }
-        return null; // if the player isn't find
+		return this.players.get(player_id);
 	}
 
 	public int size() {
-		return players.size;
+		return this.players.size();
 	}
 
 	public void whenPlayersListModified(ObjectsListChangeListener<PlayerConfiguration> listener) {
-		playersListener.add(listener);
+		players_listeners.add(listener);
 	}
 
 }

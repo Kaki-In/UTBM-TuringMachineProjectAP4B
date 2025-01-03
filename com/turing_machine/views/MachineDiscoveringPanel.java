@@ -1,24 +1,52 @@
 package com.turing_machine.views;
 
+import com.turing_machine.base_objects.Code;
+import com.turing_machine.base_objects.CodeIndex;
 import com.turing_machine.started_game.StartedGameMachine;
 import java.awt.Component;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class MachineDiscoveringPanel implements Displayable {
 
-	private StartedGameMachine machine;
+	private final StartedGameMachine machine;
+    
+    private final JPanel panel;
 
 	public MachineDiscoveringPanel(StartedGameMachine machine) {
+        this.machine = machine;
+
+        this.panel = new JPanel();
+        this.panel.setLayout(new BoxLayout(this.panel, BoxLayout.Y_AXIS));
+
+        Code code = machine.getCode();
+
+        JPanel indexes_panel = new JPanel();
+        indexes_panel.setLayout(new BoxLayout(indexes_panel, BoxLayout.X_AXIS));
+
+        JPanel code_panel = new JPanel();
+        code_panel.setLayout(new BoxLayout(code_panel, BoxLayout.X_AXIS));
+        
+        for (int i=1; i <= 3; ++i)
+        {
+            CodeIndex index = CodeIndex.fromInteger(i);
+            indexes_panel.add(new JLabel(new IndexIcon(index, 100)));
+            code_panel.add(new JLabel(new ValueIcon(code.getValue(index), 100)));
+        }
+
+        this.panel.add(indexes_panel);
+        this.panel.add(code_panel);
 
 	}
 
     @Override
     public void refresh() {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public Component getWidget() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.panel;
     }
 
 }

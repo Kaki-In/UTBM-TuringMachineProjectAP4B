@@ -16,4 +16,8 @@ public class StartedGameMachine {
 		return null;
 	}
 
+	public Code getCode() {
+		return this.unknown_code;
+	}
+
 }

@@ -14,12 +14,12 @@ public enum CriterionLetter {
 	public int toInteger()
 	{
 		switch (this) {
-			case CriterionLetter.A : return 1;
-			case CriterionLetter.B : return 2;
-			case CriterionLetter.C : return 3;
-			case CriterionLetter.D : return 4;
-			case CriterionLetter.E : return 5;
-			case CriterionLetter.F : return 6;
+			case CriterionLetter.A : return 0;
+			case CriterionLetter.B : return 1;
+			case CriterionLetter.C : return 2;
+			case CriterionLetter.D : return 3;
+			case CriterionLetter.E : return 4;
+			case CriterionLetter.F : return 5;
 		}
 
 		return -1; // this line can't be attained
@@ -28,17 +28,17 @@ public enum CriterionLetter {
 	public static CriterionLetter fromInteger(int value) throws InputMismatchException
 	{
 		switch (value) {
-			case 1:
+			case 0:
 				return A;
-			case 2:
+			case 1:
 				return B;
-			case 3:
+			case 2:
 				return C;
-			case 4:
+			case 3:
 				return D;
-			case 5:
+			case 4:
 				return E;
-			case 6:
+			case 5:
 				return F;
 			default:
 				throw new InputMismatchException("bad value given to create CriterionLetter");

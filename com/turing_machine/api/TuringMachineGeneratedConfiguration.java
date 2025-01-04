@@ -41,7 +41,7 @@ public class TuringMachineGeneratedConfiguration {
 	}
 
 	public TuringMachineGeneratedCriterion getCriterion(CriterionLetter letter) {
-		return this.criteria.get(letter.toInteger() - 1);
+		return this.criteria.get(letter.toInteger());
 	}
 
 }

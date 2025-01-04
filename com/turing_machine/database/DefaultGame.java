@@ -31,7 +31,7 @@ public class DefaultGame {
 	}
 
 	public DefaultGameCriterion getCriterion(CriterionLetter letter) {
-		return this.criteria.get(letter.toInteger() - 1);
+		return this.criteria.get(letter.toInteger());
 	}
 
 	public GameDifficulty getDifficulty() {

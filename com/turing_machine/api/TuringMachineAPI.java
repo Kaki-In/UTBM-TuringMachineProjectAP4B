@@ -53,7 +53,7 @@ public class TuringMachineAPI {
 			for (int i=0; i < given_criteria_count.toInteger(); ++i)
 			{
 				criteria.add(
-					new TuringMachineGeneratedCriterion(given_criteria.getInt(i), CriterionLetter.fromInteger(i+1), given_cases.getInt(i))
+					new TuringMachineGeneratedCriterion(given_criteria.getInt(i), CriterionLetter.fromInteger(i), given_cases.getInt(i))
 				);
 			}
 			

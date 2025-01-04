@@ -12,11 +12,11 @@ import javax.swing.JPanel;
 
 public class StartedGameMachinePanel extends Displayable {
 
-	private StartedGameMachine machine;
+	private final StartedGameMachine machine;
 
-	private ArrayList<StartedGameCriterionPanel> criteria;
+	private final ArrayList<StartedGameCriterionPanel> criteria;
 
-	private JPanel panel;
+	private final JPanel panel;
 
 	public StartedGameMachinePanel(StartedGameMachine machine) {
 		this.machine = machine;
@@ -62,7 +62,7 @@ public class StartedGameMachinePanel extends Displayable {
 				spacePanel.setSize(new Dimension(30, 30));
 
 				spaceConstraints.gridx = 2*(i%2) + 1;
-				spaceConstraints.gridy = i/2 + 1;
+				spaceConstraints.gridy = 2*(i/2) + 1;
 				spaceConstraints.gridwidth = 1;
 				spaceConstraints.gridheight = 1;
 

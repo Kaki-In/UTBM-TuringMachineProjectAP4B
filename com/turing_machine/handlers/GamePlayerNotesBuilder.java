@@ -30,7 +30,7 @@ public class GamePlayerNotesBuilder {
 		try {
 			ArrayList<CriterionCase> cases = Database.getCriteria().getCriterion(criterion_id).getDistinctCases();
 
-			return new StartedGamePlayerCriterion(criterion.getCriterionId(), 
+			return new StartedGamePlayerCriterion(criterion.getCriterionId(), criterion.getLetter(),
 				cases.stream()
 					 .map(distinct_case -> new StartedGamePlayerCriterionCase(distinct_case.getId()))
 					 .collect(Collectors.toCollection(ArrayList::new))

@@ -8,8 +8,6 @@ import com.turing_machine.started_game.StartedGamePlayerCriterionCase;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -34,10 +32,6 @@ public class StartedGamePlayerCriterionPanel extends Displayable {
 		this.panel.setBackground(background_color);
 		this.panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-		JPanel criterion_panel = new JPanel();
-		criterion_panel.setLayout(new BoxLayout(criterion_panel, BoxLayout.X_AXIS));
-		criterion_panel.setBackground(background_color);
-		
 		CriterionThumbnail thumbnail;
 		try {
 			thumbnail = Database.getThumbnails().getCriteriaThumbnails().getCriterionThumbnail(criterion.getId());
@@ -50,7 +44,7 @@ public class StartedGamePlayerCriterionPanel extends Displayable {
 		description_panel.setBackground(background_color);
 		description_panel.setLayout(new BoxLayout(description_panel, BoxLayout.Y_AXIS));
 
-		JLabel introduction = new JLabel("<html>Ce critère vérifie...</html>");
+		JLabel introduction = new JLabel("<html>Ce critère (" + criterion.getLetter().name() + ") vérifie...</html>");
 		introduction.setFont(Displayable.getFont(15));
 		introduction.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 		description_panel.add(introduction);
@@ -59,13 +53,7 @@ public class StartedGamePlayerCriterionPanel extends Displayable {
 		description.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 		description_panel.add(description);
 
-		criterion_panel.add(description_panel);
-
-		this.panel.add(criterion_panel);
-
-		JPanel cases_panel = new JPanel();
-		cases_panel.setLayout(new GridBagLayout());
-		cases_panel.setBackground(background_color);
+		this.panel.add(description_panel);
 
 		this.cases = new ArrayList<>();
 
@@ -100,21 +88,18 @@ public class StartedGamePlayerCriterionPanel extends Displayable {
 		for (int i = 0; i < cases.size(); ++i)
 		{
 			StartedGamePlayerCriterionCasePanel case_panel = new StartedGamePlayerCriterionCasePanel(cases.get(i));
+			case_panel.whenShouldReload(() -> this.reloadParent());
+
 			this.cases.add(case_panel);
 
-			GridBagConstraints caseConstraints = new GridBagConstraints();
-			caseConstraints.gridx = i%columns;
-			caseConstraints.gridy = i/columns;
-			caseConstraints.gridwidth = 1;
-			caseConstraints.gridheight = 1;
-
-			cases_panel.add(case_panel.getWidget(), caseConstraints);
+			this.panel.add(case_panel.getWidget());
 		}
 
-		this.panel.add(cases_panel);
+		HintTextField player_notes = new HintTextField("Notes...");
+		this.panel.add(player_notes);
 
-		this.panel.setPreferredSize(new Dimension(450, 80 + 130*Math.round(cases.size()/columns)));
-		this.panel.setMaximumSize(this.panel.getPreferredSize());
+		this.panel.setMinimumSize(new Dimension(300, (int) this.panel.getPreferredSize().getHeight() + 100));
+		this.panel.setPreferredSize(new Dimension(300, (int) this.panel.getPreferredSize().getHeight() + 100));
 	}
 
 	@Override
@@ -126,6 +111,10 @@ public class StartedGamePlayerCriterionPanel extends Displayable {
 	@Override
 	public void refresh()
 	{
+		for (StartedGamePlayerCriterionCasePanel case_panel: this.cases)
+		{
+			case_panel.refresh();
+		}
 	}
 
 }

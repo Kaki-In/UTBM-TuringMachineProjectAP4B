@@ -7,7 +7,7 @@ import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 
-public class CriteriaCountSelectionPanel implements Displayable {
+public class CriteriaCountSelectionPanel extends Displayable {
 
 	private final ArrayList<ObjectSelectionListener<GameCriteriaCount>> listeners;
 	

@@ -4,7 +4,7 @@ import com.turing_machine.started_game.StartedGamePlayerCriteria;
 import java.awt.Component;
 import java.util.ArrayList;
 
-public class StartedGamePlayerCriteriaPanel implements Displayable {
+public class StartedGamePlayerCriteriaPanel extends Displayable {
 
 	private StartedGamePlayerCriteria criteria;
 

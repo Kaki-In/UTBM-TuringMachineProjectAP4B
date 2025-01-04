@@ -4,7 +4,7 @@ import com.turing_machine.started_game.StartedGamePlayersList;
 import java.awt.Component;
 import java.util.ArrayList;
 
-public class StartedGamePlayersPanel implements Displayable {
+public class StartedGamePlayersPanel extends Displayable {
 
 	private String opened_player;
 

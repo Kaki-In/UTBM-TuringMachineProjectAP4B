@@ -10,6 +10,7 @@ import com.turing_machine.platform_state.StartedGameStep;
 import com.turing_machine.started_game.StartedGame;
 import com.turing_machine.started_game.StartedGameMachine;
 import com.turing_machine.started_game.StartedGamePlayersList;
+import com.turing_machine.started_game.StartedGameState;
 
 public class GameBuildHandler extends PlatformHandler {
 
@@ -57,14 +58,15 @@ public class GameBuildHandler extends PlatformHandler {
 		buildGameStep.emitConfigurationProgress(0/3, "Création de la machine...");
 
 		StartedGameMachine machine = this.machine_starter.exportMachine(configuration.getCodeConfiguration());
+		StartedGameState game_state = new StartedGameState(machine);
 
 		buildGameStep.emitConfigurationProgress(1/3, "Création des joueurs...");
 
-		StartedGamePlayersList players = this.players_starter.exportPlayers(configuration.getPlayersConfiguration(), machine);
+		StartedGamePlayersList players = this.players_starter.exportPlayers(configuration.getPlayersConfiguration(), game_state);
 
 		buildGameStep.emitConfigurationProgress(2/3, "Création du jeu...");
 
-		StartedGame game = new StartedGame(machine, players);
+		StartedGame game = new StartedGame(machine, players, game_state);
 
 		buildGameStep.emitConfigurationProgress(3/3, "Démarrage de la partie...");
 

@@ -4,7 +4,7 @@ import com.turing_machine.started_game.StartedGamePlayer;
 import java.awt.Component;
 import java.util.ArrayList;
 
-public class StartedGamePlayerNotesPanel implements Displayable {
+public class StartedGamePlayerNotesPanel extends Displayable {
 
 	private ArrayList<Runnable> listeners;
 

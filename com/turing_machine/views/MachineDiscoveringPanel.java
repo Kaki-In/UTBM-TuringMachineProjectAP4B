@@ -8,7 +8,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MachineDiscoveringPanel implements Displayable {
+public class MachineDiscoveringPanel extends Displayable {
 
 	private final StartedGameMachine machine;
     

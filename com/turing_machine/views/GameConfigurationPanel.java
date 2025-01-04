@@ -1,6 +1,7 @@
 package com.turing_machine.views;
 
 import com.turing_machine.configuration.GameConfiguration;
+import com.turing_machine.configuration.PlayerConfiguration;
 import com.turing_machine.platform_state.ConfiguratingGameStep;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
@@ -82,6 +83,18 @@ public class GameConfigurationPanel extends GameDisplayedPanel {
 		this.startButton.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
+				System.out.println("Difficulté " + configuration.getGameConfiguration().getCodeConfiguration().getGameDifficulty());
+				System.out.println("Nombre de critères " + configuration.getGameConfiguration().getCodeConfiguration().getCriteriaCount());
+				System.out.println("Utilisez l'API " + configuration.getGameConfiguration().getCodeConfiguration().getUsesApi());
+
+				System.out.println();
+				System.out.println("Joueurs");
+
+				for (PlayerConfiguration player: configuration.getGameConfiguration().getPlayersConfiguration().getPlayers())
+				{
+					System.out.println(player.getName());
+				}
+
 				configuration.startGame();
 			}
 
@@ -98,6 +111,12 @@ public class GameConfigurationPanel extends GameDisplayedPanel {
 			public void mouseExited(MouseEvent me) {}
 
 		});
+
+		configuration.getGameConfiguration().getCodeConfiguration().whenCriteriaCountChanged((l,n) -> {this.reloadParent();});
+		configuration.getGameConfiguration().getCodeConfiguration().whenGameDifficultyChanged((l,n) -> {this.reloadParent();});
+		configuration.getGameConfiguration().getCodeConfiguration().whenUsesApiChanged((l,n) -> {this.reloadParent();});
+
+		this.startButton.setEnabled(this.configuration.isReady());
 	}
 
 	@Override

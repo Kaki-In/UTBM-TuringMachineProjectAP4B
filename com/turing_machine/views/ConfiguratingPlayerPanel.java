@@ -6,7 +6,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-public class ConfiguratingPlayerPanel implements Displayable {
+public class ConfiguratingPlayerPanel extends Displayable {
 
 	private final PlayerConfiguration configuration;
 
@@ -22,23 +22,25 @@ public class ConfiguratingPlayerPanel implements Displayable {
 		this.field.setText(this.name);
 
 		configuration.whenNameChanged((last_name, new_name) -> {
-			this.setName(new_name);
+			setName(new_name);
+			field.transferFocus();
+			reloadParent();
 		});
 
 		this.field.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
 			public void insertUpdate(DocumentEvent de) {
-				setName(field.getText());
+				configuration.setName(field.getText());
 			}
 
 			@Override
 			public void removeUpdate(DocumentEvent de) {
-				setName(field.getText());
+				configuration.setName(field.getText());
 			}
 
 			@Override
 			public void changedUpdate(DocumentEvent de) {
-				setName(field.getText());
+				configuration.setName(field.getText());
 			}
 		});
 
@@ -68,10 +70,7 @@ public class ConfiguratingPlayerPanel implements Displayable {
 	public synchronized void setName(String name) {
 		if (this.name.equals(name)) return;
 
-		String last_name = this.name;
 		this.name = name;
-
-		this.configuration.setName(name);
 	}
 
 }

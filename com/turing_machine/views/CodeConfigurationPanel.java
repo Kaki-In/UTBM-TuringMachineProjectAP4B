@@ -4,11 +4,13 @@ import com.turing_machine.configuration.MachineConfiguration;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class CodeConfigurationPanel implements Displayable {
+public class CodeConfigurationPanel extends Displayable {
 
 	private final MachineConfiguration configuration;
 
@@ -94,22 +96,52 @@ public class CodeConfigurationPanel implements Displayable {
 
 		configuration.whenCriteriaCountChanged((last_count, new_count) -> {
 			this.count.setCriteriaCount(new_count);
+			reloadParent();
 		});
 
 		configuration.whenGameDifficultyChanged((last_difficulty, new_difficulty) -> {
 			this.difficulty.setGameDifficulty(new_difficulty);
+			reloadParent();
 		});
 
 		configuration.whenUsesApiChanged((last_used, now_uses) -> {
 			this.setUsesApi(now_uses);
+			reloadParent();
 		});
 
 		this.difficulty.whenGameDifficultySelected(difficulty -> {
 			configuration.setGameDifficulty(difficulty);
 		});
 
+		this.difficulty.whenShouldReload(() -> {
+			this.reloadParent();
+		});
+
 		this.count.whenCriteriaCountSelected(count -> {
 			configuration.setCriteriaCount(count);
+		});
+
+		this.count.whenShouldReload(() -> {
+			this.reloadParent();
+		});
+
+		this.checkbox.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent me) {
+				configuration.setUsesApi(checkbox.isSelected());
+			}
+
+			@Override
+			public void mousePressed(MouseEvent me) {}
+
+			@Override
+			public void mouseReleased(MouseEvent me) {}
+
+			@Override
+			public void mouseEntered(MouseEvent me) {}
+
+			@Override
+			public void mouseExited(MouseEvent me) {}
 		});
 	}
 

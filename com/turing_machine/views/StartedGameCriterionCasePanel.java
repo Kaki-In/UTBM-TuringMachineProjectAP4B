@@ -9,7 +9,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class StartedGameCriterionCasePanel implements Displayable {
+public class StartedGameCriterionCasePanel extends Displayable {
 
 	private final CriterionCase criterion_case;
 

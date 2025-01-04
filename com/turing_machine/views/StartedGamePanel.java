@@ -5,7 +5,7 @@ import com.turing_machine.started_game.StartedGame;
 import java.awt.Component;
 import java.util.ArrayList;
 
-public class StartedGamePanel extends GameDisplayedPanel implements Displayable {
+public class StartedGamePanel extends GameDisplayedPanel {
 
 	private ArrayList<Runnable> end_round_listeners;
 

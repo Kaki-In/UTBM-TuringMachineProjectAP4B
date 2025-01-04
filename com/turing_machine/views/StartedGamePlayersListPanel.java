@@ -5,7 +5,7 @@ import com.turing_machine.started_game.StartedGamePlayersList;
 import java.awt.Component;
 import java.util.ArrayList;
 
-public class StartedGamePlayersListPanel implements Displayable {
+public class StartedGamePlayersListPanel extends Displayable {
 
 	private ArrayList<ObjectSelectionListener<String>> listeners;
 

@@ -4,7 +4,7 @@ import com.turing_machine.started_game.StartedGameMachine;
 import java.awt.Component;
 import java.util.ArrayList;
 
-public class StartedGameMachinePanel implements Displayable {
+public class StartedGameMachinePanel extends Displayable {
 
 	private StartedGameMachine machine;
 

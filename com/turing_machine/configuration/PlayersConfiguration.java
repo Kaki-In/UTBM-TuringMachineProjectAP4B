@@ -18,8 +18,10 @@ public class PlayersConfiguration implements Configurable {
 	@Override
 	public boolean isReady()
 	{
+		if (this.players.isEmpty()) return false;
+
 		// On commence d'abord par vérifier qu'aucun joueur n'a le même nom
-		for (int player_index=0 ;  player_index < this.size() - 1; ++player_index)
+		for (int player_index=0 ;  player_index < this.size(); ++player_index)
 		{
 			PlayerConfiguration player = this.getPlayer(player_index);
 
@@ -27,7 +29,7 @@ public class PlayersConfiguration implements Configurable {
 			if (!player.isReady()) return false; 
 
 			// et on vérifie qu'aucun autre joueur n'a le même nom
-			for (int second_player_index = player_index + 1 ;  player_index < this.size(); ++player_index)
+			for (int second_player_index = player_index + 1 ;  second_player_index < this.size(); ++second_player_index)
 			{
 				PlayerConfiguration second_player = this.getPlayer(second_player_index);
 

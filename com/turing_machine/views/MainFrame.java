@@ -10,7 +10,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class MainFrame implements Displayable {
+public class MainFrame extends Displayable {
 
 	private final MainPlatformState state;
 
@@ -31,6 +31,7 @@ public class MainFrame implements Displayable {
 
 		platform_state.whenPlatformStepChanged((last_state, new_state) -> {
 			this.displayed_panel = getStatePanel();
+			reloadParent();
 		});
 	}
 

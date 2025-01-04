@@ -8,7 +8,7 @@ import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 
-public class GameDifficultySelectionPanel implements Displayable {
+public class GameDifficultySelectionPanel extends Displayable {
 
 	private final ArrayList<ObjectSelectionListener<GameDifficulty>> listeners;
 	
@@ -48,7 +48,7 @@ public class GameDifficultySelectionPanel implements Displayable {
 	@Override
 	public void refresh()
 	{
-		this.comboBox.setSelectedIndex(difficultyToInteger(this.difficulty) - 1);
+		this.comboBox.setSelectedIndex(difficultyToInteger(this.difficulty));
 	}
 
 	public synchronized GameDifficulty getGameDifficulty() {

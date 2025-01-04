@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class PlayersConfigurationPanel implements Displayable {
+public class PlayersConfigurationPanel extends Displayable {
 
 	private final PlayersConfiguration configuration;
 
@@ -36,11 +36,13 @@ public class PlayersConfigurationPanel implements Displayable {
 			@Override
 			public void onObjectAdded(PlayerConfiguration object, ArrayList<PlayerConfiguration> new_list) {
 				players.add(new ConfiguratingPlayerPanel(object));
+				refresh();
 			}
 
 			@Override
 			public void onObjectDeleted(PlayerConfiguration object, ArrayList<PlayerConfiguration> new_list) {
 				players.removeIf(player_panel -> player_panel.getConfiguration() == object);
+				refresh();
 			}
 		});
 
@@ -126,6 +128,17 @@ public class PlayersConfigurationPanel implements Displayable {
 
 			});
 		}
+
+		GridBagConstraints addbuttonConstraint = new GridBagConstraints();
+		addbuttonConstraint.gridx = 0;
+		addbuttonConstraint.gridy = this.players.size() + 1;
+		addbuttonConstraint.gridwidth = 2;
+		addbuttonConstraint.gridheight = 1;
+		addbuttonConstraint.fill = GridBagConstraints.VERTICAL;
+		addbuttonConstraint.anchor = GridBagConstraints.CENTER;
+		addbuttonConstraint.weighty = 1;
+
+		this.panel.add(this.add_button, addbuttonConstraint);
 	}
 
 	@Override

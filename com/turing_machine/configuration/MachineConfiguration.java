@@ -40,10 +40,11 @@ public class MachineConfiguration implements Configurable {
 	public MachineConfiguration(GameDifficulty difficulty, GameCriteriaCount count) {
 		this.difficulty = (difficulty != null) ? difficulty : GameDifficulty.STANDARD; // Valeur par défaut : STANDARD
 		this.criteria_count = (count != null) ? count : GameCriteriaCount.FOUR_CRITERIA; // Valeur par défaut : FOUR_CRITERIA			this.difficulty_listeners = new ArrayList<>(); 
+		this.uses_api = false; 
 
+		this.difficulty_listeners = new ArrayList<>();
 		this.criteria_count_listeners = new ArrayList<>();
 		this.api_listeners = new ArrayList<>(); 
-		this.uses_api = false; 
 	}
 
 	

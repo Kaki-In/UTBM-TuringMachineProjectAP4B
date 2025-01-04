@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
-public class GameLoadingPanel extends GameDisplayedPanel implements Displayable {
+public class GameLoadingPanel extends GameDisplayedPanel {
 
 	private float percent;
 
@@ -46,24 +46,28 @@ public class GameLoadingPanel extends GameDisplayedPanel implements Displayable 
 			public void onGameBuildStart(GameConfiguration configuration) {
 				setPercent(0);
 				setMessage("Veuillez patienter");
+				reloadParent();
 			}
 
 			@Override
 			public void onGameBuildProgress(GameConfiguration configuration, float progress, String message) {
 				setPercent(progress);
 				setMessage(message);
+				reloadParent();
 			}
 
 			@Override
 			public void onGameBuildEnd(GameConfiguration configuration, StartedGame game) {
 				setPercent(1);
 				setMessage("Configuration terminée");
+				reloadParent();
 			}
 
 			@Override
 			public void onGameBuildError(GameConfiguration configuration, String reasong) {
 				setPercent(0);
 				setMessage("Une erreur est intervenue");
+				reloadParent();
 			}
 
 		});

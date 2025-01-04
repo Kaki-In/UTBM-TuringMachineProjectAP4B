@@ -13,9 +13,9 @@ public class StartedGame {
 
 	private final ArrayList<StartedGameListener> listeners;
 
-	public StartedGame(StartedGameMachine machine, StartedGamePlayersList players) {
+	public StartedGame(StartedGameMachine machine, StartedGamePlayersList players, StartedGameState game_state) {
 		
-		this.state = new StartedGameState(machine);
+		this.state = game_state;
         this.players = players;
 
 		this.listeners = new ArrayList<>();

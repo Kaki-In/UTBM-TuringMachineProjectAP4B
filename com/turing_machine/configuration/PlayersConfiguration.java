@@ -71,6 +71,11 @@ public class PlayersConfiguration implements Configurable {
 
 	public void removePlayer(int player_id) {
 		this.players.remove(player_id);
+
+		for (ObjectsListChangeListener<PlayerConfiguration> listener : this.players_listeners)
+		{
+			listener.onObjectDeleted(player_id, this.players);
+		}
 	}
 
 	public ArrayList<PlayerConfiguration> getPlayers() {
@@ -87,6 +92,12 @@ public class PlayersConfiguration implements Configurable {
 
 	public void whenPlayersListModified(ObjectsListChangeListener<PlayerConfiguration> listener) {
 		players_listeners.add(listener);
+
+		for (ObjectsListChangeListener<playersConfiguration> listener : this.players_listeners)
+		{
+			listener.onObjectChanged(listener, this.listeners);
+		}
+
 	}
 
 }

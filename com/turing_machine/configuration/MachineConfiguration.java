@@ -21,7 +21,7 @@ public class MachineConfiguration implements Configurable {
 
 	public MachineConfiguration() {
 
-		this.difficulty = "EASY"; 
+		this.difficulty = game_difficulty.EASY; 
 		this.criteria_count = new GameCriteriaCount(); 
 		this.difficulty_listeners = new ArrayList<>(); 
 		this.criteria_count_listeners = new ArrayList<>(); 
@@ -69,17 +69,14 @@ public class MachineConfiguration implements Configurable {
 	}
 
 	public MachineConfiguration(GameDifficulty difficulty, GameCriteriaCount count) {
-
-		public MachineConfiguration(GameDifficulty difficulty, GameCriteriaCount count) {
-			this.difficulty = (difficulty != null) ? difficulty : GameDifficulty.STANDARD; // Valeur par défaut : STANDARD
-			this.criteria_count = (count != null) ? count : GameCriteriaCount.FOUR_CRITERIA; // Valeur par défaut : FOUR_CRITERIA
-			this.difficulty_listeners = new ArrayList<>(); 
-			this.criteria_count_listeners = new ArrayList<>();
-			this.api_listeners = new ArrayList<>(); 
-			this.uses_api = false; 
-		}
-
+		this.difficulty = (difficulty != null) ? difficulty : GameDifficulty.STANDARD; // Valeur par défaut : STANDARD
+		this.criteria_count = (count != null) ? count : GameCriteriaCount.FOUR_CRITERIA; // Valeur par défaut : FOUR_CRITERIA			this.difficulty_listeners = new ArrayList<>(); 
+		this.criteria_count_listeners = new ArrayList<>();
+		this.api_listeners = new ArrayList<>(); 
+		this.uses_api = false; 
 	}
+
+	
 
 	public GameDifficulty getGameDifficulty() {
 		return this.difficulty;
@@ -114,16 +111,31 @@ public class MachineConfiguration implements Configurable {
 	public void whenGameDifficultyChanged(ObjectChangeListener<GameDifficulty> listener) {
 
 		this.difficulty_listeners.add(listener);
+
+		for (ObjectsListChangeListener<MachineConfiguration> listener : this.difficulty_listeners)
+		{
+			listener.onObjectChanged(listener, this.listeners);
+		}
 	}
 
 	public void whenCriteriaCountChanged(ObjectChangeListener<GameCriteriaCount> listener) {
 
 		this.criteria_count_listeners.add(listener);
+
+		for (ObjectsListChangeListener<MachineConfiguration> listener : this.criteria_count_listeners)
+		{
+			listener.onObjectChanged(listener, this.listeners);
+		}
 	}
 
 	public void whenUsesApiChanged(ObjectChangeListener<Boolean> listener) {
 
 		this.api_listeners.add(listener);
+
+		for (ObjectsListChangeListener<MachineConfiguration> listener : this.api_listeners)
+		{
+			listener.onObjectChanged(listener, this.listeners);
+		}
 	}
 
 }

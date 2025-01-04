@@ -15,18 +15,22 @@ public class StartedGame {
 
 	public StartedGame(StartedGameMachine machine, StartedGamePlayersList players) {
 
+		this.machine = machine;
+        this.players = players;
+        this.listeners = new ArrayList<>();
+        this.round_id = 0; 
 	}
 
 	public int getActualRoundId() {
-		return 0;
+		return round_id;
 	}
 
 	public StartedGameMachine getMachine() {
-		return null;
+		return machine;
 	}
 
 	public StartedGamePlayersList getPlayersList() {
-		return null;
+		return players;
 	}
 
 	public void endRound() {
@@ -35,7 +39,13 @@ public class StartedGame {
 
 	public void whenRoundChanged(StartedGameListener listener)
 	{
-		
+		this.round_listeners.add(listener);
+
+		for (ObjectsListChangeListener<StartedGame> listener : this.listeners)
+		{
+			listener.onObjectChanged(listener, this.listeners);
+		}
+
 	}
 
 }

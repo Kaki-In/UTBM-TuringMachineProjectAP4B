@@ -10,18 +10,32 @@ public class StartedGameCriteriaList {
 
 	public StartedGameCriteriaList(ArrayList<StartedGameCriterion> criteria) {
 
+		if (criteria != null) {
+            this.criteria = criteria;
+        } else {
+            this.criteria = new ArrayList<>();
+        }
 	}
 
 	public ArrayList<StartedGameCriterion> getCriteria() {
-		return null;
+		return criteria;
 	}
 
 	public GameCriteriaCount getCriteriaCount() {
-		return null;
+		return GameCriteriaCount(criteria.size());
 	}
 
 	public StartedGameCriterion getCriterion(CriterionLetter letter) {
-		return null;
+	
+        for (StartedGameCriterion criterion : criteria) {
+            if (criterion.getLetter().equals(letter)) {
+                return criterion; 
+            }
+        }
+
+        return null; // Aucun critère correspondant trouvé
+    }
+
 	}
 
-}
+

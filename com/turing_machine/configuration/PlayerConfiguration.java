@@ -22,6 +22,11 @@ public class PlayerConfiguration implements Configurable {
 
 	public void whenNameChanged(ObjectChangeListener<String> listener) {
 		this.name_listeners.add(listener);
+
+		for (ObjectsListChangeListener<PlayerConfiguration> listener : this.name_listeners)
+		{
+			listener.onObjectChanged(listener, this.listeners);
+		}
 	}
 
 	public String getName()

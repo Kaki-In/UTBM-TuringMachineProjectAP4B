@@ -1,10 +1,10 @@
 package com.turing_machine.views;
 
-import com.turing_machine.database.Criterion;
 import com.turing_machine.database.CriterionCase;
 import com.turing_machine.database.CriterionThumbnail;
 import com.turing_machine.database.Database;
 import com.turing_machine.exceptions.NoSuchCriterionException;
+import com.turing_machine.started_game.StartedGameCriterion;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -18,13 +18,13 @@ import javax.swing.JPanel;
 
 public class StartedGameCriterionPanel extends Displayable {
 
-	private Criterion criterion;
+	private StartedGameCriterion criterion;
 
 	private ArrayList<StartedGameCriterionCasePanel> cases;
 
 	private JPanel panel;
 
-	public StartedGameCriterionPanel(Criterion criterion) {
+	public StartedGameCriterionPanel(StartedGameCriterion criterion) {
 		this.criterion = criterion;
 
 		this.panel = new JPanel();
@@ -40,10 +40,10 @@ public class StartedGameCriterionPanel extends Displayable {
 		
 		CriterionThumbnail thumbnail;
 		try {
-			thumbnail = Database.getThumbnails().getCriteriaThumbnails().getCriterionThumbnail(criterion.getId());
+			thumbnail = Database.getThumbnails().getCriteriaThumbnails().getCriterionThumbnail(criterion.getCriterionId());
 		} catch (NoSuchCriterionException e) {
-			System.err.println("Warning : couldn't find criterion thumbnail " + criterion.getId());
-			return;
+			System.err.println("Warning : couldn't find criterion thumbnail " + criterion.getCriterionId());
+			throw new AssertionError("something weird happened");
 		}
 
 		JLabel image = new JLabel(new DescriptableIcon(100, 80, thumbnail.getMainThumbnail()));
@@ -54,7 +54,7 @@ public class StartedGameCriterionPanel extends Displayable {
 		description_panel.setBackground(background_color);
 		description_panel.setLayout(new BoxLayout(description_panel, BoxLayout.Y_AXIS));
 
-		JLabel introduction = new JLabel("<html>Ce critère vérifie...</html>");
+		JLabel introduction = new JLabel("<html>Ce critère (" + ") vérifie...</html>");
 		introduction.setFont(Displayable.getFont(15));
 		introduction.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 		description_panel.add(introduction);
@@ -73,7 +73,15 @@ public class StartedGameCriterionPanel extends Displayable {
 
 		this.cases = new ArrayList<>();
 
-		ArrayList<CriterionCase> cases = criterion.getDistinctCases();
+		ArrayList<CriterionCase> cases;
+
+		try {
+			cases = Database.getCriteria().getCriterion(criterion.getCriterionId()).getDistinctCases();
+		} catch (NoSuchCriterionException e) {
+			System.err.println("Warning : couldn't find criterion thumbnail " + criterion.getCriterionId());
+			throw new AssertionError("something weird happened");
+		}
+
 
 		int columns;
 		switch (cases.size()) {

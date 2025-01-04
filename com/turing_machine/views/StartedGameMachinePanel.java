@@ -1,8 +1,5 @@
 package com.turing_machine.views;
 
-import com.turing_machine.database.Criterion;
-import com.turing_machine.database.Database;
-import com.turing_machine.exceptions.NoSuchCriterionException;
 import com.turing_machine.started_game.StartedGameCriterion;
 import com.turing_machine.started_game.StartedGameMachine;
 import java.awt.Component;
@@ -45,15 +42,7 @@ public class StartedGameMachinePanel extends Displayable {
 		{
 			StartedGameCriterion game_criterion = criteria_list.get(i);
 			
-			Criterion criterion;
-			try {
-				criterion = Database.getCriteria().getCriterion(game_criterion.getCriterionId());
-			} catch (NoSuchCriterionException e) {
-				System.err.println("Warning : couldn't find criterion " + game_criterion.getCriterionId());
-				return;
-			}
-
-			StartedGameCriterionPanel criterion_panel = new StartedGameCriterionPanel(criterion);
+			StartedGameCriterionPanel criterion_panel = new StartedGameCriterionPanel(game_criterion);
 			this.criteria.add(criterion_panel);
 
 			GridBagConstraints criterionConstraint = new GridBagConstraints();

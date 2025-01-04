@@ -33,7 +33,7 @@ public class StartedGameCriterionCasePanel extends Displayable {
 		} catch (NoSuchCaseException e)
 		{
 			System.err.println("Warning : couldn't find case thumbnail " + criterion_case.getId());
-			return;
+			throw new AssertionError("something weird happened");
 		}
 
 		JLabel image = new JLabel(new DescriptableIcon(150, 63, thumbnail.getImage()));

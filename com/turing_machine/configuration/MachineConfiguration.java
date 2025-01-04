@@ -20,57 +20,27 @@ public class MachineConfiguration implements Configurable {
 	private boolean uses_api;
 
 	public MachineConfiguration() {
-
-		this.difficulty = game_difficulty.EASY; 
-		this.criteria_count = new GameCriteriaCount(); 
-		this.difficulty_listeners = new ArrayList<>(); 
-		this.criteria_count_listeners = new ArrayList<>(); 
-		this.api_listeners = new ArrayList<>(); 
-		this.uses_api = false;
-
+		this(GameDifficulty.STANDARD, GameCriteriaCount.FOUR_CRITERIA);
 	}
 
 	@Override
 	public boolean isReady()
 	{
-		return false;
+		return true;
 	}
 
 	public MachineConfiguration(GameDifficulty difficulty) {
-
-		if (difficulty != null) {
-			this.difficulty = difficulty;
-		} else {
-			this.difficulty = GameDifficulty.STANDARD;
-		}
-
-		
-		this.difficulty_listeners = new ArrayList<>(); 
-		this.criteria_count_listeners = new ArrayList<>();
-		this.api_listeners = new ArrayList<>(); 
-		this.uses_api = false; 
-
-
+		this(difficulty, GameCriteriaCount.FOUR_CRITERIA);
 	}
 
 	public MachineConfiguration(GameCriteriaCount count) {
-
-		if (count != null) {
-			this.count = count;
-		} else {
-			this.count= GameCriteriaCount.FOUR_CRITERIA;
-		}
-
-		this.difficulty_listeners = new ArrayList<>(); 
-		this.criteria_count_listeners = new ArrayList<>();
-		this.api_listeners = new ArrayList<>(); 
-		this.uses_api = false; 
-
+		this(GameDifficulty.STANDARD, GameCriteriaCount.FOUR_CRITERIA);
 	}
 
 	public MachineConfiguration(GameDifficulty difficulty, GameCriteriaCount count) {
 		this.difficulty = (difficulty != null) ? difficulty : GameDifficulty.STANDARD; // Valeur par défaut : STANDARD
 		this.criteria_count = (count != null) ? count : GameCriteriaCount.FOUR_CRITERIA; // Valeur par défaut : FOUR_CRITERIA			this.difficulty_listeners = new ArrayList<>(); 
+
 		this.criteria_count_listeners = new ArrayList<>();
 		this.api_listeners = new ArrayList<>(); 
 		this.uses_api = false; 
@@ -93,49 +63,54 @@ public class MachineConfiguration implements Configurable {
 
 	public void setGameDifficulty(GameDifficulty game_difficulty) {
 
+		GameDifficulty last_difficulty = game_difficulty;
 		this.difficulty = game_difficulty;
+
+		for (ObjectChangeListener<GameDifficulty> listener : this.difficulty_listeners)
+		{
+			listener.onObjectChanged(last_difficulty, game_difficulty);
+		}
 
 	}
 
 	public void setCriteriaCount(GameCriteriaCount count) {
 
+		GameCriteriaCount last_count = count;
 		this.criteria_count = count;
+
+		for (ObjectChangeListener<GameCriteriaCount> listener : this.criteria_count_listeners)
+		{
+			listener.onObjectChanged(last_count, count);
+		}
 
 	}
 
 	public void setUsesApi(boolean enabled)
 	{
-		this.uses_api=enabled;
+		boolean last_enabled = enabled;
+		this.uses_api = enabled;
+
+
+		for (ObjectChangeListener<Boolean> listener : this.api_listeners)
+		{
+			listener.onObjectChanged(last_enabled, enabled);
+		}
+
 	}
 
 	public void whenGameDifficultyChanged(ObjectChangeListener<GameDifficulty> listener) {
 
 		this.difficulty_listeners.add(listener);
-
-		for (ObjectsListChangeListener<MachineConfiguration> listener : this.difficulty_listeners)
-		{
-			listener.onObjectChanged(listener, this.listeners);
-		}
 	}
 
 	public void whenCriteriaCountChanged(ObjectChangeListener<GameCriteriaCount> listener) {
 
 		this.criteria_count_listeners.add(listener);
-
-		for (ObjectsListChangeListener<MachineConfiguration> listener : this.criteria_count_listeners)
-		{
-			listener.onObjectChanged(listener, this.listeners);
-		}
 	}
 
 	public void whenUsesApiChanged(ObjectChangeListener<Boolean> listener) {
 
 		this.api_listeners.add(listener);
-
-		for (ObjectsListChangeListener<MachineConfiguration> listener : this.api_listeners)
-		{
-			listener.onObjectChanged(listener, this.listeners);
-		}
 	}
 
 }

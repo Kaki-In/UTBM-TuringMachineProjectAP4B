@@ -6,7 +6,7 @@ import com.turing_machine.exceptions.NoSuchCaseException;
 import com.turing_machine.listeners.CriterionCaseChangeListener;
 import com.turing_machine.started_game.StartedGamePlayerCriterionCase;
 import java.awt.Color;
-import java.awt.Component;
+import javax.swing.JComponent;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
@@ -93,7 +93,7 @@ public class StartedGamePlayerCriterionCasePanel extends Displayable {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
 		return this.panel;
 	}

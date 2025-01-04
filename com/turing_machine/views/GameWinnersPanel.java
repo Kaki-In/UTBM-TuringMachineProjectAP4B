@@ -1,7 +1,7 @@
 package com.turing_machine.views;
 
 import com.turing_machine.started_game.StartedGamePlayer;
-import java.awt.Component;
+import javax.swing.JComponent;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -30,7 +30,7 @@ public class GameWinnersPanel extends Displayable {
     }
 
     @Override
-    public Component getWidget() {
+    public JComponent getWidget() {
         return this.panel;
     }
 

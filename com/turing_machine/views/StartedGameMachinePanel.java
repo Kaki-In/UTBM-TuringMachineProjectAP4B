@@ -2,7 +2,7 @@ package com.turing_machine.views;
 
 import com.turing_machine.started_game.StartedGameCriterion;
 import com.turing_machine.started_game.StartedGameMachine;
-import java.awt.Component;
+import javax.swing.JComponent;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -82,7 +82,7 @@ public class StartedGameMachinePanel extends Displayable {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
 		return this.panel;
 	}

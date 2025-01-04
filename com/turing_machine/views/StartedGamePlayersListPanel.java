@@ -2,8 +2,9 @@ package com.turing_machine.views;
 
 import com.turing_machine.listeners.ObjectSelectionListener;
 import com.turing_machine.started_game.StartedGamePlayersList;
-import java.awt.Component;
+import javax.swing.JComponent;
 import java.util.ArrayList;
+import javax.swing.JPanel;
 
 public class StartedGamePlayersListPanel extends Displayable {
 
@@ -13,12 +14,13 @@ public class StartedGamePlayersListPanel extends Displayable {
 
 	private ArrayList<StartedGameEnterPlayerPanel> players_view;
 
-	public StartedGamePlayersListPanel(StartedGamePlayersList players) {
+	private JPanel panel;
 
+	public StartedGamePlayersListPanel(StartedGamePlayersList players) {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
 		return null;
 	}

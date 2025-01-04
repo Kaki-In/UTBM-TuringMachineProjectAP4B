@@ -2,7 +2,7 @@ package com.turing_machine.views;
 
 import com.turing_machine.base_objects.CodeComponent;
 import com.turing_machine.started_game.StartedGamePlayerNumbersGrid;
-import java.awt.Component;
+import javax.swing.JComponent;
 
 public class StartedGamePlayerNumberCellPanel extends Displayable {
 
@@ -15,7 +15,7 @@ public class StartedGamePlayerNumberCellPanel extends Displayable {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
 		return null;
 	}

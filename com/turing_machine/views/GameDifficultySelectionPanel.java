@@ -2,7 +2,7 @@ package com.turing_machine.views;
 
 import com.turing_machine.base_objects.GameDifficulty;
 import com.turing_machine.listeners.ObjectSelectionListener;
-import java.awt.Component;
+import javax.swing.JComponent;
 import java.awt.event.ItemEvent;
 import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class GameDifficultySelectionPanel extends Displayable {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
 		return this.comboBox;
 	}

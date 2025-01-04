@@ -5,7 +5,7 @@ import com.turing_machine.database.CriterionCaseThumbnail;
 import com.turing_machine.database.Database;
 import com.turing_machine.exceptions.NoSuchCaseException;
 import java.awt.Color;
-import java.awt.Component;
+import javax.swing.JComponent;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -48,7 +48,7 @@ public class StartedGameCriterionCasePanel extends Displayable {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
 		return this.panel;
 	}

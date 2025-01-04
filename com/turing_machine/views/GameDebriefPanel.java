@@ -1,7 +1,7 @@
 package com.turing_machine.views;
 
 import com.turing_machine.platform_state.GameDebriefingStep;
-import java.awt.Component;
+import javax.swing.JComponent;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
@@ -105,7 +105,7 @@ public class GameDebriefPanel extends GameDisplayedPanel {
     }
 
     @Override
-    public Component getWidget() {
+    public JComponent getWidget() {
         return this.panel;
     }
 

@@ -3,7 +3,7 @@ package com.turing_machine.views;
 import com.turing_machine.base_objects.Code;
 import com.turing_machine.base_objects.CodeIndex;
 import com.turing_machine.started_game.StartedGameMachine;
-import java.awt.Component;
+import javax.swing.JComponent;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -45,7 +45,7 @@ public class MachineDiscoveringPanel extends Displayable {
     }
 
     @Override
-    public Component getWidget() {
+    public JComponent getWidget() {
         return this.panel;
     }
 

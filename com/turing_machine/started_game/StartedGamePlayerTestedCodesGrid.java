@@ -16,7 +16,11 @@ public class StartedGamePlayerTestedCodesGrid {
 		this.lines = new ArrayList<>();
 		this.state = state;
 
-		this.addNewLine();
+		this.state.whenRoundChanged((round_id) -> {
+			this.addNewLine(round_id);
+		});
+
+		this.addNewLine(0);
 	}
 
 	public StartedGamePlayerTestedCodesLine getLineFromRound(int round_id) {
@@ -27,14 +31,19 @@ public class StartedGamePlayerTestedCodesGrid {
 		return this.lines.stream().map(line -> line.getValidationsCount()).reduce(0, (t1, count) -> t1 + count);
 	}
 
-	protected void addNewLine() {
-		StartedGamePlayerTestedCodesLine line = new StartedGamePlayerTestedCodesLine(state);
+	protected void addNewLine(int round) {
+		StartedGamePlayerTestedCodesLine line = new StartedGamePlayerTestedCodesLine(state, round);
 		this.lines.add(line);
 
 		for (ObjectSelectionListener<StartedGamePlayerTestedCodesLine> listener: this.rounds_listener)
 		{
 			listener.onObjectSelected(line);
 		}
+	}
+
+	public StartedGameState getState()
+	{
+		return this.state;
 	}
 
 	public void whenNewLine(ObjectSelectionListener<StartedGamePlayerTestedCodesLine> listener) {

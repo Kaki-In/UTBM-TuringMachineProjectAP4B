@@ -1,6 +1,7 @@
 package com.turing_machine.started_game;
 
 import com.turing_machine.base_objects.Code;
+import com.turing_machine.base_objects.CriterionLetter;
 import com.turing_machine.exceptions.GameConstraintException;
 import com.turing_machine.listeners.StartedGameCodesLineListener;
 import java.util.ArrayList;
@@ -9,24 +10,27 @@ public class StartedGamePlayerTestedCodesLine {
 
 	private Code code;
 
+	private final int round_id;
+
 	private final StartedGamePlayerTestedCodeValidationResult[] validation_results;
 
 	private final ArrayList<StartedGameCodesLineListener> validation_listeners;
 
 	private final StartedGameState state;
 
-	public StartedGamePlayerTestedCodesLine(StartedGameState state) {
+	public StartedGamePlayerTestedCodesLine(StartedGameState state, int round) {
 		this.code = null;
 		this.validation_results = new StartedGamePlayerTestedCodeValidationResult[] {null, null, null};
 		this.validation_listeners = new ArrayList<>();
 
 		this.state = state;
+		this.round_id = round;
 	}
 
 	public ArrayList<StartedGamePlayerTestedCodeValidationResult> getCodeValidationResults() {
 		ArrayList result = new ArrayList<>();
 
-		for (int i=0; validation_results[i] != null && i < 3; ++i)
+		for (int i=0; i < 3 && validation_results[i] != null; ++i)
 		{
 			result.add(validation_results[i]);
 		}
@@ -39,7 +43,7 @@ public class StartedGamePlayerTestedCodesLine {
 	}
 
 	public void setCode(Code code) throws GameConstraintException {
-		if (this.code != null)
+		if (this.code != null && this.getValidationsCount() > 0)
 		{
 			throw new GameConstraintException("can't choose a code twice on the same round");
 		}
@@ -52,8 +56,13 @@ public class StartedGamePlayerTestedCodesLine {
 		}
 	}
 
+	public Code getCode()
+	{
+		return this.code;
+	}
+
 	public void addValidationResult(StartedGamePlayerTestedCodeValidationResult result) {
-		this.validation_results[this.getValidationsCount()] = result;
+		this.validation_results[getValidationsCount()] = result;
 
 		for (StartedGameCodesLineListener listener: this.validation_listeners)
 		{
@@ -61,18 +70,37 @@ public class StartedGamePlayerTestedCodesLine {
 		}
 	}
 
-	public void verify(StartedGameCriterion criterion) throws GameConstraintException
+	public void verify(CriterionLetter letter) throws GameConstraintException
 	{
+		if (this.state.getRoundId() != this.round_id) {
+			throw new GameConstraintException("this round is finished yet");
+		}
+
 		if (this.getValidationsCount() == 3)
 		{
 			throw new GameConstraintException("can't verify more than 3 times in a round");
 		}
 
-		StartedGameCriterion true_criterion = this.state.getMachine().getCriteria().getCriterion(criterion.getLetter());
+		if (this.getCode() == null)
+		{
+			throw new GameConstraintException("please choose first a code!");
+		}
+
+		StartedGameCriterion true_criterion = this.state.getMachine().getCriteria().getCriterion(letter);
 
 		boolean match = true_criterion.doesMatchSame(this.code, this.state.getMachine().getCode());
 
-		this.addValidationResult(new StartedGamePlayerTestedCodeValidationResult(this.code, criterion.getLetter(), match));
+		this.addValidationResult(new StartedGamePlayerTestedCodeValidationResult(this.code, letter, match));
+	}
+
+	public StartedGameState getState()
+	{
+		return this.state;
+	}
+
+	public int getRoundId()
+	{
+		return this.round_id;
 	}
 
 	public void whenNewValidation(StartedGameCodesLineListener listener) {

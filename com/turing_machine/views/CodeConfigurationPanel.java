@@ -1,12 +1,12 @@
 package com.turing_machine.views;
 
 import com.turing_machine.configuration.MachineConfiguration;
-import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -146,7 +146,7 @@ public class CodeConfigurationPanel extends Displayable {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
 		return this.panel;
 	}

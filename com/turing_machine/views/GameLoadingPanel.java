@@ -4,7 +4,7 @@ import com.turing_machine.configuration.GameConfiguration;
 import com.turing_machine.listeners.GameBuildProgressionListener;
 import com.turing_machine.platform_state.BuildGameStep;
 import com.turing_machine.started_game.StartedGame;
-import java.awt.Component;
+import javax.swing.JComponent;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -76,7 +76,7 @@ public class GameLoadingPanel extends GameDisplayedPanel {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
 		return this.panel;
 	}

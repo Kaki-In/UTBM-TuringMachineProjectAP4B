@@ -1,8 +1,8 @@
 package com.turing_machine.views;
 
-import java.awt.Component;
 import java.awt.Font;
 import java.util.ArrayList;
+import javax.swing.JComponent;
 
 public abstract class Displayable {
 
@@ -25,7 +25,7 @@ public abstract class Displayable {
 
 	public abstract void refresh();
 
-	public abstract Component getWidget();
+	public abstract JComponent getWidget();
 
 	public static Font getFont(int size)
 	{

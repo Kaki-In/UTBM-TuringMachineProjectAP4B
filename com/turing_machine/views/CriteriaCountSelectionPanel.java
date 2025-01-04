@@ -2,7 +2,7 @@ package com.turing_machine.views;
 
 import com.turing_machine.base_objects.GameCriteriaCount;
 import com.turing_machine.listeners.ObjectSelectionListener;
-import java.awt.Component;
+import javax.swing.JComponent;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
@@ -36,7 +36,7 @@ public class CriteriaCountSelectionPanel extends Displayable {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
 		return this.comboBox;
 	}

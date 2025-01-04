@@ -1,7 +1,7 @@
 package com.turing_machine.views;
 
 import com.turing_machine.started_game.StartedGamePlayersList;
-import java.awt.Component;
+import javax.swing.JComponent;
 import java.util.ArrayList;
 
 public class StartedGamePlayersPanel extends Displayable {
@@ -19,7 +19,7 @@ public class StartedGamePlayersPanel extends Displayable {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
 		return null;
 	}

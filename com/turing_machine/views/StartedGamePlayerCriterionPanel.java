@@ -6,7 +6,7 @@ import com.turing_machine.exceptions.NoSuchCriterionException;
 import com.turing_machine.started_game.StartedGamePlayerCriterion;
 import com.turing_machine.started_game.StartedGamePlayerCriterionCase;
 import java.awt.Color;
-import java.awt.Component;
+import javax.swing.JComponent;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
@@ -103,7 +103,7 @@ public class StartedGamePlayerCriterionPanel extends Displayable {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
 		return this.panel;
 	}

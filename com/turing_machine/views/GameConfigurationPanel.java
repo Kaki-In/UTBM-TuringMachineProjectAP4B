@@ -2,7 +2,7 @@ package com.turing_machine.views;
 
 import com.turing_machine.configuration.GameConfiguration;
 import com.turing_machine.platform_state.ConfiguratingGameStep;
-import java.awt.Component;
+import javax.swing.JComponent;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
@@ -121,7 +121,7 @@ public class GameConfigurationPanel extends GameDisplayedPanel {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
 		return this.panel;
 	}

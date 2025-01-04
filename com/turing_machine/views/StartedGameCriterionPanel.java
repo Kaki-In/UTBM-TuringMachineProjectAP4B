@@ -6,7 +6,7 @@ import com.turing_machine.database.Database;
 import com.turing_machine.exceptions.NoSuchCriterionException;
 import com.turing_machine.started_game.StartedGameCriterion;
 import java.awt.Color;
-import java.awt.Component;
+import javax.swing.JComponent;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -130,7 +130,7 @@ public class StartedGameCriterionPanel extends Displayable {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
 		return this.panel;
 	}

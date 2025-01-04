@@ -1,7 +1,7 @@
 package com.turing_machine.views;
 
 import com.turing_machine.configuration.PlayerConfiguration;
-import java.awt.Component;
+import javax.swing.JComponent;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -51,7 +51,7 @@ public class ConfiguratingPlayerPanel extends Displayable {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
 		return this.field;
 	}

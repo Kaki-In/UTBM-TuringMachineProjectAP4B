@@ -5,8 +5,8 @@ import com.turing_machine.platform_state.ConfiguratingGameStep;
 import com.turing_machine.platform_state.GameDebriefingStep;
 import com.turing_machine.platform_state.MainPlatformState;
 import com.turing_machine.platform_state.StartedGameStep;
-import java.awt.Component;
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -47,7 +47,7 @@ public class MainFrame extends Displayable {
 
 		JLabel label = new JLabel("Turing Machine");
 		label.setFont(Displayable.getFont(35));
-		label.setAlignmentX(Component.CENTER_ALIGNMENT);
+		label.setAlignmentX(JComponent.CENTER_ALIGNMENT);
 		
 		this.frame.getContentPane().add(label);
 
@@ -95,9 +95,9 @@ public class MainFrame extends Displayable {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
-		return this.frame;
+		return null;
 	}
 
 	@Override

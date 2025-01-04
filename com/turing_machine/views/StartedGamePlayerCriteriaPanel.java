@@ -2,7 +2,7 @@ package com.turing_machine.views;
 
 import com.turing_machine.base_objects.CriterionLetter;
 import com.turing_machine.started_game.StartedGamePlayerCriteria;
-import java.awt.Component;
+import javax.swing.JComponent;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -70,7 +70,7 @@ public class StartedGamePlayerCriteriaPanel extends Displayable {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
 		return this.panel;
 	}

@@ -2,7 +2,7 @@ package com.turing_machine.views;
 
 import com.turing_machine.platform_state.StartedGameStep;
 import com.turing_machine.started_game.StartedGame;
-import java.awt.Component;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 public class StartedGamePanel extends GameDisplayedPanel {
@@ -22,7 +22,7 @@ public class StartedGamePanel extends GameDisplayedPanel {
 	}
 
 	@Override
-	public Component getWidget()
+	public JComponent getWidget()
 	{
 		return this.panel;
 	}

@@ -5,26 +5,28 @@ import com.turing_machine.base_objects.CriterionLetter;
 
 public class StartedGamePlayerTestedCodeValidationResult {
 
-	private Code code;
+	private final Code code;
 
-	private CriterionLetter letter;
+	private final CriterionLetter letter;
 
-	private boolean match;
+	private final boolean match;
 
 	public StartedGamePlayerTestedCodeValidationResult(Code code, CriterionLetter letter, boolean matched) {
-
+		this.code = code;
+		this.letter = letter;
+		this.match = matched;
 	}
 
 	public Code getEffectiveCode() {
-		return null;
+		return this.code;
 	}
 
 	public CriterionLetter getCriterionLetter() {
-		return null;
+		return this.letter;
 	}
 
 	public boolean hasMatched() {
-		return false;
+		return this.match;
 	}
 
 }

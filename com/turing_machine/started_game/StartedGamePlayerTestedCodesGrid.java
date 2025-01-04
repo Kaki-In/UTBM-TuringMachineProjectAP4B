@@ -5,28 +5,39 @@ import java.util.ArrayList;
 
 public class StartedGamePlayerTestedCodesGrid {
 
-	private ArrayList<ObjectSelectionListener<StartedGamePlayerTestedCodesLine>> rounds_listener;
+	private final ArrayList<ObjectSelectionListener<StartedGamePlayerTestedCodesLine>> rounds_listener;
 
-	private ArrayList<StartedGamePlayerTestedCodesLine> lines;
+	private final ArrayList<StartedGamePlayerTestedCodesLine> lines;
 
-	public StartedGamePlayerTestedCodesGrid() {
+	private final StartedGameState state;
+
+	public StartedGamePlayerTestedCodesGrid(StartedGameState state) {
+		this.rounds_listener = new ArrayList<>();
+		this.lines = new ArrayList<>();
+		this.state = state;
 
 	}
 
 	public StartedGamePlayerTestedCodesLine getLineFromRound(int round_id) {
-		return null;
+		return this.lines.get(round_id);
 	}
 
 	public int getTotalValidationsCount() {
-		return 0;
+		return this.lines.stream().map(line -> line.getValidationsCount()).reduce(0, (t1, count) -> t1 + count);
 	}
 
 	protected void addNewLine() {
+		StartedGamePlayerTestedCodesLine line = new StartedGamePlayerTestedCodesLine(state);
+		this.lines.add(line);
 
+		for (ObjectSelectionListener<StartedGamePlayerTestedCodesLine> listener: this.rounds_listener)
+		{
+			listener.onObjectSelected(line);
+		}
 	}
 
 	public void whenNewLine(ObjectSelectionListener<StartedGamePlayerTestedCodesLine> listener) {
-
+		this.rounds_listener.add(listener);
 	}
 
 }

@@ -4,20 +4,21 @@ import java.util.ArrayList;
 
 public class StartedGamePlayerCriterion {
 
-	private int criterion_id;
+	private final int criterion_id;
 
-	private ArrayList<StartedGamePlayerCriterionCase> cases;
+	private final ArrayList<StartedGamePlayerCriterionCase> cases;
 
 	public StartedGamePlayerCriterion(int criterion_id, ArrayList<StartedGamePlayerCriterionCase> cases) {
-
+		this.criterion_id = criterion_id;
+		this.cases = cases;
 	}
 
 	public ArrayList<StartedGamePlayerCriterionCase> getCases() {
-		return null;
+		return this.cases;
 	}
 
 	public int getId() {
-		return 0;
+		return this.criterion_id;
 	}
 
 }

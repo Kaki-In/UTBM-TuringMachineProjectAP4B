@@ -1,23 +1,23 @@
 package com.turing_machine.started_game;
 
-import java.util.ArrayList;
 import com.turing_machine.base_objects.CriterionLetter;
 import com.turing_machine.base_objects.GameCriteriaCount;
+import java.util.ArrayList;
 
 public class StartedGamePlayerCriteria {
 
-	private ArrayList<StartedGamePlayerCriterion> criteria;
+	private final ArrayList<StartedGamePlayerCriterion> criteria;
 
 	public StartedGamePlayerCriteria(ArrayList<StartedGamePlayerCriterion> criteria) {
-
+		this.criteria = criteria;
 	}
 
-	public StartedGameCriterion getCriterion(CriterionLetter letter) {
-		return null;
+	public StartedGamePlayerCriterion getCriterion(CriterionLetter letter) {
+		return this.criteria.get(letter.toInteger());
 	}
 
 	public GameCriteriaCount getCriteriaCount() {
-		return null;
+		return GameCriteriaCount.fromInteger(criteria.size());
 	}
 
 }

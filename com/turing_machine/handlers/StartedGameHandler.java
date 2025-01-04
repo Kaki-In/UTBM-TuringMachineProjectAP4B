@@ -7,7 +7,6 @@ import com.turing_machine.platform_state.PlatformStep;
 import com.turing_machine.platform_state.StartedGameStep;
 import com.turing_machine.started_game.StartedGamePlayer;
 import java.util.ArrayList;
-import com.turing_machine.listeners.StartedGameStateListener;
 
 public class StartedGameHandler extends PlatformHandler {
 
@@ -17,20 +16,13 @@ public class StartedGameHandler extends PlatformHandler {
 		state.whenPlatformStepChanged((PlatformStep last_step, PlatformStep new_step) -> {
 			if (new_step instanceof StartedGameStep game_step)
 			{
-				game_step.getStartedGame().whenRoundChanged(new StartedGameStateListener() {
-					@Override
-					public void onNewRound(int round_id) {}
-
-					@Override
-					public void onGameEnds(ArrayList<StartedGamePlayer> winners) {
-						try 
-						{
-							endGame(winners);
-						} catch (NotStartedGameException e) {
-							System.err.println("Warning: game not started when it ends");
-						}
+				game_step.getStartedGame().whenGameEnds((winners) -> {
+					try
+					{
+						endGame(winners);
+					} catch (NotStartedGameException e) {
+						System.err.println("Warning: game not started when it ends");
 					}
-
 				});
 			}
 		});
@@ -44,7 +36,7 @@ public class StartedGameHandler extends PlatformHandler {
 			throw new NotStartedGameException();
 		}
 
-		state.setActualStep(new GameDebriefingStep(winners, game_step.getStartedGame().getMachine()));
+		state.setActualStep(new GameDebriefingStep(winners, game_step.getStartedGame().getState().getMachine()));
 	}
 
 }

@@ -2,26 +2,28 @@ package com.turing_machine.started_game;
 
 public class StartedGamePlayerNotes {
 
-	private StartedGamePlayerCriteria criteria;
+	private final StartedGamePlayerCriteria criteria;
 
-	private StartedGamePlayerNumbersGrid numbers;
+	private final StartedGamePlayerNumbersGrid numbers;
 
-	private StartedGamePlayerTestedCodesGrid codes;
+	private final StartedGamePlayerTestedCodesGrid codes;
 
-	public StartedGamePlayerNotes(StartedGamePlayerCriteria criteria) {
-
+	public StartedGamePlayerNotes(StartedGamePlayerCriteria criteria, StartedGameState state) {
+		this.criteria = criteria;
+		this.numbers = new StartedGamePlayerNumbersGrid();
+		this.codes = new StartedGamePlayerTestedCodesGrid(state);
 	}
 
 	public StartedGamePlayerNumbersGrid getNumbersGrid() {
-		return null;
+		return this.numbers;
 	}
 
 	public StartedGamePlayerTestedCodesGrid getTestedCodesGrid() {
-		return null;
+		return this.codes;
 	}
 
 	public StartedGamePlayerCriteria getCriteria() {
-		return null;
+		return this.criteria;
 	}
 
 }

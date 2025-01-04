@@ -1,6 +1,7 @@
 package com.turing_machine.started_game;
 
 import com.turing_machine.base_objects.Code;
+import com.turing_machine.listeners.StartedGameCodesLineListener;
 import com.turing_machine.listeners.StartedGamePlayerEventsListener;
 import java.util.ArrayList;
 
@@ -29,14 +30,21 @@ public class StartedGamePlayer {
 		this.state = game_state;
 
 		this.notes.getTestedCodesGrid().whenNewLine(line -> {
-			line.whenNewValidation(result -> {
-				if (line.getValidationsCount() == 3) // in this case, the player becomes disabled and should announce it
-				{
-					for (StartedGamePlayerEventsListener listener: this.listeners)
+			line.whenNewValidation(new StartedGameCodesLineListener() {
+				@Override
+				public void onCodeDecided(Code code) {}
+
+				@Override
+				public void onVerificationDone(StartedGamePlayerTestedCodeValidationResult result) {
+					if (line.getValidationsCount() == 3) // in this case, the player becomes disabled and should announce it
 					{
-						listener.onPlayerDisabled();
+						for (StartedGamePlayerEventsListener listener: listeners)
+						{
+							listener.onPlayerDisabled();
+						}
 					}
 				}
+	
 			});
 		});
 	}

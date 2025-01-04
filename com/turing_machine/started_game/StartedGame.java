@@ -45,8 +45,6 @@ public class StartedGame {
 				}
 			}
 		});
-
-		this.state.endRound(); // permet de démarrer une nouvelle manche
 	}
 
 	public StartedGameState getState()

@@ -11,11 +11,11 @@ public class MachineConfiguration implements Configurable {
 
 	private GameCriteriaCount criteria_count;
 
-	private ArrayList<ObjectChangeListener<GameDifficulty>> difficulty_listeners;
+	private final ArrayList<ObjectChangeListener<GameDifficulty>> difficulty_listeners;
 
-	private ArrayList<ObjectChangeListener<GameCriteriaCount>> criteria_count_listeners;
+	private final ArrayList<ObjectChangeListener<GameCriteriaCount>> criteria_count_listeners;
 
-	private ArrayList<ObjectChangeListener<Boolean>> api_listeners;
+	private final ArrayList<ObjectChangeListener<Boolean>> api_listeners;
 
 	private boolean uses_api;
 

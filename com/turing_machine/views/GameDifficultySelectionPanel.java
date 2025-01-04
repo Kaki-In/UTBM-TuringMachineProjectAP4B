@@ -51,11 +51,11 @@ public class GameDifficultySelectionPanel extends Displayable {
 		this.comboBox.setSelectedIndex(difficultyToInteger(this.difficulty));
 	}
 
-	public synchronized GameDifficulty getGameDifficulty() {
+	public GameDifficulty getGameDifficulty() {
 		return this.difficulty;
 	}
 
-	public synchronized void setGameDifficulty(GameDifficulty difficulty) {
+	public void setGameDifficulty(GameDifficulty difficulty) {
 		if (difficulty == this.difficulty) return ;
 
 		this.difficulty = difficulty;

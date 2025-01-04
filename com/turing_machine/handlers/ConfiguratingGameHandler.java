@@ -10,6 +10,30 @@ public class ConfiguratingGameHandler extends PlatformHandler {
 
 	public ConfiguratingGameHandler(MainPlatformState state) {
 		super(state);
+
+		if (state.getActualStep() instanceof ConfiguratingGameStep confgameStep)
+		{
+			confgameStep.whenGameStartLaunched(() -> {
+				try {
+					startGame();
+				} catch (NotReadyConfigurationException e) {
+
+				}
+			});
+		}
+
+		state.whenPlatformStepChanged((last_step, new_step) -> {
+			if (new_step instanceof ConfiguratingGameStep confgameStep)
+			{
+				confgameStep.whenGameStartLaunched(() ->  {
+					try {
+						startGame();
+					} catch (NotReadyConfigurationException e) {
+						
+					}
+				});
+			}
+		});
 	}
 
 	public void startGame() throws NotReadyConfigurationException {

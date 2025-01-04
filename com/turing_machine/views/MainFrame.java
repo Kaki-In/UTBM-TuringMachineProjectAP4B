@@ -22,28 +22,38 @@ public class MainFrame extends Displayable {
 		this.state = platform_state;
 
 		this.frame = new JFrame();
-		this.frame.setLayout(new BoxLayout(this.frame, BoxLayout.Y_AXIS));
+		this.frame.getContentPane().setLayout(new BoxLayout(this.frame.getContentPane(), BoxLayout.Y_AXIS));
 		this.frame.setTitle("Turing Machine Game - UTBM A2024 - Groupe Dmitri Pavlovsky");
+		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.displayed_panel = getStatePanel();
+		this.displayed_panel.whenShouldReload(() -> {reloadParent();});
 
 		this.constructFrame();
 
 		platform_state.whenPlatformStepChanged((last_state, new_state) -> {
 			this.displayed_panel = getStatePanel();
+			
 			reloadParent();
+
+			this.displayed_panel.whenShouldReload(() -> {reloadParent();});
 		});
 	}
 
 	public void constructFrame()
 	{
-		this.frame.removeAll();
+		this.frame.getContentPane().removeAll();
+		this.frame.repaint();
 
 		JLabel label = new JLabel("Turing Machine");
 		label.setFont(Displayable.getFont(35));
-		this.frame.add(label);
+		label.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		this.frame.getContentPane().add(label);
 
-		this.frame.add(this.displayed_panel.getWidget());
+		this.frame.getContentPane().add(this.displayed_panel.getWidget());
+
+		frame.setMinimumSize(frame.getPreferredSize());
 	}
 
 	public GameDisplayedPanel getStatePanel()
@@ -77,6 +87,14 @@ public class MainFrame extends Displayable {
 	}
 
 	@Override
+	public void reloadParent()
+	{
+		super.reloadParent();
+
+		javax.swing.SwingUtilities.invokeLater(() -> refresh());
+	}
+
+	@Override
 	public Component getWidget()
 	{
 		return this.frame;
@@ -85,6 +103,10 @@ public class MainFrame extends Displayable {
 	@Override
 	public void refresh()
 	{
+		this.displayed_panel.refresh();
+		this.constructFrame();
+
+		this.frame.revalidate();
 	}
 
 }

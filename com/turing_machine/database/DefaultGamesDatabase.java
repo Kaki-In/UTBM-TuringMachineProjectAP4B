@@ -269,7 +269,7 @@ public class DefaultGamesDatabase {
 															 .filter(game -> game.getDifficulty() == difficulty && game.getCriteriaCount() == criteriaCount)
 															 .collect(Collectors.toCollection(ArrayList::new));
 
-		return corresponds_games.get(Math.round((float) (Math.random() * corresponds_games.size())));
+		return corresponds_games.get(Math.round((float) (Math.random() * (corresponds_games.size() - 1))));
 	}
 
 }

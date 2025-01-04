@@ -48,11 +48,11 @@ public class CriteriaCountSelectionPanel extends Displayable {
 		this.comboBox.setSelectedIndex(index);
 	}
 
-	public synchronized GameCriteriaCount getCriteriaCount() {
+	public GameCriteriaCount getCriteriaCount() {
 		return this.count;
 	}
 
-	public synchronized void setCriteriaCount(GameCriteriaCount count) {
+	public void setCriteriaCount(GameCriteriaCount count) {
 		if (count == this.count) return;
 
 		this.count = count;

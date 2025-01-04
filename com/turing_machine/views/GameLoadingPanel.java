@@ -34,12 +34,14 @@ public class GameLoadingPanel extends GameDisplayedPanel {
 		this.panel.setLayout(new BoxLayout(this.panel, BoxLayout.Y_AXIS));
 
 		this.infoLabel = new JLabel(this.message);
+		this.infoLabel.setAlignmentX(JPanel.LEFT_ALIGNMENT);
 		this.panel.add(this.infoLabel);
 
 		this.progressBar = new JProgressBar();
 		this.progressBar.setMinimum(0);
 		this.progressBar.setMaximum(100);
 		this.progressBar.setValue(0);
+		this.panel.add(this.progressBar);
 
 		this.step.whenConfigurationProgress(new GameBuildProgressionListener() {
 			@Override
@@ -83,24 +85,25 @@ public class GameLoadingPanel extends GameDisplayedPanel {
 	public void refresh()
 	{
 		this.progressBar.setValue(Math.round(this.percent*100));
+		this.infoLabel.setText(this.message);
 	}
 
-	public synchronized void setPercent(float percent)
+	public void setPercent(float percent)
 	{
 		this.percent = percent;
 	}
 
-	public synchronized void setMessage(String message)
+	public void setMessage(String message)
 	{
 		this.message = message;
 	}
 
-	public synchronized float getPercent()
+	public float getPercent()
 	{
 		return this.percent;
 	}
 
-	public synchronized String getMessage()
+	public String getMessage()
 	{
 		return this.message;
 	}

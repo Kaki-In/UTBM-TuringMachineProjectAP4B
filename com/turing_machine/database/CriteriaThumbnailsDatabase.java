@@ -1,6 +1,9 @@
 package com.turing_machine.database;
 
+import com.turing_machine.base_objects.CodeIndex;
 import com.turing_machine.exceptions.NoSuchCriterionException;
+import com.turing_machine.images.ImageDescriptable;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -14,6 +17,12 @@ public class CriteriaThumbnailsDatabase {
 		this.criteria.add(
 			new CriterionThumbnail(1, "le premier nombre comparé à 1", 
 				(Graphics g2D) -> {
+					ImageDescriptable.drawIndex(g2D, CodeIndex.FIRST_BLUE_TRIANGLE, 25, 40, 30);
+
+					g2D.setColor(Color.BLACK);
+					ImageDescriptable.drawBalance(g2D, 50, 40, 30);
+
+					ImageDescriptable.draw1Value(g2D, 75, 40, 30);
 				}
 			)
 		);

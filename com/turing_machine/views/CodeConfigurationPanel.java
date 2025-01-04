@@ -163,12 +163,12 @@ public class CodeConfigurationPanel extends Displayable {
 		this.checkbox.setSelected(uses_api);
 	}
 
-	public synchronized boolean getUsesApi()
+	public boolean getUsesApi()
 	{
 		return this.uses_api;
 	}
 
-	public synchronized void setUsesApi(boolean enabled)
+	public void setUsesApi(boolean enabled)
 	{
 		if (enabled == this.uses_api) return;
 

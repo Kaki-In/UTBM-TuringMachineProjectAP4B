@@ -16,6 +16,7 @@ public class StartedGamePlayerTestedCodesGrid {
 		this.lines = new ArrayList<>();
 		this.state = state;
 
+		this.addNewLine();
 	}
 
 	public StartedGamePlayerTestedCodesLine getLineFromRound(int round_id) {

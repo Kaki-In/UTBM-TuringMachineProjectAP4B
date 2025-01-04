@@ -150,24 +150,24 @@ public interface ImageDescriptable
 
     public static void drawEquals(Graphics g2D, int x, int y, int size)
     {
-        g2D.fillRoundRect(x - size/2, y-size/6, size, size/3, size/20, size/20);
-        g2D.fillRoundRect(x - size/2, y+size/6, size, size/3, size/20, size/20);
+        g2D.fillRoundRect(x - size/2, y-size/2+size/5, size, size/5, size/20, size/20);
+        g2D.fillRoundRect(x - size/2, y+size/10, size, size/5, size/20, size/20);
     }
 
     public static void drawGreaterThan(Graphics g2D, int x, int y, int size)
     {
         int cossize = Math.round((float) (Math.cos(Math.PI/4)*size/2));
 
-        g2D.drawLine(x-cossize/2, y-cossize/2, x+cossize/2, 0);
-        g2D.drawLine(x-cossize/2, y+cossize/2, x+cossize/2, 0);
+        g2D.drawLine(x-cossize/2, y-cossize/2, x+cossize/2, y);
+        g2D.drawLine(x-cossize/2, y+cossize/2, x+cossize/2, y);
     }
 
     public static void drawLowerThan(Graphics g2D, int x, int y, int size)
     {
         int cossize = Math.round((float) (Math.cos(Math.PI/4)*size/2));
 
-        g2D.drawLine(x+cossize/2, y-cossize/2, x-cossize/2, 0);
-        g2D.drawLine(x+cossize/2, y+cossize/2, x-cossize/2, 0);
+        g2D.drawLine(x+cossize/2, y-cossize/2, x-cossize/2, y);
+        g2D.drawLine(x+cossize/2, y+cossize/2, x-cossize/2, y);
     }
 
     public static void drawGreaterEqualThan(Graphics g2D, int x, int y, int size)
@@ -254,7 +254,7 @@ public interface ImageDescriptable
     {
         g2D.setFont(new Font(getFontName(), Font.LAYOUT_LEFT_TO_RIGHT, size));
 
-        g2D.drawString(text, x, y);
+        g2D.drawString(text, x, y+size/2);
     }
 
     public static void drawPodium(Graphics g2D, int height1, int height2, int height3, int x, int y, int size)
@@ -274,17 +274,7 @@ public interface ImageDescriptable
 
     public static void drawBalance(Graphics g2D, int x, int y, int size)
     {
-        int ysize = size/2;
-        
-        g2D.drawLine(x-size/6, y+ysize/4, size/3, ysize/4);
-        g2D.drawLine(x, y-ysize/4, x, y+ysize/2);
-        g2D.drawLine(x-size/3, y+ysize/10, x+size/3, y-ysize/10);
-
-        g2D.drawLine(x-size/3, y+ysize/10, x-size/3, y);
-        g2D.drawLine(x+size/3, y-ysize/10, x-size/3, y-ysize/5);
-
-        g2D.drawLine(x-size/2, y+size/10, x-size/4, y+size/10);
-        g2D.drawLine(x+size/4, y, x+size/2, y);
+        drawText(g2D, "?", x-size/2, y, size);
     }
 
     public static String getFontName()

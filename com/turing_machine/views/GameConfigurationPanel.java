@@ -1,7 +1,6 @@
 package com.turing_machine.views;
 
 import com.turing_machine.configuration.GameConfiguration;
-import com.turing_machine.configuration.PlayerConfiguration;
 import com.turing_machine.platform_state.ConfiguratingGameStep;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
@@ -35,7 +34,7 @@ public class GameConfigurationPanel extends GameDisplayedPanel {
 		GridBagConstraints titleConstraints = new GridBagConstraints();
 		titleConstraints.gridx = 0;
 		titleConstraints.gridy = 0;
-		titleConstraints.gridwidth = 2;
+		titleConstraints.gridwidth = 3;
 		titleConstraints.gridheight = 1;
 		titleConstraints.fill = GridBagConstraints.VERTICAL;
 		titleConstraints.anchor = GridBagConstraints.CENTER;
@@ -50,21 +49,34 @@ public class GameConfigurationPanel extends GameDisplayedPanel {
 		codeConstraints.gridy = 1;
 		codeConstraints.gridwidth = 1;
 		codeConstraints.gridheight = 1;
-		codeConstraints.fill = GridBagConstraints.BOTH;
-		titleConstraints.weightx = 1;
-		titleConstraints.weighty = 3;
+		codeConstraints.fill = GridBagConstraints.HORIZONTAL;
+		codeConstraints.anchor = GridBagConstraints.NORTH;
+		codeConstraints.weightx = 1;
 
 		this.code = new CodeConfigurationPanel(this.configuration.getCodeConfiguration());
 		this.panel.add(this.code.getWidget(), codeConstraints);
 		
+		GridBagConstraints spaceConstraints = new GridBagConstraints();
+		spaceConstraints.gridx = 1;
+		spaceConstraints.gridy = 1;
+		spaceConstraints.gridwidth = 1;
+		spaceConstraints.gridheight = 1;
+		spaceConstraints.fill = GridBagConstraints.HORIZONTAL;
+		spaceConstraints.anchor = GridBagConstraints.NORTH;
+		spaceConstraints.weightx = 0;
+
+		JPanel space_panel = new JPanel();
+		space_panel.setSize(1, 20);
+		this.panel.add(space_panel, spaceConstraints);
+
 		GridBagConstraints playersConstraint = new GridBagConstraints();
-		playersConstraint.gridx = 1;
+		playersConstraint.gridx = 2;
 		playersConstraint.gridy = 1;
 		playersConstraint.gridwidth = 1;
 		playersConstraint.gridheight = 1;
-		playersConstraint.fill = GridBagConstraints.BOTH;
-		titleConstraints.weightx = 1;
-		titleConstraints.weighty = 3;
+		playersConstraint.fill = GridBagConstraints.HORIZONTAL;
+		playersConstraint.anchor = GridBagConstraints.NORTH;
+		playersConstraint.weightx = 1;
 
 		this.players = new PlayersConfigurationPanel(this.configuration.getPlayersConfiguration());
 		this.panel.add(this.players.getWidget(), playersConstraint);
@@ -72,7 +84,7 @@ public class GameConfigurationPanel extends GameDisplayedPanel {
 		GridBagConstraints buttonConstraint = new GridBagConstraints();
 		buttonConstraint.gridx = 0;
 		buttonConstraint.gridy = 2;
-		buttonConstraint.gridwidth = 2;
+		buttonConstraint.gridwidth = 3;
 		buttonConstraint.gridheight = 1;
 		buttonConstraint.fill = GridBagConstraints.VERTICAL;
 		buttonConstraint.anchor = GridBagConstraints.CENTER;
@@ -83,17 +95,7 @@ public class GameConfigurationPanel extends GameDisplayedPanel {
 		this.startButton.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
-				System.out.println("Difficulté " + configuration.getGameConfiguration().getCodeConfiguration().getGameDifficulty());
-				System.out.println("Nombre de critères " + configuration.getGameConfiguration().getCodeConfiguration().getCriteriaCount());
-				System.out.println("Utilisez l'API " + configuration.getGameConfiguration().getCodeConfiguration().getUsesApi());
-
-				System.out.println();
-				System.out.println("Joueurs");
-
-				for (PlayerConfiguration player: configuration.getGameConfiguration().getPlayersConfiguration().getPlayers())
-				{
-					System.out.println(player.getName());
-				}
+				if (!configuration.getGameConfiguration().isReady()) return;
 
 				configuration.startGame();
 			}
@@ -112,9 +114,8 @@ public class GameConfigurationPanel extends GameDisplayedPanel {
 
 		});
 
-		configuration.getGameConfiguration().getCodeConfiguration().whenCriteriaCountChanged((l,n) -> {this.reloadParent();});
-		configuration.getGameConfiguration().getCodeConfiguration().whenGameDifficultyChanged((l,n) -> {this.reloadParent();});
-		configuration.getGameConfiguration().getCodeConfiguration().whenUsesApiChanged((l,n) -> {this.reloadParent();});
+		this.code.whenShouldReload(() -> this.reloadParent());
+		this.players.whenShouldReload(() -> this.reloadParent());
 
 		this.startButton.setEnabled(this.configuration.isReady());
 	}

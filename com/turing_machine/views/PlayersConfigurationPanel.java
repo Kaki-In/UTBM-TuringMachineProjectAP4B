@@ -29,20 +29,25 @@ public class PlayersConfigurationPanel extends Displayable {
 
 		for (PlayerConfiguration player: configuration.getPlayers())
 		{
-			this.players.add(new ConfiguratingPlayerPanel(player));
+			ConfiguratingPlayerPanel player_panel = new ConfiguratingPlayerPanel(player);
+			player_panel.whenShouldReload(() -> reloadParent());
+			this.players.add(player_panel);
 		}
 
 		configuration.whenPlayersListModified(new ObjectsListChangeListener<PlayerConfiguration>() {
 			@Override
 			public void onObjectAdded(PlayerConfiguration object, ArrayList<PlayerConfiguration> new_list) {
-				players.add(new ConfiguratingPlayerPanel(object));
-				refresh();
+				ConfiguratingPlayerPanel player_panel = new ConfiguratingPlayerPanel(object);
+				player_panel.whenShouldReload(() -> reloadParent());
+				players.add(player_panel);
+
+				reloadParent();
 			}
 
 			@Override
 			public void onObjectDeleted(PlayerConfiguration object, ArrayList<PlayerConfiguration> new_list) {
 				players.removeIf(player_panel -> player_panel.getConfiguration() == object);
-				refresh();
+				reloadParent();
 			}
 		});
 
@@ -75,6 +80,7 @@ public class PlayersConfigurationPanel extends Displayable {
 	public void preparePanel()
 	{
 		this.panel.removeAll();
+		this.panel.repaint();
 
 		GridBagConstraints titleLabelConstraint = new GridBagConstraints();
 		titleLabelConstraint.gridx = 0;

@@ -22,7 +22,7 @@ public class BuildGameStep extends PlatformStep {
         return this.configuration;
     }
 
-    public void emitConfigurationStart()
+    public synchronized void emitConfigurationStart()
     {
         for (GameBuildProgressionListener listener : this.listeners)
         {

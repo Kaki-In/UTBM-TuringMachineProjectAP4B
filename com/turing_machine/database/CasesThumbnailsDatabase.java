@@ -1,6 +1,9 @@
 package com.turing_machine.database;
 
+import com.turing_machine.base_objects.CodeIndex;
 import com.turing_machine.exceptions.NoSuchCaseException;
+import com.turing_machine.images.ImageDescriptable;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -38,6 +41,12 @@ public class CasesThumbnailsDatabase {
 		this.cases.add(
 			new CriterionCaseThumbnail(1, "bleu est égal à 1",
 				(Graphics g2D) -> {
+					ImageDescriptable.drawIndex(g2D, CodeIndex.FIRST_BLUE_TRIANGLE, 38, 30, 20);
+					
+					g2D.setColor(Color.BLACK);
+					ImageDescriptable.drawEquals(g2D, 75, 30, 20);
+					ImageDescriptable.draw1Value(g2D, 112, 30, 20);
+
 				}
 			)
 		);
@@ -45,6 +54,12 @@ public class CasesThumbnailsDatabase {
 		this.cases.add(
 			new CriterionCaseThumbnail(3, "bleu est égal à 3",
 				(Graphics g2D) -> {
+					ImageDescriptable.drawIndex(g2D, CodeIndex.FIRST_BLUE_TRIANGLE, 38, 30, 20);
+					
+					g2D.setColor(Color.BLACK);
+					ImageDescriptable.drawEquals(g2D, 75, 30, 20);
+					ImageDescriptable.draw3Value(g2D, 112, 30, 20);
+
 				}
 			)
 		);
@@ -122,6 +137,12 @@ public class CasesThumbnailsDatabase {
 		this.cases.add(
 			new CriterionCaseThumbnail(16, "bleu est supérieur à 1",
 				(Graphics g2D) -> {
+					ImageDescriptable.drawIndex(g2D, CodeIndex.FIRST_BLUE_TRIANGLE, 38, 30, 20);
+					
+					g2D.setColor(Color.BLACK);
+					ImageDescriptable.drawGreaterThan(g2D, 75, 30, 20);
+					ImageDescriptable.draw1Value(g2D, 112, 30, 20);
+
 				}
 			)
 		);

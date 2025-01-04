@@ -29,13 +29,21 @@ public class GameBuildHandler extends PlatformHandler {
 			{
 				GameConfiguration configuration = buildGameStep.getGameConfiguration();
 
-				try {
-					StartedGame game = this.startGameFromConfiguration(configuration);
-					state.setActualStep(new StartedGameStep(game));
-				} catch (TuringMachineAPIException | NotReadyConfigurationException e) {
-					buildGameStep.emitConfigurationError(e.getMessage());
-					state.setActualStep(new ConfiguratingGameStep(configuration));
-				}
+				new Thread(() -> {
+					try {
+						Thread.sleep(1);
+					} catch (InterruptedException e) {
+						return;
+					}
+					try {
+						StartedGame game = this.startGameFromConfiguration(configuration);
+						state.setActualStep(new StartedGameStep(game));
+					} catch (TuringMachineAPIException | NotReadyConfigurationException e) {
+						buildGameStep.emitConfigurationError(e.getMessage());
+						state.setActualStep(new ConfiguratingGameStep(configuration));
+					}
+				}).start();
+
 			}
 		});
 	}
@@ -55,20 +63,20 @@ public class GameBuildHandler extends PlatformHandler {
 
 		buildGameStep.emitConfigurationStart();
 
-		buildGameStep.emitConfigurationProgress(0/3, "Création de la machine...");
+		buildGameStep.emitConfigurationProgress((float) 0., "Création de la machine...");
 
 		StartedGameMachine machine = this.machine_starter.exportMachine(configuration.getCodeConfiguration());
 		StartedGameState game_state = new StartedGameState(machine);
 
-		buildGameStep.emitConfigurationProgress(1/3, "Création des joueurs...");
+		buildGameStep.emitConfigurationProgress((float) 0.50, "Création des joueurs...");
 
 		StartedGamePlayersList players = this.players_starter.exportPlayers(configuration.getPlayersConfiguration(), game_state);
 
-		buildGameStep.emitConfigurationProgress(2/3, "Création du jeu...");
+		buildGameStep.emitConfigurationProgress((float) 0.75, "Création du jeu...");
 
 		StartedGame game = new StartedGame(machine, players, game_state);
 
-		buildGameStep.emitConfigurationProgress(3/3, "Démarrage de la partie...");
+		buildGameStep.emitConfigurationProgress(1, "Démarrage de la partie...");
 
 		buildGameStep.emitConfigurationEnd(game);
 

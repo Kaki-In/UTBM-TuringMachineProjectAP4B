@@ -29,6 +29,24 @@ public class StartedGamePlayer {
 
 		this.state = game_state;
 
+		StartedGamePlayerTestedCodesLine first_line = this.notes.getTestedCodesGrid().getLineFromRound(0);
+		first_line.whenNewValidation(new StartedGameCodesLineListener() {
+			@Override
+			public void onCodeDecided(Code code) {}
+
+			@Override
+			public void onVerificationDone(StartedGamePlayerTestedCodeValidationResult result) {
+				if (first_line.getValidationsCount() == 3) // in this case, the player becomes disabled and should announce it
+				{
+					for (StartedGamePlayerEventsListener listener: listeners)
+					{
+						listener.onPlayerDisabled();
+					}
+				}
+			}
+
+		});
+
 		this.notes.getTestedCodesGrid().whenNewLine(line -> {
 			line.whenNewValidation(new StartedGameCodesLineListener() {
 				@Override
@@ -47,6 +65,7 @@ public class StartedGamePlayer {
 	
 			});
 		});
+
 	}
 
 	public String getName() {

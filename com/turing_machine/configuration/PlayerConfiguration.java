@@ -31,8 +31,8 @@ public class PlayerConfiguration implements Configurable {
 
 	public void setName(String name)
 	{
-		if (name == this.name) return;
-		
+		if (name.equals(this.name)) return;
+
 		String last_name = this.name;
 		this.name = name;
 

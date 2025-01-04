@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class PlayersConfiguration implements Configurable {
 
-	private ArrayList<ObjectsListChangeListener<PlayerConfiguration>> players_listeners;
+	private final ArrayList<ObjectsListChangeListener<PlayerConfiguration>> players_listeners;
 
-	private ArrayList<PlayerConfiguration> players;
+	private final ArrayList<PlayerConfiguration> players;
 
 	public PlayersConfiguration() {
 

@@ -30,11 +30,13 @@ public class StartedGameCriterionPanel extends Displayable {
 		this.panel = new JPanel();
 		this.panel.setLayout(new BoxLayout(this.panel, BoxLayout.Y_AXIS));
 
-		this.panel.setBackground(new Color(230, 230, 230));
+		Color background_color = new Color(230, 230, 230);
+		this.panel.setBackground(background_color);
 		this.panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
 		JPanel criterion_panel = new JPanel();
 		criterion_panel.setLayout(new BoxLayout(criterion_panel, BoxLayout.X_AXIS));
+		criterion_panel.setBackground(background_color);
 		
 		CriterionThumbnail thumbnail;
 		try {
@@ -49,16 +51,15 @@ public class StartedGameCriterionPanel extends Displayable {
 		criterion_panel.add(image);
 
 		JPanel description_panel = new JPanel();
+		description_panel.setBackground(background_color);
 		description_panel.setLayout(new BoxLayout(description_panel, BoxLayout.Y_AXIS));
 
 		JLabel introduction = new JLabel("<html>Ce critère vérifie...</html>");
-		introduction.setFont(Displayable.getFont(13));
-		introduction.setMaximumSize(new Dimension(150, 80));
+		introduction.setFont(Displayable.getFont(15));
 		introduction.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 		description_panel.add(introduction);
 
 		JLabel description = new JLabel("<html>" + thumbnail.getDescription() + "</html>");
-		description.setMaximumSize(new Dimension(150, 80));
 		description.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 		description_panel.add(description);
 
@@ -68,6 +69,7 @@ public class StartedGameCriterionPanel extends Displayable {
 
 		JPanel cases_panel = new JPanel();
 		cases_panel.setLayout(new GridBagLayout());
+		cases_panel.setBackground(background_color);
 
 		this.cases = new ArrayList<>();
 
@@ -112,7 +114,11 @@ public class StartedGameCriterionPanel extends Displayable {
 
 			cases_panel.add(case_panel.getWidget(), caseConstraints);
 		}
+
 		this.panel.add(cases_panel);
+
+		this.panel.setPreferredSize(new Dimension(450, 80 + 130*Math.round(cases.size()/columns)));
+		this.panel.setMaximumSize(this.panel.getPreferredSize());
 	}
 
 	@Override

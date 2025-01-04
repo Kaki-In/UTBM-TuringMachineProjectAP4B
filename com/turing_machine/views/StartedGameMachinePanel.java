@@ -66,7 +66,7 @@ public class StartedGameMachinePanel extends Displayable {
 
 			JPanel spacePanel = new JPanel();
 			GridBagConstraints spaceConstraints = new GridBagConstraints();
-;
+
 
 			if (i%2 == 0) // un élément va suivre
 			{

@@ -5,8 +5,6 @@ import java.util.ArrayList;
 
 public interface StartedGameListener {
 
-	public abstract void onNewRound(int round_id);
-
 	public abstract void onGameEnds(ArrayList<StartedGamePlayer> winners);
 
 }

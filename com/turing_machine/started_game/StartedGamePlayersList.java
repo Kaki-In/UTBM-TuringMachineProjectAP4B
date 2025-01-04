@@ -18,11 +18,11 @@ public class StartedGamePlayersList {
 		return null;
 	}
 
-	public ArrayList<String> getEnabledPlayersNames() {
+	public ArrayList<StartedGamePlayer> getEnabledPlayers() {
 		return null;
 	}
 
-	public ArrayList<String> getHypothesingPlayersNames() {
+	public ArrayList<StartedGamePlayer> getHypothesingPlayers() {
 		return null;
 	}
 

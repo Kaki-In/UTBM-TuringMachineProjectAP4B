@@ -6,53 +6,88 @@ import java.util.ArrayList;
 
 public class StartedGamePlayer {
 
-	private String name;
+	private final String name;
 
-	private boolean eliminated;
+	private final ArrayList<StartedGamePlayerEventsListener> listeners;
 
-	private ArrayList<StartedGamePlayerEventsListener> listeners;
+	private final StartedGamePlayerNotes notes;
 
 	private Code actual_hypothesis;
 
-	public StartedGamePlayer(String name, StartedGamePlayerNotes notes) {
+	private boolean eliminated;
 
+	private final StartedGameState state;
+
+	public StartedGamePlayer(String name, StartedGamePlayerNotes notes, StartedGameState game_state) {
+		this.name = name;
+		this.listeners = new ArrayList<>();
+
+		this.notes = notes;
+		this.actual_hypothesis = null;
+		this.eliminated = false;
+
+		this.state = game_state;
+
+		this.notes.getTestedCodesGrid().whenNewLine(line -> {
+			line.whenNewValidation(result -> {
+				if (line.getValidationsCount() == 3) // in this case, the player becomes disabled and should announce it
+				{
+					for (StartedGamePlayerEventsListener listener: this.listeners)
+					{
+						listener.onPlayerDisabled();
+					}
+				}
+			});
+		});
 	}
 
 	public String getName() {
-		return null;
+		return this.name;
 	}
 
 	public boolean isDisabled() {
-		return false;
+		return this.eliminated
+			|| this.notes.getTestedCodesGrid().getLineFromRound(this.state.getRoundId()).getValidationsCount() >= 3
+			|| this.isGuessingACode();
 	}
 
 	public boolean isEliminated() {
-		return false;
+		return this.eliminated;
 	}
 
 	public boolean isGuessingACode() {
-		return false;
+		return this.actual_hypothesis != null;
 	}
 
 	public Code getGuessingCode() {
-		return null;
+		return this.actual_hypothesis;
 	}
 
 	public StartedGamePlayerNotes getNotes(){
-		return null;
+		return this.notes;
 	}
 
 	public void guessCode(Code code)
 	{
+		this.actual_hypothesis = code;
 
+		for (StartedGamePlayerEventsListener listener: this.listeners)
+		{
+			listener.onPlayerMadeHypothesis(code);
+		}
 	}
 
 	public void eliminate()
 	{
-		
+		this.eliminated = true;
+
+		for (StartedGamePlayerEventsListener listener: this.listeners)
+		{
+			listener.onPlayerEliminated();
+		}
 	}
 
-	public void whenEventEmitted(StartedGamePlayerEventsListener listener, StartedGamePlayerNotes notes) {
-
+	public void whenEventEmitted(StartedGamePlayerEventsListener listener) {
+		this.listeners.add(listener);
 	}
 }

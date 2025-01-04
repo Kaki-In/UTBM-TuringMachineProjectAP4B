@@ -1,13 +1,13 @@
 package com.turing_machine.handlers;
 
 import com.turing_machine.exceptions.NotStartedGameException;
-import com.turing_machine.listeners.StartedGameListener;
 import com.turing_machine.platform_state.GameDebriefingStep;
 import com.turing_machine.platform_state.MainPlatformState;
 import com.turing_machine.platform_state.PlatformStep;
 import com.turing_machine.platform_state.StartedGameStep;
 import com.turing_machine.started_game.StartedGamePlayer;
 import java.util.ArrayList;
+import com.turing_machine.listeners.StartedGameStateListener;
 
 public class StartedGameHandler extends PlatformHandler {
 
@@ -17,7 +17,7 @@ public class StartedGameHandler extends PlatformHandler {
 		state.whenPlatformStepChanged((PlatformStep last_step, PlatformStep new_step) -> {
 			if (new_step instanceof StartedGameStep game_step)
 			{
-				game_step.getStartedGame().whenRoundChanged(new StartedGameListener() {
+				game_step.getStartedGame().whenRoundChanged(new StartedGameStateListener() {
 					@Override
 					public void onNewRound(int round_id) {}
 

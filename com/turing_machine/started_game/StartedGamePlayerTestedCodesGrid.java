@@ -1,11 +1,11 @@
 package com.turing_machine.started_game;
 
-import com.turing_machine.listeners.ObjectsListChangeListener;
+import com.turing_machine.listeners.ObjectSelectionListener;
 import java.util.ArrayList;
 
 public class StartedGamePlayerTestedCodesGrid {
 
-	private ArrayList<ObjectsListChangeListener<StartedGamePlayerTestedCodesLine>> rounds_listener;
+	private ArrayList<ObjectSelectionListener<StartedGamePlayerTestedCodesLine>> rounds_listener;
 
 	private ArrayList<StartedGamePlayerTestedCodesLine> lines;
 
@@ -25,7 +25,7 @@ public class StartedGamePlayerTestedCodesGrid {
 
 	}
 
-	public void whenCodeLinesChanged(StartedGamePlayerTestedCodesLine listener) {
+	public void whenNewLine(ObjectSelectionListener<StartedGamePlayerTestedCodesLine> listener) {
 
 	}
 

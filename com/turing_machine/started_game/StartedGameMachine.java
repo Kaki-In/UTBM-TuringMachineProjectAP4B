@@ -4,16 +4,17 @@ import com.turing_machine.base_objects.Code;
 
 public class StartedGameMachine {
 
-	private Code unknown_code;
+	private final Code unknown_code;
 
-	private StartedGameCriteriaList criteria;
+	private final StartedGameCriteriaList criteria;
 
 	public StartedGameMachine(Code code, StartedGameCriteriaList criteria) {
-
+		this.unknown_code = code;
+		this.criteria = criteria;
 	}
 
 	public StartedGameCriteriaList getCriteria() {
-		return null;
+		return this.criteria;
 	}
 
 	public Code getCode() {

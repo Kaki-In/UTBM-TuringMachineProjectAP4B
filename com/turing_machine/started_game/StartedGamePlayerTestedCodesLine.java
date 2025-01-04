@@ -1,8 +1,8 @@
 package com.turing_machine.started_game;
 
 import com.turing_machine.base_objects.Code;
+import com.turing_machine.listeners.ObjectSelectionListener;
 import java.util.ArrayList;
-import com.turing_machine.listeners.ObjectsListChangeListener;
 
 public class StartedGamePlayerTestedCodesLine {
 
@@ -10,7 +10,7 @@ public class StartedGamePlayerTestedCodesLine {
 
 	private StartedGamePlayerTestedCodeValidationResult[] validation_results;
 
-	private ArrayList<ObjectsListChangeListener<StartedGamePlayerTestedCodeValidationResult>> validation_listeners;
+	private ArrayList<ObjectSelectionListener<StartedGamePlayerTestedCodeValidationResult>> validation_listeners;
 
 	public StartedGamePlayerTestedCodesLine() {
 
@@ -18,10 +18,6 @@ public class StartedGamePlayerTestedCodesLine {
 
 	public ArrayList<StartedGamePlayerTestedCodeValidationResult> getCodeValidationResults() {
 		return null;
-	}
-
-	public void whenValidationChanged(ObjectsListChangeListener<StartedGamePlayerTestedCodeValidationResult> listener) {
-
 	}
 
 	public int getValidationsCount() {
@@ -33,6 +29,10 @@ public class StartedGamePlayerTestedCodesLine {
 	}
 
 	public void addValidationResult(StartedGamePlayerTestedCodeValidationResult result) {
+
+	}
+
+	public void whenNewValidation(ObjectSelectionListener<StartedGamePlayerTestedCodeValidationResult> listener) {
 
 	}
 

@@ -16,7 +16,7 @@ public class GameConfiguration implements Configurable {
 	@Override
 	public boolean isReady()
 	{
-		return false;
+		return this.code.isReady() && this.players.isReady();
 	}
 
 	public PlayersConfiguration getPlayersConfiguration() {

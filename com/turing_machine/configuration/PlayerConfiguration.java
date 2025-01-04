@@ -17,16 +17,11 @@ public class PlayerConfiguration implements Configurable {
 	@Override
 	public boolean isReady()
 	{
-		return false;
+		return !this.name.replaceAll(" ", "").equals("");
 	}
 
 	public void whenNameChanged(ObjectChangeListener<String> listener) {
 		this.name_listeners.add(listener);
-
-		for (ObjectsListChangeListener<PlayerConfiguration> listener : this.name_listeners)
-		{
-			listener.onObjectChanged(listener, this.listeners);
-		}
 	}
 
 	public String getName()
@@ -36,8 +31,15 @@ public class PlayerConfiguration implements Configurable {
 
 	public void setName(String name)
 	{
+		if (name == this.name) return;
+		
+		String last_name = this.name;
 		this.name = name;
 
+		for (ObjectChangeListener<String> listener : this.name_listeners)
+		{
+			listener.onObjectChanged(last_name, name);
+		}
 	}
 
 }

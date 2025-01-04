@@ -23,9 +23,13 @@ public class PlayersConfiguration implements Configurable {
 		{
 			PlayerConfiguration player = this.getPlayer(player_index);
 
-			for (int second_player_index=player_index + 1 ;  player_index < this.size(); ++player_index)
+			// on vérifie que le joueur est prêt
+			if (!player.isReady()) return false; 
+
+			// et on vérifie qu'aucun autre joueur n'a le même nom
+			for (int second_player_index = player_index + 1 ;  player_index < this.size(); ++player_index)
 			{
-				PlayerConfiguration second_player = this.getPlayer(player_index);
+				PlayerConfiguration second_player = this.getPlayer(second_player_index);
 
 				if (player.getName().equals(second_player.getName()))
 				{
@@ -34,11 +38,12 @@ public class PlayersConfiguration implements Configurable {
 			}
 		}
 
-		// Si tout c'est bien passé, alors la configuration est prête
+		// Si tout s'est bien passé, alors la configuration est prête
 		return true;
 	}
 
 	public void addPlayer() {
+		// On commence par chercher un nom qui soit différents des autres
 		int name_int = 0;
 		boolean can_use_name;
 
@@ -59,6 +64,7 @@ public class PlayersConfiguration implements Configurable {
 			}
 		} while (!can_use_name);
 
+		// et on crée le joueur avec ce nom pour le rajouter à la liste
 		PlayerConfiguration newPlayer = new PlayerConfiguration("Joueur " + name_int);
 
         players.add(newPlayer);
@@ -70,11 +76,13 @@ public class PlayersConfiguration implements Configurable {
 	}
 
 	public void removePlayer(int player_id) {
+		PlayerConfiguration player = getPlayer(player_id);
+
 		this.players.remove(player_id);
 
 		for (ObjectsListChangeListener<PlayerConfiguration> listener : this.players_listeners)
 		{
-			listener.onObjectDeleted(player_id, this.players);
+			listener.onObjectDeleted(player, this.players);
 		}
 	}
 
@@ -92,12 +100,6 @@ public class PlayersConfiguration implements Configurable {
 
 	public void whenPlayersListModified(ObjectsListChangeListener<PlayerConfiguration> listener) {
 		players_listeners.add(listener);
-
-		for (ObjectsListChangeListener<playersConfiguration> listener : this.players_listeners)
-		{
-			listener.onObjectChanged(listener, this.listeners);
-		}
-
 	}
 
 }

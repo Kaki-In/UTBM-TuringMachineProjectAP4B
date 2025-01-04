@@ -62,8 +62,9 @@ public class MachineConfiguration implements Configurable {
 	}
 
 	public void setGameDifficulty(GameDifficulty game_difficulty) {
+		if (game_difficulty == this.difficulty) return;
 
-		GameDifficulty last_difficulty = game_difficulty;
+		GameDifficulty last_difficulty = this.difficulty;
 		this.difficulty = game_difficulty;
 
 		for (ObjectChangeListener<GameDifficulty> listener : this.difficulty_listeners)
@@ -74,8 +75,9 @@ public class MachineConfiguration implements Configurable {
 	}
 
 	public void setCriteriaCount(GameCriteriaCount count) {
+		if (count == this.criteria_count) return;
 
-		GameCriteriaCount last_count = count;
+		GameCriteriaCount last_count = this.criteria_count;
 		this.criteria_count = count;
 
 		for (ObjectChangeListener<GameCriteriaCount> listener : this.criteria_count_listeners)
@@ -87,7 +89,9 @@ public class MachineConfiguration implements Configurable {
 
 	public void setUsesApi(boolean enabled)
 	{
-		boolean last_enabled = enabled;
+		if (enabled == this.uses_api) return;
+
+		boolean last_enabled = this.uses_api;
 		this.uses_api = enabled;
 
 

@@ -39,7 +39,7 @@ public class StartedGameCriterion {
 		}
 	}
 
-	public boolean doesMatch(Code code, Code good_code)
+	public boolean doesMatchSame(Code code, Code good_code)
 	{
 		CriteriaDatabase criteria_database = Database.getCriteria();
 		CriteriaCasesDatabase cases_database = criteria_database.getCriteriaCases();

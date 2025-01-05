@@ -32,9 +32,6 @@ public class StartedGamePublicPanel extends Displayable {
 	private final JButton endRoundButton;
 
 	public StartedGamePublicPanel(StartedGame game) {
-
-		System.out.println(game.getState().getMachine().getCode());
-
 		this.listeners = new ArrayList<>();
 		this.game = game;
 
@@ -146,7 +143,7 @@ public class StartedGamePublicPanel extends Displayable {
 			reloadParent();
 
 			if (game.getPlayersList().getAlivePlayers().isEmpty()) return;
-			
+
 			JOptionPane.showMessageDialog(panel, "C'est le commencement de la manche numéro " + (round_id + 1), "Nouvelle manche", JOptionPane.OK_OPTION);
 		});
 	}

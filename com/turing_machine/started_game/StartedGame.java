@@ -14,6 +14,7 @@ public class StartedGame {
 	private final ArrayList<StartedGameListener> listeners;
 
 	public StartedGame(StartedGameMachine machine, StartedGamePlayersList players, StartedGameState game_state) {
+		System.out.println(machine.getCode());
 		
 		this.state = game_state;
         this.players = players;
@@ -38,11 +39,33 @@ public class StartedGame {
 
 			}).collect(Collectors.toCollection(ArrayList::new));
 
+			ArrayList<StartedGamePlayer> minWinners = new ArrayList<>(); // ne pas oublier de prendre les joueurs avec le moins de vérification;
+
 			if (players.getAlivePlayers().isEmpty() || !winning_players.isEmpty())
 			{
+				if (!winning_players.isEmpty())
+				{
+					int min_verif = winning_players.get(0).getNotes().getTestedCodesGrid().getTotalValidationsCount();
+
+					for (StartedGamePlayer player: winning_players)
+					{
+						int verif_count = player.getNotes().getTestedCodesGrid().getTotalValidationsCount();
+
+						if (verif_count < min_verif) { // il a encore moins que ce qu'on a pu trouver jusqu'alors
+							minWinners = new ArrayList<>(); // les autres gagnants avaient plus et ne sont plus gagnant
+							min_verif = verif_count; 		// maintenant, il faut avoir autant que lui pour être gagnant
+						}
+
+						if (verif_count == min_verif) // il a autant que les gagnants
+						{
+							minWinners.add(player);
+						} 
+					}
+				}
+
 				for (StartedGameListener listener: listeners)
 				{
-					listener.onGameEnds(winning_players);
+					listener.onGameEnds(minWinners);
 				}
 			}
 		});

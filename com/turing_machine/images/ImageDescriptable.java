@@ -28,8 +28,8 @@ public interface ImageDescriptable
     public static void drawSquare(Graphics g2D, int x, int y, int size)
     {
         g2D.setColor(new Color(0xF2B211));
-        g2D.fillRect(x-size/2, y-size/2, x+size/2, y+size/2);
-        g2D.drawRect(x-size/2, y-size/2, x+size/2, y+size/2);
+        g2D.fillRect(x-size/2, y-size/2, size, size);
+        g2D.drawRect(x-size/2, y-size/2, size, size);
     }
 
     public static void drawCircle(Graphics g2D, int x, int y, int size)

@@ -44,9 +44,10 @@ public class StartedGameCriterionCasePanel extends Displayable {
 		JLabel description = new JLabel("<html><center>" + thumbnail.getDescription() + "</center></html>");
 		description.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 		description.setHorizontalAlignment(JLabel.CENTER);
+		description.setFont(Displayable.getFont(9));
 		this.panel.add(description);
 
-		this.panel.setPreferredSize(new Dimension(150, 130));
+		this.panel.setPreferredSize(new Dimension(150, 120));
 	}
 
 	@Override

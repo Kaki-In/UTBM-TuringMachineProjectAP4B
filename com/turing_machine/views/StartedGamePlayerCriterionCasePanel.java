@@ -45,6 +45,7 @@ public class StartedGamePlayerCriterionCasePanel extends Displayable {
 		this.description = new JLabel("<html><center>" + thumbnail.getDescription() + "</center></html>");
 		this.description.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 		this.description.setHorizontalAlignment(JLabel.CENTER);
+		this.description.setFont(Displayable.getFont(10));
 		this.panel.add(this.description);
 
 		this.panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

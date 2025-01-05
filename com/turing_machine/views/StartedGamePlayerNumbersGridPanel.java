@@ -32,8 +32,8 @@ public class StartedGamePlayerNumbersGridPanel extends Displayable {
 			constraints.gridx = i;
 			constraints.gridy = 0;
 
-			JLabel label = new JLabel(new IndexIcon(CodeIndex.fromInteger(i), 30));
-			label.setPreferredSize(new Dimension(30, 30));
+			JLabel label = new JLabel(new IndexIcon(CodeIndex.fromInteger(i), 50));
+			label.setPreferredSize(new Dimension(50, 50));
 			label.setHorizontalAlignment(JLabel.CENTER);
 
 			this.panel.add(label, constraints);
@@ -58,6 +58,8 @@ public class StartedGamePlayerNumbersGridPanel extends Displayable {
 				cell.whenShouldReload(() -> reloadParent());
 			}
 		}
+
+		this.panel.setMinimumSize(this.panel.getPreferredSize());
 	}
 
 	@Override

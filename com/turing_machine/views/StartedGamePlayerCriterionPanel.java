@@ -6,11 +6,11 @@ import com.turing_machine.exceptions.NoSuchCriterionException;
 import com.turing_machine.started_game.StartedGamePlayerCriterion;
 import com.turing_machine.started_game.StartedGamePlayerCriterionCase;
 import java.awt.Color;
-import javax.swing.JComponent;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -100,8 +100,7 @@ public class StartedGamePlayerCriterionPanel extends Displayable {
 		HintTextField player_notes = new HintTextField("Notes...");
 		this.panel.add(player_notes);
 
-		this.panel.setMinimumSize(new Dimension(300, (int) this.panel.getPreferredSize().getHeight() + 100));
-		this.panel.setPreferredSize(new Dimension(300, (int) this.panel.getPreferredSize().getHeight() + 100));
+		this.panel.setPreferredSize(new Dimension(300, (int) this.panel.getPreferredSize().getHeight() + 50));
 	}
 
 	@Override

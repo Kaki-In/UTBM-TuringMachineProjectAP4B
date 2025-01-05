@@ -31,7 +31,7 @@ public class StartedGamePlayerNumberCellPanel extends Displayable {
 		this.label.setHorizontalAlignment(JLabel.CENTER);
 		this.label.setVerticalAlignment(JLabel.CENTER);
 
-		this.label.setPreferredSize(new Dimension(30, 30));
+		this.label.setPreferredSize(new Dimension(50, 50));
 
 		this.label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 

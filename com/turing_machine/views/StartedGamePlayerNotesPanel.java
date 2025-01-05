@@ -1,34 +1,145 @@
 package com.turing_machine.views;
 
 import com.turing_machine.started_game.StartedGamePlayer;
-import javax.swing.JComponent;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 public class StartedGamePlayerNotesPanel extends Displayable {
 
-	private ArrayList<Runnable> listeners;
+	private final ArrayList<Runnable> listeners;
 
-	private StartedGamePlayer player;
+	private final StartedGamePlayer player;
 
-	private StartedGamePlayerNumbersGridPanel numbers;
+	private final StartedGamePlayerNumbersGridPanel numbers;
 
-	private StartedGamePlayerCriteriaPanel criteria;
+	private final StartedGamePlayerCriteriaPanel criteria;
 
-	private StartedGamePlayerTestedCodesPanel codes;
+	private final StartedGamePlayerTestedCodesPanel codes;
+
+	private final JPanel panel;
+
+	private final JButton exitButton;
 
 	public StartedGamePlayerNotesPanel(StartedGamePlayer player) {
+		this.listeners = new ArrayList<>();
+		this.player = player;
 
+		this.numbers = new StartedGamePlayerNumbersGridPanel(player.getNotes().getNumbersGrid());
+		this.criteria = new StartedGamePlayerCriteriaPanel(player.getNotes().getCriteria());
+		this.codes = new StartedGamePlayerTestedCodesPanel(player.getNotes().getTestedCodesGrid());
+
+		this.panel = new JPanel();
+		this.panel.setLayout(new GridBagLayout());
+
+		JPanel first_line_panel = new JPanel();
+		first_line_panel.setLayout(new GridBagLayout()); // pour s'assurer que le nom va à droite ; on mets dans un layout séparé pour ne pas influencer le reste
+		Border compound = BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5), BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+		compound = BorderFactory.createCompoundBorder(compound, BorderFactory.createEmptyBorder(5, 5, 5, 5));
+		first_line_panel.setBorder(compound);
+		first_line_panel.setBackground(new Color(200, 200, 200));
+
+		GridBagConstraints buttonConstraints = new GridBagConstraints();
+		buttonConstraints.gridx = 0;
+		buttonConstraints.gridy = 0;
+		buttonConstraints.weightx = 0;
+
+		this.exitButton = new JButton("Fermer la feuille de notes");
+		first_line_panel.add(this.exitButton, buttonConstraints);
+
+		GridBagConstraints nameConstraints = new GridBagConstraints();
+		nameConstraints.gridx = 1;
+		nameConstraints.gridy = 0;
+		nameConstraints.weightx = 1;
+
+		JLabel name_label = new JLabel(player.getName());
+		first_line_panel.add(name_label, nameConstraints);
+
+		GridBagConstraints firstLineConstraints = new GridBagConstraints();
+		firstLineConstraints.gridx = 0;
+		firstLineConstraints.gridy = 0;
+		firstLineConstraints.gridwidth = 2;
+		firstLineConstraints.gridheight = 1;
+		firstLineConstraints.weightx = 1;
+		firstLineConstraints.fill = GridBagConstraints.HORIZONTAL;
+		
+		this.panel.add(first_line_panel, firstLineConstraints);
+
+		GridBagConstraints numbersConstraints = new GridBagConstraints();
+		numbersConstraints.gridx = 1;
+		numbersConstraints.gridy = 2;
+		numbersConstraints.gridwidth = 1;
+		numbersConstraints.gridheight = 1;
+		
+		this.panel.add(this.numbers.getWidget(), numbersConstraints);
+
+		GridBagConstraints criteriaConstraints = new GridBagConstraints();
+		criteriaConstraints.gridx = 0;
+		criteriaConstraints.gridy = 1;
+		criteriaConstraints.gridwidth = 1;
+		criteriaConstraints.gridheight = 2;
+		
+		this.panel.add(this.criteria.getWidget(), criteriaConstraints);
+
+		GridBagConstraints codesConstraints = new GridBagConstraints();
+		codesConstraints.gridx = 1;
+		codesConstraints.gridy = 1;
+		codesConstraints.gridwidth = 1;
+		codesConstraints.gridheight = 1;
+		codesConstraints.weighty = 1;
+		codesConstraints.anchor = GridBagConstraints.NORTH;
+		
+		this.panel.add(this.codes.getWidget(), codesConstraints);
+
+		this.codes.whenShouldReload(() -> reloadParent());
+		this.criteria.whenShouldReload(() -> reloadParent());
+		this.numbers.whenShouldReload(() -> reloadParent());
+		
+		this.exitButton.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent me) {
+				for (Runnable listener: listeners)
+				{
+					listener.run();
+				}
+			}
+
+			@Override
+			public void mousePressed(MouseEvent me) {}
+
+			@Override
+			public void mouseReleased(MouseEvent me) {}
+
+			@Override
+			public void mouseEntered(MouseEvent me) {}
+
+			@Override
+			public void mouseExited(MouseEvent me) {}
+	
+		});
 	}
 
 	@Override
 	public JComponent getWidget()
 	{
-		return null;
+		return this.panel;
 	}
 
 	@Override
 	public void refresh()
 	{
+		this.codes.refresh();
+		this.criteria.refresh();
+		this.numbers.refresh();
 	}
 
 	public void whenCloseAction(Runnable listener) {

@@ -6,13 +6,13 @@ import com.turing_machine.database.Database;
 import com.turing_machine.exceptions.NoSuchCriterionException;
 import com.turing_machine.started_game.StartedGameCriterion;
 import java.awt.Color;
-import javax.swing.JComponent;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -48,6 +48,7 @@ public class StartedGameCriterionPanel extends Displayable {
 
 		JLabel image = new JLabel(new DescriptableIcon(100, 80, thumbnail.getMainThumbnail()));
 		image.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+		image.setHorizontalAlignment(JLabel.CENTER);
 		criterion_panel.add(image);
 
 		JPanel description_panel = new JPanel();
@@ -56,11 +57,13 @@ public class StartedGameCriterionPanel extends Displayable {
 
 		JLabel introduction = new JLabel("<html>Ce critère (" + criterion.getLetter().name() + ") vérifie...</html>");
 		introduction.setFont(Displayable.getFont(15));
-		introduction.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+		introduction.setAlignmentX(JLabel.LEFT_ALIGNMENT);
+		introduction.setHorizontalAlignment(JLabel.LEFT);
 		description_panel.add(introduction);
 
 		JLabel description = new JLabel("<html>" + thumbnail.getDescription() + "</html>");
 		description.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+		description.setHorizontalAlignment(JLabel.CENTER);
 		description_panel.add(description);
 
 		criterion_panel.add(description_panel);

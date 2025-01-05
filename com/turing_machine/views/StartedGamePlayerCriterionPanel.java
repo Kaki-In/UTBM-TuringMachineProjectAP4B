@@ -47,10 +47,12 @@ public class StartedGamePlayerCriterionPanel extends Displayable {
 		JLabel introduction = new JLabel("<html>Ce critère (" + criterion.getLetter().name() + ") vérifie...</html>");
 		introduction.setFont(Displayable.getFont(15));
 		introduction.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+		introduction.setHorizontalAlignment(JLabel.CENTER);
 		description_panel.add(introduction);
 
 		JLabel description = new JLabel("<html>" + thumbnail.getDescription() + "</html>");
 		description.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+		description.setHorizontalAlignment(JLabel.CENTER);
 		description_panel.add(description);
 
 		this.panel.add(description_panel);

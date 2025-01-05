@@ -11,9 +11,9 @@ public enum CodeIndex {
 	public int toInteger()
 	{
 		switch (this) {
-			case CodeIndex.FIRST_BLUE_TRIANGLE  : return 1;
-			case CodeIndex.SECOND_YELLOW_SQUARE : return 2;
-			case CodeIndex.THIRD_PURPLE_CIRCLE  : return 3;
+			case CodeIndex.FIRST_BLUE_TRIANGLE  : return 0;
+			case CodeIndex.SECOND_YELLOW_SQUARE : return 1;
+			case CodeIndex.THIRD_PURPLE_CIRCLE  : return 2;
 		}
 
 		return -1; // this line can't be attained
@@ -22,11 +22,11 @@ public enum CodeIndex {
 	public static CodeIndex fromInteger(int value) throws InputMismatchException
 	{
 		switch (value) {
-			case 1:
+			case 0:
 				return FIRST_BLUE_TRIANGLE;
-			case 2:
+			case 1:
 				return SECOND_YELLOW_SQUARE;
-			case 3:
+			case 2:
 				return THIRD_PURPLE_CIRCLE;
 			default:
 				throw new InputMismatchException("bad value given to create CodeIndex");

@@ -4,8 +4,8 @@ import com.turing_machine.configuration.GameConfiguration;
 import com.turing_machine.listeners.GameBuildProgressionListener;
 import com.turing_machine.platform_state.BuildGameStep;
 import com.turing_machine.started_game.StartedGame;
-import javax.swing.JComponent;
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -35,6 +35,7 @@ public class GameLoadingPanel extends GameDisplayedPanel {
 
 		this.infoLabel = new JLabel(this.message);
 		this.infoLabel.setAlignmentX(JPanel.LEFT_ALIGNMENT);
+		this.infoLabel.setHorizontalAlignment(JLabel.CENTER);
 		this.panel.add(this.infoLabel);
 
 		this.progressBar = new JProgressBar();

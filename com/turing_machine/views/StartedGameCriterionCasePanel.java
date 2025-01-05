@@ -5,10 +5,10 @@ import com.turing_machine.database.CriterionCaseThumbnail;
 import com.turing_machine.database.Database;
 import com.turing_machine.exceptions.NoSuchCaseException;
 import java.awt.Color;
-import javax.swing.JComponent;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -38,10 +38,12 @@ public class StartedGameCriterionCasePanel extends Displayable {
 
 		JLabel image = new JLabel(new DescriptableIcon(150, 63, thumbnail.getImage()));
 		image.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+		image.setHorizontalAlignment(JLabel.CENTER);
 		this.panel.add(image);
 
 		JLabel description = new JLabel("<html><center>" + thumbnail.getDescription() + "</center></html>");
 		description.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+		description.setHorizontalAlignment(JLabel.CENTER);
 		this.panel.add(description);
 
 		this.panel.setPreferredSize(new Dimension(150, 130));

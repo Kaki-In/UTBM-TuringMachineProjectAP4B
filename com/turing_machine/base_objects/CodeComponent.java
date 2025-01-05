@@ -20,4 +20,9 @@ public class CodeComponent {
 		return value ;
 	}
 
+	public boolean equals(CodeComponent other_component)
+	{
+		return this.index == other_component.index && this.value == other_component.value;
+	}
+
 }

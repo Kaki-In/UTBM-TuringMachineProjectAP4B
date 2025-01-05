@@ -20,7 +20,7 @@ public class Code {
 	}
 
 	public CodeValue getValue(CodeIndex index) {
-		return this.values[index.toInteger() - 1];
+		return this.values[index.toInteger()];
 	}
 
 	public boolean equals(Code other_code) {

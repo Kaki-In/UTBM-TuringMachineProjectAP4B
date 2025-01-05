@@ -6,13 +6,13 @@ import com.turing_machine.exceptions.NoSuchCaseException;
 import com.turing_machine.listeners.CriterionCaseChangeListener;
 import com.turing_machine.started_game.StartedGamePlayerCriterionCase;
 import java.awt.Color;
-import javax.swing.JComponent;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -44,6 +44,7 @@ public class StartedGamePlayerCriterionCasePanel extends Displayable {
 
 		this.description = new JLabel("<html><center>" + thumbnail.getDescription() + "</center></html>");
 		this.description.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+		this.description.setHorizontalAlignment(JLabel.CENTER);
 		this.panel.add(this.description);
 
 		this.panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

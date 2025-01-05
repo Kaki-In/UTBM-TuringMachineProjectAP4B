@@ -12,7 +12,7 @@ public class ChooseCodePanel extends Displayable {
 
 	private final CodeValue[] chosen_values;
 	
-	private JPanel panel;
+	private final JPanel panel;
 
 	public ChooseCodePanel() {
 		this.panel = new JPanel();

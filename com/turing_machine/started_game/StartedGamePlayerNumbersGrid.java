@@ -12,18 +12,18 @@ public class StartedGamePlayerNumbersGrid {
 
 	public StartedGamePlayerNumbersGrid() {
 		this.validation_listeners = new ArrayList<>();
-		this.validations = new boolean[25];
+		this.validations = new boolean[15];
 
-		for (int i=0; i < 25; ++i) this.validations[i] = true;
+		for (int i=0; i < 15; ++i) this.validations[i] = true;
 	}
 
 	private int getComponentIndex(CodeComponent component)
 	{
-		return (component.getIndex().toInteger()-1)*5 + component.getValue().toInteger() - 1;
+		return (component.getIndex().toInteger())*5 + component.getValue().toInteger() - 1;
 	}
 
 	public boolean numberIsUnvalidated(CodeComponent position) {
-		return this.validations[getComponentIndex(position)];
+		return !this.validations[getComponentIndex(position)];
 	}
 
 	public void validateNumber(CodeComponent position) {

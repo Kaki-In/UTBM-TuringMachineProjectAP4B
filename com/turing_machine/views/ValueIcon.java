@@ -27,22 +27,22 @@ public class ValueIcon implements Icon
         int middle = this.size/2-1;
         switch (this.value) {
             case 1:
-                ImageDescriptable.draw1Value(grphcs, middle, middle, this.size);
+                ImageDescriptable.draw1Value(grphcs, middle, middle, this.size*2/3);
                 break;
             case 2:
-                ImageDescriptable.draw2Value(grphcs, middle, middle, this.size);
+                ImageDescriptable.draw2Value(grphcs, middle, middle, this.size*2/3);
                 break;
             case 3:
-                ImageDescriptable.draw3Value(grphcs, middle, middle, this.size);
+                ImageDescriptable.draw3Value(grphcs, middle, middle, this.size*2/3);
                 break;
             case 4:
-                ImageDescriptable.draw4Value(grphcs, middle, middle, this.size);
+                ImageDescriptable.draw4Value(grphcs, middle, middle, this.size*2/3);
                 break;
             case 5:
-                ImageDescriptable.draw5Value(grphcs, middle, middle, this.size);
+                ImageDescriptable.draw5Value(grphcs, middle, middle, this.size*2/3);
                 break;
             case 6:
-                ImageDescriptable.draw6Value(grphcs, middle, middle, this.size);
+                ImageDescriptable.draw6Value(grphcs, middle, middle, this.size*2/3);
                 break;
         }
     }

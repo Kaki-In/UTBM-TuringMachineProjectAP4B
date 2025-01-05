@@ -21,7 +21,7 @@ public class IndexIcon implements Icon
     public void paintIcon(Component cmpnt, Graphics grphcs, int i, int i1) {
         int middle = this.size/2-1;
 
-        ImageDescriptable.drawIndex(grphcs, this.index, middle, middle, this.size);
+        ImageDescriptable.drawIndex(grphcs, this.index, middle, middle, this.size*2/3);
     }
 
     @Override

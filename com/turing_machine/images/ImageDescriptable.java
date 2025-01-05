@@ -35,8 +35,8 @@ public interface ImageDescriptable
     public static void drawCircle(Graphics g2D, int x, int y, int size)
     {
         g2D.setColor(new Color(0x8066AD));
-        g2D.fillOval(x, y, size/2, size/2);
-        g2D.drawOval(x, y, size/2, size/2);
+        g2D.fillOval(x - size/2, y - size/2, size, size);
+        g2D.drawOval(x - size/2, y - size/2, size, size);
     }
     
     public static void drawIndex(Graphics g2D, CodeIndex index, int x, int y, int size)

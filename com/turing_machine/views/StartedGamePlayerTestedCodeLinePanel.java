@@ -45,6 +45,7 @@ public class StartedGamePlayerTestedCodeLinePanel extends Displayable {
 		this.code_label.setMinimumSize(new Dimension(30, 30));
 		this.code_label.setSize(new Dimension(30, 30));
 		this.code_label.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+		this.code_label.setHorizontalAlignment(JLabel.CENTER);
 		this.code_label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
 		this.panel.add(this.code_label, labelConstraint);

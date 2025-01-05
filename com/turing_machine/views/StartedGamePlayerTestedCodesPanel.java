@@ -13,11 +13,11 @@ import javax.swing.JPanel;
 
 public class StartedGamePlayerTestedCodesPanel extends Displayable {
 
-	private StartedGamePlayerTestedCodesGrid codes_grid;
+	private final StartedGamePlayerTestedCodesGrid codes_grid;
 
-	private ArrayList<StartedGamePlayerTestedCodeLinePanel> lines;
+	private final ArrayList<StartedGamePlayerTestedCodeLinePanel> lines;
 
-	private JPanel panel;
+	private final JPanel panel;
 
 	public StartedGamePlayerTestedCodesPanel(StartedGamePlayerTestedCodesGrid codes_grid) {
 		this.codes_grid = codes_grid;

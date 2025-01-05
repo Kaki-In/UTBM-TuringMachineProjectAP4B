@@ -48,6 +48,7 @@ public class MainFrame extends Displayable {
 		JLabel label = new JLabel("Turing Machine");
 		label.setFont(Displayable.getFont(35));
 		label.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+		label.setHorizontalAlignment(JLabel.CENTER);
 		
 		this.frame.getContentPane().add(label);
 

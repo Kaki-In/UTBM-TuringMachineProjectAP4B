@@ -99,8 +99,8 @@ public class StartedGamePlayerTestedCodeLinePanel extends Displayable {
 								JOptionPane.showMessageDialog(panel, "La manche est déjà terminée", "Impossible de vérifier le critère", JOptionPane.DEFAULT_OPTION);
 								break;
 							
-							case "you have been eliminated":
-								JOptionPane.showMessageDialog(panel, "Vous êtes éliminé", "Impossible de vérifier le critère", JOptionPane.DEFAULT_OPTION);
+							case "you have already guessed a code":
+								JOptionPane.showMessageDialog(panel, "Vous avez déjà annoncé connaître le code", "Impossible de vérifier le critère", JOptionPane.DEFAULT_OPTION);
 								break;
 							
 							default:
@@ -222,7 +222,7 @@ public class StartedGamePlayerTestedCodeLinePanel extends Displayable {
 		{
 			label.repaint();
 
-			if (line.getValidationsCount() == 3 && line.getRoundId() == line.getState().getRoundId()) 
+			if (line.getValidationsCount() == 3 || line.getRoundId() != line.getState().getRoundId() || line.isDisabled()) 
 			{
 				label.setCursor(Cursor.getDefaultCursor());
 			} else {

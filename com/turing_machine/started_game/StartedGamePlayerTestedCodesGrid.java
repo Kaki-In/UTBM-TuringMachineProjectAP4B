@@ -22,6 +22,11 @@ public class StartedGamePlayerTestedCodesGrid {
 
 		this.state.whenRoundChanged((round_id) -> {
 			this.addNewLine(round_id);
+
+			if (this.disabled)
+			{
+				this.getLineFromRound(round_id).disable();
+			}
 		});
 
 		this.addNewLine(0);
@@ -53,6 +58,11 @@ public class StartedGamePlayerTestedCodesGrid {
 	public void disable()
 	{
 		this.disabled = true;
+
+		for (StartedGamePlayerTestedCodesLine line: this.lines)
+		{
+			line.disable();
+		}
 	}
 
 	public boolean isDisabled()

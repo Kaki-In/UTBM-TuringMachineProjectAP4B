@@ -1,5 +1,6 @@
 package com.turing_machine.views;
 
+import com.turing_machine.started_game.StartedGame;
 import com.turing_machine.started_game.StartedGamePlayer;
 import com.turing_machine.started_game.StartedGamePlayersList;
 import java.awt.Dimension;
@@ -7,15 +8,16 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class StartedGamePlayersPanel extends Displayable {
+public class StartedGameSwitchPanel extends Displayable {
 
 	private String opened_player;
 
-	private StartedGamePlayersList players;
+	private StartedGame game;
 
-	private StartedGamePlayersListPanel players_selection;
+	private StartedGamePublicPanel players_selection;
 
 	private ArrayList<StartedGamePlayerNotesPanel> players_notes;
 
@@ -23,9 +25,9 @@ public class StartedGamePlayersPanel extends Displayable {
 
 	private GridBagConstraints displayed_constraints;
 
-	public StartedGamePlayersPanel(StartedGamePlayersList players) {
+	public StartedGameSwitchPanel(StartedGame game) {
 		this.opened_player = null;
-		this.players = players;
+		this.game = game;
 
 		this.panel = new JPanel();
 		this.panel.setLayout(new GridBagLayout());
@@ -37,10 +39,12 @@ public class StartedGamePlayersPanel extends Displayable {
 		displayed_constraints.weightx = 1;
 		displayed_constraints.weighty = 1;
 
-		this.players_selection = new StartedGamePlayersListPanel(players);
+		this.players_selection = new StartedGamePublicPanel(game);
 		this.panel.add(players_selection.getWidget(), displayed_constraints);
 
 		this.players_notes = new ArrayList<>();
+
+		StartedGamePlayersList players = game.getPlayersList();
 
 		ArrayList<String> names = players.getPlayersNames();
 
@@ -62,11 +66,17 @@ public class StartedGamePlayersPanel extends Displayable {
 
 		this.players_selection.whenShouldReload(() -> {reloadParent();});
 		this.players_selection.whenPlayerAskedToEnter((player_name) -> {
-			this.opened_player = player_name;
+			int result = JOptionPane.showConfirmDialog(this.panel, "Assurez-vous que personne ne peut voir votre feuille de notes", "Vous allez voir vos notes personnelles", JOptionPane.PLAIN_MESSAGE);
+
+			if (result == JOptionPane.OK_OPTION)
+			{
+				this.opened_player = player_name;
+			}
+
 			reloadParent();
 		});
 
-		this.panel.setPreferredSize(new Dimension(900, 1300));
+		this.panel.setPreferredSize(new Dimension(1200, 700));
 	}
 
 	public Displayable getDisplayedPanel()
@@ -77,7 +87,7 @@ public class StartedGamePlayersPanel extends Displayable {
 		} else {
 			for (StartedGamePlayerNotesPanel panel: this.players_notes)
 			{
-				if (panel.getPlayer().getName().equals(opened_player))
+				if (panel.getPlayer().getName().equals(opened_player) && !panel.getPlayer().isEliminated())
 				{
 					return panel;
 				}
@@ -101,7 +111,7 @@ public class StartedGamePlayersPanel extends Displayable {
 		this.panel.removeAll();
 
 		Displayable displayed_panel = this.getDisplayedPanel();
-		this.panel.add(displayed_panel.getWidget());
+		this.panel.add(displayed_panel.getWidget(), this.displayed_constraints);
 		displayed_panel.refresh();
 		
 		this.panel.revalidate();

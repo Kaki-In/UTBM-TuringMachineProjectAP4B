@@ -1,5 +1,7 @@
 package com.turing_machine.views;
 
+import com.turing_machine.base_objects.Code;
+import com.turing_machine.listeners.StartedGamePlayerEventsListener;
 import com.turing_machine.started_game.StartedGamePlayer;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -11,6 +13,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
@@ -29,6 +32,8 @@ public class StartedGamePlayerNotesPanel extends Displayable {
 	private final JPanel panel;
 
 	private final JButton exitButton;
+
+	private final JButton guessButton;
 
 	public StartedGamePlayerNotesPanel(StartedGamePlayer player) {
 		this.listeners = new ArrayList<>();
@@ -64,6 +69,14 @@ public class StartedGamePlayerNotesPanel extends Displayable {
 		JLabel name_label = new JLabel(player.getName());
 		first_line_panel.add(name_label, nameConstraints);
 
+		GridBagConstraints guessConstraints = new GridBagConstraints();
+		guessConstraints.gridx = 2;
+		guessConstraints.gridy = 0;
+		guessConstraints.weightx = 0;
+
+		this.guessButton = new JButton("Code trouvé!");
+		first_line_panel.add(this.guessButton, guessConstraints);
+
 		GridBagConstraints firstLineConstraints = new GridBagConstraints();
 		firstLineConstraints.gridx = 0;
 		firstLineConstraints.gridy = 0;
@@ -87,6 +100,7 @@ public class StartedGamePlayerNotesPanel extends Displayable {
 		criteriaConstraints.gridy = 1;
 		criteriaConstraints.gridwidth = 1;
 		criteriaConstraints.gridheight = 2;
+		criteriaConstraints.weightx = 1;
 		
 		this.panel.add(this.criteria.getWidget(), criteriaConstraints);
 
@@ -126,6 +140,54 @@ public class StartedGamePlayerNotesPanel extends Displayable {
 			public void mouseExited(MouseEvent me) {}
 	
 		});
+
+		this.guessButton.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent me) {
+				if (player.isGuessingACode()) return;
+
+				int result = JOptionPane.showConfirmDialog(panel, "Êtes-vous sûr d'avoir trouvé le code de la machine?", "Vous risquez une élimination", JOptionPane.OK_CANCEL_OPTION);
+				if (result != JOptionPane.OK_OPTION) return;
+
+				ChooseCodePanel code_chooser = new ChooseCodePanel();
+
+				result = JOptionPane.showConfirmDialog(null, new JComponent[] { code_chooser.getWidget() }, "Merci d'entrer un code", JOptionPane.PLAIN_MESSAGE);
+
+				if (result == JOptionPane.OK_OPTION) {
+					player.guessCode(code_chooser.getCode());
+				}
+			}
+
+			@Override
+			public void mousePressed(MouseEvent me) {}
+
+			@Override
+			public void mouseReleased(MouseEvent me) {}
+
+			@Override
+			public void mouseEntered(MouseEvent me) {}
+
+			@Override
+			public void mouseExited(MouseEvent me) {}
+
+		});
+
+		player.whenEventEmitted(new StartedGamePlayerEventsListener() {
+			@Override
+			public void onPlayerEliminated() {}
+
+			@Override
+			public void onPlayerDisabled() {}
+
+			@Override
+			public void onPlayerEnabled() {}
+
+			@Override
+			public void onPlayerMadeHypothesis(Code code) {
+				reloadParent();
+			}
+
+		});
 	}
 
 	public StartedGamePlayer getPlayer()
@@ -145,6 +207,8 @@ public class StartedGamePlayerNotesPanel extends Displayable {
 		this.codes.refresh();
 		this.criteria.refresh();
 		this.numbers.refresh();
+
+		this.guessButton.setEnabled(!this.player.isGuessingACode());
 	}
 
 	public void whenCloseAction(Runnable listener) {

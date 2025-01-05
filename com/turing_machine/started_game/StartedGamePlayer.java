@@ -102,6 +102,8 @@ public class StartedGamePlayer {
 		{
 			listener.onPlayerMadeHypothesis(code);
 		}
+
+		this.getNotes().getTestedCodesGrid().disable();
 	}
 
 	public void eliminate()

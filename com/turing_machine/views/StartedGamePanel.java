@@ -1,24 +1,35 @@
 package com.turing_machine.views;
 
 import com.turing_machine.platform_state.StartedGameStep;
-import com.turing_machine.started_game.StartedGame;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 public class StartedGamePanel extends GameDisplayedPanel {
 
-	private StartedGame game;
+	private final StartedGameSwitchPanel content;
 
-	private StartedGameMachinePanel machine;
-
-	private StartedGamePlayersPanel players;
-
-	private JPanel panel;
+	private final JPanel panel;
 
 	public StartedGamePanel(StartedGameStep game) {
 		super(game);
 
 		this.panel = new JPanel();
+		this.panel.setLayout(new GridBagLayout());
+
+		GridBagConstraints contentConstraints = new GridBagConstraints();
+		contentConstraints.gridx = 0;
+		contentConstraints.gridy = 0;
+		contentConstraints.fill = GridBagConstraints.BOTH;
+
+		this.content = new StartedGameSwitchPanel(game.getStartedGame());
+
+		this.panel.add(this.content.getWidget(),  contentConstraints);
+
+		this.panel.setMinimumSize(this.panel.getPreferredSize());
+
+		this.content.whenShouldReload(() -> reloadParent());
 	}
 
 	@Override
@@ -30,6 +41,7 @@ public class StartedGamePanel extends GameDisplayedPanel {
 	@Override
 	public void refresh()
 	{
+		this.content.refresh();
 	}
 
 }

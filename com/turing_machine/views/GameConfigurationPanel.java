@@ -2,12 +2,13 @@ package com.turing_machine.views;
 
 import com.turing_machine.configuration.GameConfiguration;
 import com.turing_machine.platform_state.ConfiguratingGameStep;
-import javax.swing.JComponent;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -118,6 +119,8 @@ public class GameConfigurationPanel extends GameDisplayedPanel {
 		this.players.whenShouldReload(() -> this.reloadParent());
 
 		this.startButton.setEnabled(this.configuration.isReady());
+
+		this.panel.setPreferredSize(new Dimension(500, 300));
 	}
 
 	@Override

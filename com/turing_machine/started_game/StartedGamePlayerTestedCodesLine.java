@@ -81,7 +81,7 @@ public class StartedGamePlayerTestedCodesLine {
 		}
 
 		if (this.disabled) {
-			throw new GameConstraintException("you have been eliminated");
+			throw new GameConstraintException("you have already guessed a code");
 		}
 
 		if (this.getValidationsCount() == 3)

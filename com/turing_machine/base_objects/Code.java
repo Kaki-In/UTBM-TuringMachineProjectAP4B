@@ -38,7 +38,7 @@ public class Code {
 	{
 		int count = 0;
 
-		for (int i=1; i <= 3; ++i)
+		for (int i=0; i < 3; ++i)
 		{
 			CodeValue value_at_index = getValue(CodeIndex.fromInteger(i));
 

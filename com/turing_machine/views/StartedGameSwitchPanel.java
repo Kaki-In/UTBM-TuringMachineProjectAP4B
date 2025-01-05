@@ -65,8 +65,16 @@ public class StartedGameSwitchPanel extends Displayable {
 		}
 
 		this.players_selection.whenShouldReload(() -> {reloadParent();});
+		
 		this.players_selection.whenPlayerAskedToEnter((player_name) -> {
-			int result = JOptionPane.showConfirmDialog(this.panel, "Assurez-vous que personne ne peut voir votre feuille de notes", "Vous allez voir vos notes personnelles", JOptionPane.PLAIN_MESSAGE);
+
+			int result;
+			if (names.size() == 1)
+			{
+				result = JOptionPane.OK_OPTION;
+			} else {
+				result = JOptionPane.showConfirmDialog(this.panel, "Assurez-vous que personne ne peut voir votre feuille de notes", "Vous allez voir vos notes personnelles", JOptionPane.PLAIN_MESSAGE);
+			}
 
 			if (result == JOptionPane.OK_OPTION)
 			{

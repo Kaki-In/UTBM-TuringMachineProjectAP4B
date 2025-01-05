@@ -21,7 +21,8 @@ public class StartedGame {
 		this.listeners = new ArrayList<>();
 
 		this.state.whenRoundChanged(round_id -> {
-			ArrayList<StartedGamePlayer> guessing_players = players.getEnabledPlayers();
+			ArrayList<StartedGamePlayer> guessing_players = players.getHypothesingPlayers();
+
 			ArrayList<StartedGamePlayer> winning_players = guessing_players.stream().filter(player -> {
 				Code code = player.getGuessingCode();
 
@@ -37,7 +38,7 @@ public class StartedGame {
 
 			}).collect(Collectors.toCollection(ArrayList::new));
 
-			if (!winning_players.isEmpty())
+			if (players.getAlivePlayers().isEmpty() || !winning_players.isEmpty())
 			{
 				for (StartedGameListener listener: listeners)
 				{

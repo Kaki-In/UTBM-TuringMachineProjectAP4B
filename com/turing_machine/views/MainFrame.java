@@ -37,6 +37,10 @@ public class MainFrame extends Displayable {
 			reloadParent();
 
 			this.displayed_panel.whenShouldReload(() -> {reloadParent();});
+
+			javax.swing.SwingUtilities.invokeLater(() -> {
+				this.frame.setSize(this.frame.getPreferredSize());
+			});
 		});
 	}
 

@@ -7,6 +7,7 @@ import com.turing_machine.started_game.StartedGame;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
@@ -33,16 +34,16 @@ public class GameLoadingPanel extends GameDisplayedPanel {
 		this.panel = new JPanel();
 		this.panel.setLayout(new BoxLayout(this.panel, BoxLayout.Y_AXIS));
 
-		this.infoLabel = new JLabel(this.message);
-		this.infoLabel.setAlignmentX(JPanel.LEFT_ALIGNMENT);
-		this.infoLabel.setHorizontalAlignment(JLabel.CENTER);
-		this.panel.add(this.infoLabel);
-
 		this.progressBar = new JProgressBar();
 		this.progressBar.setMinimum(0);
 		this.progressBar.setMaximum(100);
 		this.progressBar.setValue(0);
 		this.panel.add(this.progressBar);
+
+		this.infoLabel = new JLabel(this.message);
+		this.infoLabel.setAlignmentX(JPanel.LEFT_ALIGNMENT);
+		this.infoLabel.setHorizontalAlignment(JLabel.CENTER);
+		this.panel.add(this.infoLabel);
 
 		this.step.whenConfigurationProgress(new GameBuildProgressionListener() {
 			@Override
@@ -67,10 +68,12 @@ public class GameLoadingPanel extends GameDisplayedPanel {
 			}
 
 			@Override
-			public void onGameBuildError(GameConfiguration configuration, String reasong) {
+			public void onGameBuildError(GameConfiguration configuration, String reason) {
 				setPercent(0);
 				setMessage("Une erreur est intervenue");
 				reloadParent();
+
+				JOptionPane.showMessageDialog(panel, reason, "Une erreur est intervenue", JOptionPane.OK_OPTION);
 			}
 
 		});

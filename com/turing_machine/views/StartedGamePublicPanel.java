@@ -32,6 +32,9 @@ public class StartedGamePublicPanel extends Displayable {
 	private final JButton endRoundButton;
 
 	public StartedGamePublicPanel(StartedGame game) {
+
+		System.out.println(game.getState().getMachine().getCode());
+
 		this.listeners = new ArrayList<>();
 		this.game = game;
 
@@ -82,11 +85,20 @@ public class StartedGamePublicPanel extends Displayable {
 			});
 		}
 
+		GridBagConstraints spaceConstraints = new GridBagConstraints();
+		spaceConstraints.gridx = 1;
+		spaceConstraints.gridy = names.size() + 1;
+		spaceConstraints.weightx = 1;
+		spaceConstraints.weighty = 1;
+		spaceConstraints.fill = GridBagConstraints.HORIZONTAL;
+
+		this.panel.add(new JPanel(), spaceConstraints);
+
 		GridBagConstraints machineConstraints = new GridBagConstraints();
 		machineConstraints.gridx = 0;
 		machineConstraints.gridy = 0;
 		machineConstraints.gridwidth = 1;
-		machineConstraints.gridheight = names.size() + 1;
+		machineConstraints.gridheight = names.size() + 2;
 		machineConstraints.weightx = 1;
 		machineConstraints.weighty = 1;
 
@@ -95,7 +107,7 @@ public class StartedGamePublicPanel extends Displayable {
 
 		GridBagConstraints endConstraints = new GridBagConstraints();
 		endConstraints.gridx = 0;
-		endConstraints.gridy = names.size() + 2;
+		endConstraints.gridy = names.size() + 3;
 		endConstraints.gridwidth = 2;
 		endConstraints.fill = GridBagConstraints.HORIZONTAL;
 
@@ -128,6 +140,14 @@ public class StartedGamePublicPanel extends Displayable {
 			@Override
 			public void mouseExited(MouseEvent me) {}
 
+		});
+
+		game.getState().whenRoundChanged((round_id) -> {
+			reloadParent();
+
+			if (game.getPlayersList().getAlivePlayers().isEmpty()) return;
+			
+			JOptionPane.showMessageDialog(panel, "C'est le commencement de la manche numéro " + (round_id + 1), "Nouvelle manche", JOptionPane.OK_OPTION);
 		});
 	}
 

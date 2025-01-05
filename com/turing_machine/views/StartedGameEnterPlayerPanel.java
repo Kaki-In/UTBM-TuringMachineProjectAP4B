@@ -161,9 +161,11 @@ public class StartedGameEnterPlayerPanel extends Displayable {
 		{
 			this.panel.setCursor(Cursor.getDefaultCursor());
 			this.nameLabel.setForeground(Color.GRAY);
+			this.nameLabel.setText("<html><strike>" + this.player.getName() + "</strike></html>");
 		} else {
 			this.panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			this.nameLabel.setForeground(Color.BLACK);
+			this.nameLabel.setText(this.player.getName());
 		}
 
 		this.verifLabel.setText(grid.getLineFromRound(grid.getState().getRoundId()).getValidationsCount() + "/3");

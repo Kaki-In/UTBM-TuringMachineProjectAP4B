@@ -11,6 +11,6 @@ public interface GameBuildProgressionListener {
 
 	public abstract void onGameBuildEnd(GameConfiguration configuration, StartedGame game);
 
-	public abstract void onGameBuildError(GameConfiguration configuration, String reasong);
+	public abstract void onGameBuildError(GameConfiguration configuration, String reason);
 
 }

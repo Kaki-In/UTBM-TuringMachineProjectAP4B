@@ -3,8 +3,8 @@ package com.turing_machine.views;
 import com.turing_machine.base_objects.Code;
 import com.turing_machine.base_objects.CodeIndex;
 import com.turing_machine.started_game.StartedGameMachine;
-import javax.swing.JComponent;
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -28,7 +28,7 @@ public class MachineDiscoveringPanel extends Displayable {
         JPanel code_panel = new JPanel();
         code_panel.setLayout(new BoxLayout(code_panel, BoxLayout.X_AXIS));
         
-        for (int i=1; i <= 3; ++i)
+        for (int i=0; i < 3; ++i)
         {
             CodeIndex index = CodeIndex.fromInteger(i);
             indexes_panel.add(new JLabel(new IndexIcon(index, 100)));

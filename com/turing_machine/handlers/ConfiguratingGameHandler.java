@@ -4,6 +4,7 @@ import com.turing_machine.configuration.GameConfiguration;
 import com.turing_machine.exceptions.NotReadyConfigurationException;
 import com.turing_machine.platform_state.BuildGameStep;
 import com.turing_machine.platform_state.ConfiguratingGameStep;
+import com.turing_machine.platform_state.GameDebriefingStep;
 import com.turing_machine.platform_state.MainPlatformState;
 
 public class ConfiguratingGameHandler extends PlatformHandler {
@@ -31,6 +32,11 @@ public class ConfiguratingGameHandler extends PlatformHandler {
 					} catch (NotReadyConfigurationException e) {
 						
 					}
+				});
+			} else if (new_step instanceof GameDebriefingStep debriefingStep)
+			{
+				debriefingStep.whenRestartLaunched(() -> {
+					state.setActualStep(new ConfiguratingGameStep(new GameConfiguration()));
 				});
 			}
 		});

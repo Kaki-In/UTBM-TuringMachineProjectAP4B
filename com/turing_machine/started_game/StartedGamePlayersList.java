@@ -31,6 +31,10 @@ public class StartedGamePlayersList {
 		return this.players.stream().filter(player -> !player.isDisabled()).collect(Collectors.toCollection(ArrayList::new));
 	}
 
+	public ArrayList<StartedGamePlayer> getAlivePlayers() {
+		return this.players.stream().filter(player -> !player.isEliminated()).collect(Collectors.toCollection(ArrayList::new));
+	}
+
 	public ArrayList<StartedGamePlayer> getHypothesingPlayers() {
 		return this.players.stream().filter(player -> player.isGuessingACode()).collect(Collectors.toCollection(ArrayList::new));
 	}

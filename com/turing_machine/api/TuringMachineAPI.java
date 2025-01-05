@@ -132,7 +132,7 @@ public class TuringMachineAPI {
 			return content.toString();
 		} catch (IOException ex) {
 			if (con != null) con.disconnect();
-			throw new TuringMachineAPIException("an error occured while reading the answer : " + ex.getMessage());
+			throw new TuringMachineAPIException("an error occured while reading the answer : " + ex.getClass().getName() + " : " + ex.getMessage());
 		}
 	}
 

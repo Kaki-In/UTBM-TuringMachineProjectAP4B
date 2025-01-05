@@ -66,6 +66,10 @@ public class StartedGamePlayer {
 			});
 		});
 
+		this.state.whenRoundChanged((round_id) -> {
+
+		});
+
 	}
 
 	public String getName() {
@@ -114,6 +118,8 @@ public class StartedGamePlayer {
 		{
 			listener.onPlayerEliminated();
 		}
+
+		guessCode(null);
 	}
 
 	public void whenEventEmitted(StartedGamePlayerEventsListener listener) {

@@ -96,7 +96,7 @@ public interface ImageDescriptable
 
         g2D.fillRoundRect(topx, topy, size/5, 3*size/5, size/12, size/12);
         g2D.fillRoundRect(topx+2*size/5, topy, size/5, size, size/12, size/12);
-        g2D.fillRoundRect(topx, topy, 3*size/5, size/5, size/12, size/12);
+        g2D.fillRoundRect(topx, topy+2*size/5, 3*size/5, size/5, size/12, size/12);
     }
 
     public static void draw5Value(Graphics g2D, int x, int y, int size)

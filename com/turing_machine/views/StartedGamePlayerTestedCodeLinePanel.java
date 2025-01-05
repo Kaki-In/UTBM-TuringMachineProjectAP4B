@@ -88,19 +88,23 @@ public class StartedGamePlayerTestedCodeLinePanel extends Displayable {
 						switch (e.getMessage())
 						{
 							case "can't verify more than 3 times in a round":
-								JOptionPane.showConfirmDialog(panel, "Vous avez déjà dépassé les 3 vérifications par manche", "Impossible de vérifier le critère", JOptionPane.DEFAULT_OPTION);
+								JOptionPane.showMessageDialog(panel, "Vous avez déjà dépassé les 3 vérifications par manche", "Impossible de vérifier le critère", JOptionPane.DEFAULT_OPTION);
 								break;
 								
 							case "please choose first a code!":
-								JOptionPane.showConfirmDialog(panel, "Veuillez d'abord choisir un code!", "Impossible de vérifier le critère", JOptionPane.DEFAULT_OPTION);
+								JOptionPane.showMessageDialog(panel, "Veuillez d'abord choisir un code!", "Impossible de vérifier le critère", JOptionPane.DEFAULT_OPTION);
 								break;
 								
 							case "this round is finished yet":
-								JOptionPane.showConfirmDialog(panel, "La manche est déjà terminée", "Impossible de vérifier le critère", JOptionPane.DEFAULT_OPTION);
+								JOptionPane.showMessageDialog(panel, "La manche est déjà terminée", "Impossible de vérifier le critère", JOptionPane.DEFAULT_OPTION);
+								break;
+							
+							case "you have been eliminated":
+								JOptionPane.showMessageDialog(panel, "Vous êtes éliminé", "Impossible de vérifier le critère", JOptionPane.DEFAULT_OPTION);
 								break;
 							
 							default:
-								JOptionPane.showConfirmDialog(panel, e.getMessage(), "Impossible de vérifier le critère", JOptionPane.DEFAULT_OPTION);
+								JOptionPane.showMessageDialog(panel, e.getMessage(), "Impossible de vérifier le critère", JOptionPane.DEFAULT_OPTION);
 								break;
 								
 						}
@@ -129,7 +133,7 @@ public class StartedGamePlayerTestedCodeLinePanel extends Displayable {
 			public void mouseClicked(MouseEvent me) {
 				if (line.getRoundId() != line.getState().getRoundId())
 				{
-					JOptionPane.showConfirmDialog(panel, "La manche est déjà terminée", "Impossible de choisir le code", JOptionPane.DEFAULT_OPTION);
+					JOptionPane.showMessageDialog(panel, "La manche est déjà terminée", "Impossible de choisir le code", JOptionPane.DEFAULT_OPTION);
 				} else if (line.getCode() == null || line.getValidationsCount() == 0) 
 				{
 					ChooseCodePanel code_chooser = new ChooseCodePanel();
@@ -142,11 +146,11 @@ public class StartedGamePlayerTestedCodeLinePanel extends Displayable {
 						try {
 							line.setCode(code_chooser.getCode());
 						} catch (GameConstraintException e) {
-							JOptionPane.showConfirmDialog(panel, "Vous avez déjà vérifié un code pour cette manche, impossible d'en choisir un autre", "Impossible de choisir le code", JOptionPane.DEFAULT_OPTION);
+							JOptionPane.showMessageDialog(panel, "Vous avez déjà vérifié un code pour cette manche, impossible d'en choisir un autre", "Impossible de choisir le code", JOptionPane.DEFAULT_OPTION);
 						}
 					}
 				} else {
-					JOptionPane.showConfirmDialog(panel, "Vous avez déjà vérifié un code pour cette manche, impossible d'en choisir un autre", "Impossible de choisir le code", JOptionPane.DEFAULT_OPTION);				}
+					JOptionPane.showMessageDialog(panel, "Vous avez déjà vérifié un code pour cette manche, impossible d'en choisir un autre", "Impossible de choisir le code", JOptionPane.DEFAULT_OPTION);				}
 			}
 
 			@Override
@@ -218,7 +222,7 @@ public class StartedGamePlayerTestedCodeLinePanel extends Displayable {
 		{
 			label.repaint();
 
-			if (line.getValidationsCount() == 3) 
+			if (line.getValidationsCount() == 3 && line.getRoundId() == line.getState().getRoundId()) 
 			{
 				label.setCursor(Cursor.getDefaultCursor());
 			} else {

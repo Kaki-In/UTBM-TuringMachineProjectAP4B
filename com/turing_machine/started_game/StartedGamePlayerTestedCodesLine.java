@@ -18,10 +18,14 @@ public class StartedGamePlayerTestedCodesLine {
 
 	private final StartedGameState state;
 
+	private boolean disabled;
+
 	public StartedGamePlayerTestedCodesLine(StartedGameState state, int round) {
 		this.code = null;
 		this.validation_results = new StartedGamePlayerTestedCodeValidationResult[] {null, null, null};
 		this.validation_listeners = new ArrayList<>();
+
+		this.disabled = false;
 
 		this.state = state;
 		this.round_id = round;
@@ -76,6 +80,10 @@ public class StartedGamePlayerTestedCodesLine {
 			throw new GameConstraintException("this round is finished yet");
 		}
 
+		if (this.disabled) {
+			throw new GameConstraintException("you have been eliminated");
+		}
+
 		if (this.getValidationsCount() == 3)
 		{
 			throw new GameConstraintException("can't verify more than 3 times in a round");
@@ -101,6 +109,16 @@ public class StartedGamePlayerTestedCodesLine {
 	public int getRoundId()
 	{
 		return this.round_id;
+	}
+
+	public void disable()
+	{
+		this.disabled = true;
+	}
+
+	public boolean isDisabled()
+	{
+		return this.disabled;
 	}
 
 	public void whenNewValidation(StartedGameCodesLineListener listener) {

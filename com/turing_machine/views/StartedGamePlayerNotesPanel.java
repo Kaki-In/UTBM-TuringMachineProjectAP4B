@@ -128,6 +128,11 @@ public class StartedGamePlayerNotesPanel extends Displayable {
 		});
 	}
 
+	public StartedGamePlayer getPlayer()
+	{
+		return this.player;
+	}
+
 	@Override
 	public JComponent getWidget()
 	{
@@ -143,7 +148,7 @@ public class StartedGamePlayerNotesPanel extends Displayable {
 	}
 
 	public void whenCloseAction(Runnable listener) {
-
+		this.listeners.add(listener);
 	}
 
 }

@@ -11,10 +11,14 @@ public class StartedGamePlayerTestedCodesGrid {
 
 	private final StartedGameState state;
 
+	private boolean disabled ;
+
 	public StartedGamePlayerTestedCodesGrid(StartedGameState state) {
 		this.rounds_listener = new ArrayList<>();
 		this.lines = new ArrayList<>();
 		this.state = state;
+
+		this.disabled = false;
 
 		this.state.whenRoundChanged((round_id) -> {
 			this.addNewLine(round_id);
@@ -44,6 +48,16 @@ public class StartedGamePlayerTestedCodesGrid {
 	public StartedGameState getState()
 	{
 		return this.state;
+	}
+
+	public void disable()
+	{
+		this.disabled = true;
+	}
+
+	public boolean isDisabled()
+	{
+		return this.disabled;
 	}
 
 	public void whenNewLine(ObjectSelectionListener<StartedGamePlayerTestedCodesLine> listener) {

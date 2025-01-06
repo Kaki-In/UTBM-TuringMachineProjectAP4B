@@ -29,12 +29,12 @@ public class StartedGameState
     }
 
 	public void endRound() {
+        ++ this.round_id;
+
         for (StartedGameStateListener listener: listeners)
         {
-            listener.onNewRound(round_id + 1);
+            listener.onNewRound(round_id );
         }
-
-        ++ this.round_id;
 	}
 
     public void whenRoundChanged(StartedGameStateListener listener)

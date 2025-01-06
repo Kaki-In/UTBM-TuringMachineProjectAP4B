@@ -91,6 +91,7 @@ public class StartedGameEnterPlayerPanel extends Displayable {
 		player.getNotes().getTestedCodesGrid().getLineFromRound(0).whenNewValidation(lineListener);
 
 		player.getNotes().getTestedCodesGrid().whenNewLine((line) -> {
+			reloadParent();
 			line.whenNewValidation(lineListener);
 		});
 

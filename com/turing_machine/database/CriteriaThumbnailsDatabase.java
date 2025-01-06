@@ -109,7 +109,7 @@ public class CriteriaThumbnailsDatabase {
 
 					ImageDescriptable.drawText(g2D, "?", 20, 35, 30);
 					ImageDescriptable.drawMult(g2D, 50, 40, 30);
-					ImageDescriptable.draw1Value(g2D, 80, 40, 20);;
+					ImageDescriptable.draw1Value(g2D, 80, 40, 20);
 				}
 			)
 		);
@@ -121,7 +121,7 @@ public class CriteriaThumbnailsDatabase {
 
 					ImageDescriptable.drawText(g2D, "?", 20, 35, 30);
 					ImageDescriptable.drawMult(g2D, 50, 40, 30);
-					ImageDescriptable.draw3Value(g2D, 80, 40, 20);;
+					ImageDescriptable.draw3Value(g2D, 80, 40, 20);
 				}
 			)
 		);
@@ -133,7 +133,7 @@ public class CriteriaThumbnailsDatabase {
 
 					ImageDescriptable.drawText(g2D, "?", 20, 35, 30);
 					ImageDescriptable.drawMult(g2D, 50, 40, 30);
-					ImageDescriptable.draw4Value(g2D, 80, 40, 20);;
+					ImageDescriptable.draw4Value(g2D, 80, 40, 20);
 				}
 			)
 		);

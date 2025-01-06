@@ -161,8 +161,8 @@ public interface ImageDescriptable
 
     public static void drawEquals(Graphics g2D, int x, int y, int size)
     {
-        g2D.fillRoundRect(x - size/2, y-size/2+size/5, size, size/5, size/20, size/20);
-        g2D.fillRoundRect(x - size/2, y+size/10, size, size/5, size/20, size/20);
+        g2D.fillRoundRect(x - size/2+size/5, y-size/2+size/5, size-2*size/5, size/5, size/10, size/10);
+        g2D.fillRoundRect(x - size/2+size/5, y+size/10, size - 2*size/5, size/5, size/10, size/10);
     }
 
     public static void drawGreaterThan(Graphics g2D, int x, int y, int size)

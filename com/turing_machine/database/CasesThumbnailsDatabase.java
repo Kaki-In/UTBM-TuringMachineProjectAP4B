@@ -686,7 +686,7 @@ public class CasesThumbnailsDatabase {
 		);
 
 		this.cases.add(
-			new CriterionCaseThumbnail(83, "aucun nombre dans l'ordre croissant",
+			new CriterionCaseThumbnail(83, "aucuns nombres consécutifs dans l'ordre croissant",
 				(Graphics g2D) -> {
 					ImageDescriptable.draw0Value(g2D, 60, 30, 30);
 					g2D.setColor(new Color(0xF36322));
@@ -696,7 +696,7 @@ public class CasesThumbnailsDatabase {
 		);
 
 		this.cases.add(
-			new CriterionCaseThumbnail(84, "deux nombres dans l'ordre croissant",
+			new CriterionCaseThumbnail(84, "deux nombres consécutifs dans l'ordre croissant",
 				(Graphics g2D) -> {
 					ImageDescriptable.draw2Value(g2D, 60, 30, 30);
 					g2D.setColor(new Color(0xF36322));
@@ -1086,7 +1086,7 @@ public class CasesThumbnailsDatabase {
 		);
 
 		this.cases.add(
-			new CriterionCaseThumbnail(122, "aucune séquence croissante ou décroissante",
+			new CriterionCaseThumbnail(122, "aucune séquence croissante ou décroissante consécutive",
 				(Graphics g2D) -> {
 					ImageDescriptable.draw0Value(g2D, 60, 30, 30);
 					g2D.setColor(new Color(0xF36322));
@@ -1096,7 +1096,7 @@ public class CasesThumbnailsDatabase {
 		);
 
 		this.cases.add(
-			new CriterionCaseThumbnail(123, "deux nombres croissants ou décroissants",
+			new CriterionCaseThumbnail(123, "deux nombres croissants ou décroissants consécutifs",
 				(Graphics g2D) -> {
 					ImageDescriptable.draw2Value(g2D, 60, 30, 30);
 					g2D.setColor(new Color(0xF36322));
@@ -1106,7 +1106,7 @@ public class CasesThumbnailsDatabase {
 		);
 
 		this.cases.add(
-			new CriterionCaseThumbnail(124, "trois nombres croissants ou décroissants",
+			new CriterionCaseThumbnail(124, "trois nombres croissants ou décroissants consécutifs",
 				(Graphics g2D) -> {
 					ImageDescriptable.draw3Value(g2D, 60, 30, 30);
 					g2D.setColor(new Color(0xF36322));
@@ -1435,7 +1435,7 @@ public class CasesThumbnailsDatabase {
 		);
 
 		this.cases.add(
-			new CriterionCaseThumbnail(403, "trois nombres dans l'ordre croissant",
+			new CriterionCaseThumbnail(403, "trois nombres consécutifs dans l'ordre croissant",
 				(Graphics g2D) -> {
 					ImageDescriptable.draw3Value(g2D, 60, 30, 30);
 					g2D.setColor(new Color(0xF36322));

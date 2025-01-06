@@ -30,13 +30,13 @@ public class StartedGameCriterionPanel extends Displayable {
 		this.panel = new JPanel();
 		this.panel.setLayout(new BoxLayout(this.panel, BoxLayout.Y_AXIS));
 
-		Color background_color = new Color(230, 230, 230);
+		Color background_color = new Color(245, 255, 250);
 		this.panel.setBackground(background_color);
 		this.panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 		JPanel criterion_panel = new JPanel();
 		criterion_panel.setLayout(new BoxLayout(criterion_panel, BoxLayout.X_AXIS));
-		criterion_panel.setBackground(new Color(200, 200, 200));
+		criterion_panel.setBackground(new Color(200, 255, 220));
 		
 		CriterionThumbnail thumbnail;
 		try {
@@ -52,7 +52,7 @@ public class StartedGameCriterionPanel extends Displayable {
 		criterion_panel.add(image);
 
 		JPanel description_panel = new JPanel();
-		description_panel.setBackground(new Color(200, 200, 200));
+		description_panel.setBackground(new Color(200, 255, 220));
 		description_panel.setLayout(new BoxLayout(description_panel, BoxLayout.Y_AXIS));
 
 		JLabel introduction = new JLabel("<html>Ce critère (" + criterion.getLetter().name() + ") vérifie...</html>");

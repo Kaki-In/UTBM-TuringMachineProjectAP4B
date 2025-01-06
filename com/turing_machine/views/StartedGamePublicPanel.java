@@ -10,6 +10,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -97,7 +98,8 @@ public class StartedGamePublicPanel extends Displayable {
 		machineConstraints.gridwidth = 1;
 		machineConstraints.gridheight = names.size() + 2;
 		machineConstraints.weightx = 1;
-		machineConstraints.weighty = 1;
+		machineConstraints.weighty = 0;
+		machineConstraints.anchor = GridBagConstraints.NORTH;
 
 		this.machine_panel = new StartedGameMachinePanel(game.getState().getMachine());
 		this.panel.add(this.machine_panel.getWidget(), machineConstraints);
@@ -142,7 +144,7 @@ public class StartedGamePublicPanel extends Displayable {
 		game.getState().whenRoundChanged((round_id) -> {
 			reloadParent();
 
-			if (game.getPlayersList().getAlivePlayers().isEmpty()) return;
+			if (game.getPlayersList().getAlivePlayers().stream().filter((player) -> !player.isGuessingACode()).collect(Collectors.toCollection(ArrayList::new)).isEmpty()) return; // on doit retirer les gagnants parmi les joueurs encore en jeu
 
 			JOptionPane.showMessageDialog(panel, "C'est le commencement de la manche numéro " + (round_id + 1), "Nouvelle manche", JOptionPane.OK_OPTION);
 		});

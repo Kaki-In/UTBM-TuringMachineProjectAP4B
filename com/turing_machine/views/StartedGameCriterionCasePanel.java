@@ -24,7 +24,7 @@ public class StartedGameCriterionCasePanel extends Displayable {
 		this.panel = new JPanel();
 		this.panel.setLayout(new BoxLayout(this.panel, BoxLayout.Y_AXIS));
 
-		this.panel.setBackground(new Color(230, 230, 230));
+		this.panel.setBackground(new Color(245, 255, 250));
 		this.panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
 		CriterionCaseThumbnail thumbnail;

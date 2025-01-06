@@ -107,6 +107,8 @@ public class StartedGameEnterPlayerPanel extends Displayable {
 						listener.run();
 					}
 				}
+
+				panel.setBackground(new Color(220, 220, 220));
 			}
 
 			@Override
@@ -118,7 +120,7 @@ public class StartedGameEnterPlayerPanel extends Displayable {
 			@Override
 			public void mouseEntered(MouseEvent me) {
 				if (!player.isEliminated())
-				panel.setBackground(new Color(200, 200, 200));
+				panel.setBackground(new Color(130, 200, 180));
 			}
 
 			@Override

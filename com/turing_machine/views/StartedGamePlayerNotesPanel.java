@@ -51,7 +51,7 @@ public class StartedGamePlayerNotesPanel extends Displayable {
 		Border compound = BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5), BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
 		compound = BorderFactory.createCompoundBorder(compound, BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		first_line_panel.setBorder(compound);
-		first_line_panel.setBackground(new Color(200, 200, 200));
+		first_line_panel.setBackground(new Color(100, 127, 110));
 
 		GridBagConstraints buttonConstraints = new GridBagConstraints();
 		buttonConstraints.gridx = 0;

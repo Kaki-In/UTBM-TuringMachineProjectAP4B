@@ -21,11 +21,11 @@ public class ConfiguratingPlayerPanel extends Displayable {
 		this.field = new JTextField();
 		this.field.setText(this.name);
 
-/*		configuration.whenNameChanged((last_name, new_name) -> {
+		configuration.whenNameChanged((last_name, new_name) -> {
 			setName(new_name);
 			reloadParent();
 		});
-*/
+
 		this.field.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
 			public void insertUpdate(DocumentEvent de) {

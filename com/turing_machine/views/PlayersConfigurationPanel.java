@@ -3,13 +3,13 @@ package com.turing_machine.views;
 import com.turing_machine.configuration.PlayerConfiguration;
 import com.turing_machine.configuration.PlayersConfiguration;
 import com.turing_machine.listeners.ObjectsListChangeListener;
-import javax.swing.JComponent;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -19,6 +19,8 @@ public class PlayersConfigurationPanel extends Displayable {
 
 	private final ArrayList<ConfiguratingPlayerPanel> players;
 
+	private int last_refresh_length;
+
 	private final JPanel panel;
 	private final JButton add_button;
 
@@ -26,6 +28,8 @@ public class PlayersConfigurationPanel extends Displayable {
 		this.configuration = configuration;
 
 		this.players = new ArrayList<>();
+		this.last_refresh_length = configuration.getPlayers().size();
+
 
 		for (PlayerConfiguration player: configuration.getPlayers())
 		{
@@ -156,7 +160,16 @@ public class PlayersConfigurationPanel extends Displayable {
 	@Override
 	public void refresh()
 	{
-		this.preparePanel();
+		if (this.last_refresh_length != configuration.getPlayers().size())
+		{
+			preparePanel();
+			this.last_refresh_length = configuration.getPlayers().size();
+		}
+
+		for (ConfiguratingPlayerPanel player_panel: this.players)
+		{
+			player_panel.refresh();
+		}
 	}
 
 }

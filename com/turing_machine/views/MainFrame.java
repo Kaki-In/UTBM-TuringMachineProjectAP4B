@@ -16,6 +16,8 @@ public class MainFrame extends Displayable {
 
 	private GameDisplayedPanel displayed_panel;
 
+	private GameDisplayedPanel last_displayed_panel;
+
 	private final JFrame frame;
 
 	public MainFrame(MainPlatformState platform_state) {
@@ -28,6 +30,8 @@ public class MainFrame extends Displayable {
 
 		this.displayed_panel = getStatePanel();
 		this.displayed_panel.whenShouldReload(() -> {reloadParent();});
+
+		this.last_displayed_panel = this.displayed_panel;
 
 		this.constructFrame();
 
@@ -109,7 +113,11 @@ public class MainFrame extends Displayable {
 	public void refresh()
 	{
 		this.displayed_panel.refresh();
-		this.constructFrame();
+
+		if (this.last_displayed_panel != this.displayed_panel)
+		{
+			this.constructFrame();
+		}
 
 		this.frame.revalidate();
 	}

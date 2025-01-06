@@ -281,7 +281,7 @@ public class CriteriaDatabase {
 
 			case 48:
 				return new int[]{
-					139, 140, 141, 89, 90, 91, 92, 93, 94
+					139, 140, 141, 89, 90, 91, 92, 93, 95
 				};
 
 			default:

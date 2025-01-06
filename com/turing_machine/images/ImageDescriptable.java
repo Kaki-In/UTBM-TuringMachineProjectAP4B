@@ -187,7 +187,7 @@ public interface ImageDescriptable
 
         drawGreaterThan(g2D, x, y, size);
 
-        g2D.drawLine(x-cossize/2, y+size/2, x+cossize/2, size/2-cossize/2);
+        g2D.drawLine(x-cossize/2, y+size/2, x+cossize/2, y+size/2-cossize/2);
     }
 
     public static void drawLowerEqualThan(Graphics g2D, int x, int y, int size)
@@ -196,7 +196,7 @@ public interface ImageDescriptable
 
         drawLowerThan(g2D, x, y, size);
 
-        g2D.drawLine(x+cossize/2, y+size/2, x-cossize/2, size/2-cossize/2);
+        g2D.drawLine(x+cossize/2, y+size/2, x-cossize/2, y+size/2-cossize/2);
     }
 
     public static void drawPlus(Graphics g2D, int x, int y, int size)
@@ -221,9 +221,9 @@ public interface ImageDescriptable
         g2D.drawLine(x-size/2, y+size/2, x+size/2, y-size/2);
 
         Polygon polygon = new Polygon();
-        polygon.addPoint(x, y-size/2);
+        polygon.addPoint(x+size/6, y-size/2);
         polygon.addPoint(x+size/2, y-size/2);
-        polygon.addPoint(x+size/2, y);
+        polygon.addPoint(x+size/2, y-size/6);
 
         g2D.fillPolygon(polygon);
         g2D.drawPolygon(polygon);
@@ -234,9 +234,9 @@ public interface ImageDescriptable
         g2D.drawLine(x-size/2, y-size/2, x+size/2, y+size/2);
 
         Polygon polygon = new Polygon();
-        polygon.addPoint(x, y+size/2);
+        polygon.addPoint(x+size/6, y+size/2);
         polygon.addPoint(x+size/2, y+size/2);
-        polygon.addPoint(x+size/2, y);
+        polygon.addPoint(x+size/2, y+size/6);
 
         g2D.fillPolygon(polygon);
         g2D.drawPolygon(polygon);
@@ -271,16 +271,16 @@ public interface ImageDescriptable
     public static void drawPodium(Graphics g2D, int height1, int height2, int height3, int x, int y, int size)
     {
         int topx = x-size/2;
-        int topy = y-3*size/8;
+        int bottomy = y+3*size/8;
 
-        g2D.fillRect(topx, topy+size/4, size/3, height1*size/4);
-        g2D.fillRect(topx, topy+size/4, size/3, height1*size/4);
+        g2D.drawRect(topx, bottomy-height1*size/4, size/3, height1*size/4);
+        g2D.fillRect(topx, bottomy-height1*size/4, size/3, height1*size/4);
 
-        g2D.fillRect(topx+size/3, topy+size/4, size/3, height2*size/4);
-        g2D.fillRect(topx+size/3, topy+size/4, size/3, height2*size/4);
+        g2D.drawRect(topx+size/3, bottomy-height2*size/4, size/3, height2*size/4);
+        g2D.fillRect(topx+size/3, bottomy-height2*size/4, size/3, height2*size/4);
 
-        g2D.fillRect(topx+2*size/3, topy+size/4, size/3, height3*size/4);
-        g2D.fillRect(topx+2*size/3, topy+size/4, size/3, height3*size/4);
+        g2D.drawRect(topx+2*size/3, bottomy-height3*size/4, size/3, height3*size/4);
+        g2D.fillRect(topx+2*size/3, bottomy-height3*size/4, size/3, height3*size/4);
     }
 
     public static void drawBalance(Graphics g2D, int x, int y, int size)

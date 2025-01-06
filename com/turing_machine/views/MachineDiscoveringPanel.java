@@ -47,7 +47,7 @@ public class MachineDiscoveringPanel extends Displayable {
                 continue;
             }
 
-            JLabel letter_icon = new JLabel(letter.name());
+            JLabel letter_icon = new JLabel(letter.name() + ". " + thumbnail.getDescription());
             letter_icon.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, new Color(0, 0, 0, 0)));
             letter_icon.setFont(Displayable.getFont(19).deriveFont(Font.BOLD));
             criteria_panel.add(letter_icon);

@@ -14,8 +14,6 @@ public class StartedGame {
 	private final ArrayList<StartedGameListener> listeners;
 
 	public StartedGame(StartedGameMachine machine, StartedGamePlayersList players, StartedGameState game_state) {
-		System.out.println(machine.getCode());
-		
 		this.state = game_state;
         this.players = players;
 

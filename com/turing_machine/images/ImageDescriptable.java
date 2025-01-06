@@ -56,6 +56,17 @@ public interface ImageDescriptable
         }
     }
 
+    public static void draw0Value(Graphics g2D, int x, int y, int size)
+    {
+        int topx = x-size/2 + size/5;
+        int topy = y-size/2;
+
+        g2D.fillRoundRect(topx, topy, 3*size/5, size/5, size/12, size/12);
+        g2D.fillRoundRect(topx, topy, size/5, size, size/12, size/12);
+        g2D.fillRoundRect(topx+2*size/5, topy, size/5, size, size/12, size/12);
+        g2D.fillRoundRect(topx, topy+4*size/5, 3*size/5, size/5, size/12, size/12);
+    }
+
     public static void draw1Value(Graphics g2D, int x, int y, int size)
     {
         int topx = x-size/2 + size/5;
@@ -210,9 +221,9 @@ public interface ImageDescriptable
         g2D.drawLine(x-size/2, y+size/2, x+size/2, y-size/2);
 
         Polygon polygon = new Polygon();
-        polygon.addPoint(x+size/4, y-size/2);
+        polygon.addPoint(x, y-size/2);
         polygon.addPoint(x+size/2, y-size/2);
-        polygon.addPoint(x+size/2, y-size/4);
+        polygon.addPoint(x+size/2, y);
 
         g2D.fillPolygon(polygon);
         g2D.drawPolygon(polygon);
@@ -223,9 +234,9 @@ public interface ImageDescriptable
         g2D.drawLine(x-size/2, y-size/2, x+size/2, y+size/2);
 
         Polygon polygon = new Polygon();
-        polygon.addPoint(x+size/4, y+size/2);
+        polygon.addPoint(x, y+size/2);
         polygon.addPoint(x+size/2, y+size/2);
-        polygon.addPoint(x+size/2, y+size/4);
+        polygon.addPoint(x+size/2, y);
 
         g2D.fillPolygon(polygon);
         g2D.drawPolygon(polygon);

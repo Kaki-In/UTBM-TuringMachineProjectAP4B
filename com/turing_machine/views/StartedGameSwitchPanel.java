@@ -84,7 +84,7 @@ public class StartedGameSwitchPanel extends Displayable {
 			reloadParent();
 		});
 
-		this.panel.setPreferredSize(new Dimension(1200, 700));
+		this.panel.setPreferredSize(new Dimension(1200, 800));
 	}
 
 	public Displayable getDisplayedPanel()

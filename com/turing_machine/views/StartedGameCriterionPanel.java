@@ -128,7 +128,7 @@ public class StartedGameCriterionPanel extends Displayable {
 
 		this.panel.add(cases_panel);
 
-		this.panel.setPreferredSize(new Dimension(450, 80 + 100*Math.round(cases.size()/columns)));
+		this.panel.setPreferredSize(new Dimension(450, 85 + 95*Math.round(cases.size()/columns)));
 		this.panel.setMaximumSize(this.panel.getPreferredSize());
 	}
 

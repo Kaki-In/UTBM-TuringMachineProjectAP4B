@@ -43,7 +43,7 @@ public class CriteriaThumbnailsDatabase {
 		this.criteria.add(
 			new CriterionThumbnail(3, "le deuxième nombre comparé à 3", 
 				(Graphics g2D) -> {
-					ImageDescriptable.drawIndex(g2D, SECOND_YELLOW_SQUARE, 25, 40, 30);
+					ImageDescriptable.drawIndex(g2D, CodeIndex.SECOND_YELLOW_SQUARE, 25, 40, 30);
 
 					g2D.setColor(Color.BLACK);
 					ImageDescriptable.drawBalance(g2D, 50, 40, 30);

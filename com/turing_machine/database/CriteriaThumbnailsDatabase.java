@@ -30,6 +30,12 @@ public class CriteriaThumbnailsDatabase {
 		this.criteria.add(
 			new CriterionThumbnail(2, "le premier nombre comparé à 3", 
 				(Graphics g2D) -> {
+					ImageDescriptable.drawIndex(g2D, CodeIndex.FIRST_BLUE_TRIANGLE, 25, 40, 30);
+
+					g2D.setColor(Color.BLACK);
+					ImageDescriptable.drawBalance(g2D, 50, 40, 30);
+
+					ImageDescriptable.draw3Value(g2D, 75, 40, 30);
 				}
 			)
 		);
@@ -37,6 +43,12 @@ public class CriteriaThumbnailsDatabase {
 		this.criteria.add(
 			new CriterionThumbnail(3, "le deuxième nombre comparé à 3", 
 				(Graphics g2D) -> {
+					ImageDescriptable.drawIndex(g2D, SECOND_YELLOW_SQUARE, 25, 40, 30);
+
+					g2D.setColor(Color.BLACK);
+					ImageDescriptable.drawBalance(g2D, 50, 40, 30);
+
+					ImageDescriptable.draw3Value(g2D, 75, 40, 30);
 				}
 			)
 		);
@@ -44,6 +56,12 @@ public class CriteriaThumbnailsDatabase {
 		this.criteria.add(
 			new CriterionThumbnail(4, "le deuxième nombre comparé à 4", 
 				(Graphics g2D) -> {
+					ImageDescriptable.drawIndex(g2D, CodeIndex.SECOND_YELLOW_SQUARE, 25, 40, 30);
+
+					g2D.setColor(Color.BLACK);
+					ImageDescriptable.drawBalance(g2D, 50, 40, 30);
+
+					ImageDescriptable.draw4Value(g2D, 75, 40, 30);
 				}
 			)
 		);

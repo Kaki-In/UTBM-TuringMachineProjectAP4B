@@ -643,15 +643,15 @@ public class CriteriaCasesDatabase {
 
 		this.cases.add(
 			new CriterionCase(133, (Code code) -> {
-				return code.getValue(CodeIndex.FIRST_BLUE_TRIANGLE).toInteger() < code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger()
-					&& code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger() < code.getValue(CodeIndex.THIRD_PURPLE_CIRCLE).toInteger();
+				return code.getValue(CodeIndex.FIRST_BLUE_TRIANGLE).toInteger() +1 == code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger()
+					&& code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger() +1 == code.getValue(CodeIndex.THIRD_PURPLE_CIRCLE).toInteger();
 			})
 		);
 
 		this.cases.add(
 			new CriterionCase(134, (Code code) -> {
-				return code.getValue(CodeIndex.FIRST_BLUE_TRIANGLE).toInteger() > code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger()
-					&& code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger() > code.getValue(CodeIndex.THIRD_PURPLE_CIRCLE).toInteger();
+				return code.getValue(CodeIndex.FIRST_BLUE_TRIANGLE).toInteger() -1 == code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger()
+					&& code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger() -1 == code.getValue(CodeIndex.THIRD_PURPLE_CIRCLE).toInteger();
 			})
 		);
 

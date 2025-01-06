@@ -361,7 +361,7 @@ public class CriteriaCasesDatabase {
 				int second = code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger();
 				int third = code.getValue(CodeIndex.THIRD_PURPLE_CIRCLE).toInteger();
 
-				return first <= second && second <= third;
+				return first +1 != second && second +1 != third;
 			})
 		);
 
@@ -371,8 +371,8 @@ public class CriteriaCasesDatabase {
 				int second = code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger();
 				int third = code.getValue(CodeIndex.THIRD_PURPLE_CIRCLE).toInteger();
 
-				return first >= second && second <= third
-					|| first <= second && second >= third;
+				return first +1 == second && second +1 != third
+					|| first +1 != second && second +1 == third;
 			})
 		);
 
@@ -571,19 +571,33 @@ public class CriteriaCasesDatabase {
 
 		this.cases.add(
 			new CriterionCase(122, (Code code) -> {
-				return false; // uses specific implementation (see the criterion number 25 in CriteriaDatabase.java to know more)
+				int first = code.getValue(CodeIndex.FIRST_BLUE_TRIANGLE).toInteger();
+				int second = code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger();
+				int third = code.getValue(CodeIndex.THIRD_PURPLE_CIRCLE).toInteger();
+
+				return first +1 != second && second +1 != third && first -1 != second && second -1 != third;
 			})
 		);
 
 		this.cases.add(
 			new CriterionCase(123, (Code code) -> {
-				return false; // uses specific implementations (see the criterion number 25 in CriteriaDatabase.java to know more)
+				int first = code.getValue(CodeIndex.FIRST_BLUE_TRIANGLE).toInteger();
+				int second = code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger();
+				int third = code.getValue(CodeIndex.THIRD_PURPLE_CIRCLE).toInteger();
+
+				return (first +1 == second && second +1 != third) || (first +1 != second && second +1 == third)
+					|| (first -1 == second && second -1 != third) || (first -1 != second && second -1 == third);
 			})
 		);
 
 		this.cases.add(
 			new CriterionCase(124, (Code code) -> {
-				return false; // uses specific implementations (see the criterion number 25 in CriteriaDatabase.java to know more)
+				int first = code.getValue(CodeIndex.FIRST_BLUE_TRIANGLE).toInteger();
+				int second = code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger();
+				int third = code.getValue(CodeIndex.THIRD_PURPLE_CIRCLE).toInteger();
+
+				return (first +1 == second && second +1 == third) || (first +1 == second && second +1 == third)
+					|| (first -1 == second && second -1 == third) || (first -1 == second && second -1 == third);
 			})
 		);
 
@@ -643,15 +657,15 @@ public class CriteriaCasesDatabase {
 
 		this.cases.add(
 			new CriterionCase(133, (Code code) -> {
-				return code.getValue(CodeIndex.FIRST_BLUE_TRIANGLE).toInteger() +1 == code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger()
-					&& code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger() +1 == code.getValue(CodeIndex.THIRD_PURPLE_CIRCLE).toInteger();
+				return code.getValue(CodeIndex.FIRST_BLUE_TRIANGLE).toInteger() < code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger()
+					&& code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger() < code.getValue(CodeIndex.THIRD_PURPLE_CIRCLE).toInteger();
 			})
 		);
 
 		this.cases.add(
 			new CriterionCase(134, (Code code) -> {
-				return code.getValue(CodeIndex.FIRST_BLUE_TRIANGLE).toInteger() -1 == code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger()
-					&& code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger() -1 == code.getValue(CodeIndex.THIRD_PURPLE_CIRCLE).toInteger();
+				return code.getValue(CodeIndex.FIRST_BLUE_TRIANGLE).toInteger() > code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger()
+					&& code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger() > code.getValue(CodeIndex.THIRD_PURPLE_CIRCLE).toInteger();
 			})
 		);
 
@@ -752,8 +766,8 @@ public class CriteriaCasesDatabase {
 		
 		this.cases.add(
 			new CriterionCase(403, (Code code) -> {
-				return code.getValue(CodeIndex.FIRST_BLUE_TRIANGLE).toInteger() < code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger()
-					&& code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger() < code.getValue(CodeIndex.THIRD_PURPLE_CIRCLE).toInteger();
+				return code.getValue(CodeIndex.FIRST_BLUE_TRIANGLE).toInteger() +1 == code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger()
+					&& code.getValue(CodeIndex.SECOND_YELLOW_SQUARE).toInteger() +1 == code.getValue(CodeIndex.THIRD_PURPLE_CIRCLE).toInteger();
 			})
 		);
 	}

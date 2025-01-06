@@ -2,7 +2,6 @@ package com.turing_machine.started_game;
 
 import com.turing_machine.base_objects.Code;
 import com.turing_machine.base_objects.CriterionLetter;
-import com.turing_machine.database.CriteriaDatabase;
 import com.turing_machine.database.CriterionCase;
 import com.turing_machine.database.Database;
 import com.turing_machine.exceptions.NoSuchCaseException;

@@ -31,7 +31,7 @@ public class GameBuildHandler extends PlatformHandler {
 
 				new Thread(() -> {
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						return;
 					}

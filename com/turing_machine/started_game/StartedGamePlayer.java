@@ -118,8 +118,6 @@ public class StartedGamePlayer {
 		{
 			listener.onPlayerEliminated();
 		}
-
-		guessCode(null);
 	}
 
 	public void whenEventEmitted(StartedGamePlayerEventsListener listener) {

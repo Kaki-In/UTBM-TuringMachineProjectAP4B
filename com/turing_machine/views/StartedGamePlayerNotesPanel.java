@@ -174,7 +174,11 @@ public class StartedGamePlayerNotesPanel extends Displayable {
 
 		player.whenEventEmitted(new StartedGamePlayerEventsListener() {
 			@Override
-			public void onPlayerEliminated() {}
+			public void onPlayerEliminated() {
+				javax.swing.SwingUtilities.invokeLater(() -> { // on n'est pas sur d'être dans la JTE
+					JOptionPane.showMessageDialog(panel, player.getName() + " a deviné le mauvais code (" + player.getGuessingCode().toString() + ")et est éliminé de la partie!", "Élimination d'un joueur", JOptionPane.OK_OPTION);
+				});
+			}
 
 			@Override
 			public void onPlayerDisabled() {}

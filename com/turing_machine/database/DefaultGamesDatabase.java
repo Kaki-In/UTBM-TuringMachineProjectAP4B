@@ -264,12 +264,16 @@ public class DefaultGamesDatabase {
 		return this.games.get(index);
 	}
 
-	public DefaultGame getRandomGame(GameDifficulty difficulty, GameCriteriaCount criteriaCount) {
-		ArrayList<DefaultGame> corresponds_games = this.games.stream()
-															 .filter(game -> game.getDifficulty() == difficulty && game.getCriteriaCount() == criteriaCount)
-															 .collect(Collectors.toCollection(ArrayList::new));
+	public DefaultGame getRandomGame(GameDifficulty difficulty, GameCriteriaCount criteriaCount) throws NoSuchGameException {
+		try {
+			ArrayList<DefaultGame> corresponds_games = this.games.stream()
+																.filter(game -> game.getDifficulty() == difficulty && game.getCriteriaCount() == criteriaCount)
+																.collect(Collectors.toCollection(ArrayList::new));
 
-		return corresponds_games.get(Math.round((float) (Math.random() * (corresponds_games.size() - 1))));
+			return corresponds_games.get(Math.round((float) (Math.random() * (corresponds_games.size() - 1))));
+		} catch (IndexOutOfBoundsException e) {
+			throw new NoSuchGameException(-1);
+		}
 	}
 
 }

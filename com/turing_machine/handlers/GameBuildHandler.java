@@ -1,6 +1,7 @@
 package com.turing_machine.handlers;
 
 import com.turing_machine.configuration.GameConfiguration;
+import com.turing_machine.exceptions.NoSuchGameException;
 import com.turing_machine.exceptions.NotReadyConfigurationException;
 import com.turing_machine.exceptions.TuringMachineAPIException;
 import com.turing_machine.platform_state.BuildGameStep;
@@ -38,7 +39,7 @@ public class GameBuildHandler extends PlatformHandler {
 					try {
 						StartedGame game = this.startGameFromConfiguration(configuration);
 						state.setActualStep(new StartedGameStep(game));
-					} catch (TuringMachineAPIException | NotReadyConfigurationException e) {
+					} catch (TuringMachineAPIException | NotReadyConfigurationException | NoSuchGameException e) {
 						buildGameStep.emitConfigurationError(e.getMessage());
 						state.setActualStep(new ConfiguratingGameStep(configuration));
 					}
@@ -48,7 +49,7 @@ public class GameBuildHandler extends PlatformHandler {
 		});
 	}
 
-	public StartedGame startGameFromConfiguration(GameConfiguration configuration) throws TuringMachineAPIException, NotReadyConfigurationException {
+	public StartedGame startGameFromConfiguration(GameConfiguration configuration) throws TuringMachineAPIException, NotReadyConfigurationException, NoSuchGameException {
 		MainPlatformState state = this.getState();
 
 		if (!(state.getActualStep() instanceof BuildGameStep buildGameStep))

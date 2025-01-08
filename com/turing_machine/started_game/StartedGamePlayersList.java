@@ -36,7 +36,7 @@ public class StartedGamePlayersList {
 	}
 
 	public ArrayList<StartedGamePlayer> getHypothesingPlayers() {
-		return this.players.stream().filter(player -> player.isGuessingACode()).collect(Collectors.toCollection(ArrayList::new));
+		return this.players.stream().filter(player -> player.isGuessingACode() && !player.isEliminated()).collect(Collectors.toCollection(ArrayList::new));
 	}
 
 }

@@ -117,6 +117,7 @@ public class MainFrame extends Displayable {
 		if (this.last_displayed_panel != this.displayed_panel)
 		{
 			this.constructFrame();
+			this.last_displayed_panel = this.displayed_panel;
 		}
 
 		this.frame.revalidate();

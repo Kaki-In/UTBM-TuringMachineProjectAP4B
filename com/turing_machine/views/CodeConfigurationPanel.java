@@ -90,9 +90,9 @@ public class CodeConfigurationPanel extends Displayable {
 		apiConstraint.anchor = GridBagConstraints.WEST;
 		this.panel.add(this.checkbox, apiConstraint);
 
-		this.uses_api = false;
+		this.uses_api = configuration.getUsesApi();
 
-		this.checkbox.setSelected(false);
+		this.checkbox.setSelected(this.uses_api);
 
 		configuration.whenCriteriaCountChanged((last_count, new_count) -> {
 			this.count.setCriteriaCount(new_count);
